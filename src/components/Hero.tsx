@@ -34,20 +34,32 @@ export default function Hero() {
     <div className="relative" style={{ height: '100dvh' }}>
       <div className="w-full h-full overflow-hidden relative">
 
-        {/* Video — object-cover fills the viewport on both mobile (portrait) and desktop */}
+        {/* ── MOBILE ONLY: blurred background fill (same technique as Instagram/TikTok) ── */}
+        {/* This video is blurred + scaled to fill the portrait bars above/below the main frame */}
+        <video
+          autoPlay muted loop playsInline preload="auto"
+          src={VIDEO_1}
+          aria-hidden="true"
+          className="md:hidden absolute inset-0 w-full h-full object-cover"
+          style={{ filter: 'blur(28px) brightness(0.35) saturate(0.7)', transform: 'scale(1.15)' }}
+        />
+
+        {/* ── MAIN VIDEO ──
+            Mobile: object-contain — full 16:9 frame visible, centred over the blurred bg
+            Desktop: object-cover + slight scale — cinematic fullscreen fill               */}
         <video
           ref={videoRef}
           autoPlay muted loop playsInline preload="auto"
           src={VIDEO_1}
-          className="absolute inset-0 w-full h-full object-cover md:scale-[1.04]"
+          className="absolute inset-0 w-full h-full object-contain md:object-cover md:scale-[1.04]"
         />
 
         {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/20 to-ink/80 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/10 to-ink/75 z-10" />
 
         {/* Cinematic vignette */}
         <div className="absolute inset-0 z-10 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, rgba(18,10,6,0.65) 100%)' }} />
+          style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, rgba(18,10,6,0.6) 100%)' }} />
 
         {/* Warm amber bleed */}
         <div className="absolute inset-0 z-10 pointer-events-none"
