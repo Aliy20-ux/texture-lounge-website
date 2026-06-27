@@ -39,7 +39,7 @@ export default function Hero() {
           ref={videoRef}
           autoPlay muted loop playsInline preload="auto"
           src={VIDEO_1}
-          className="absolute inset-0 w-full h-full object-cover scale-[1.04]"
+          className="absolute inset-0 w-full h-full object-contain md:object-cover md:scale-[1.04]"
         />
 
         {/* Gradient overlay */}
