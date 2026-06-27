@@ -19,6 +19,11 @@ export default function LoadingScreen() {
         <motion.div
           key="loader"
           className="fixed inset-0 z-[9995] bg-ink flex flex-col items-center justify-center"
+          style={{
+            /* On mobile Safari, inset-0 can leave a sliver at the bottom.
+               -webkit-fill-available fills the true visual viewport. */
+            minHeight: '-webkit-fill-available',
+          }}
           initial={{ clipPath: 'inset(0 0 0 0)' }}
           animate={phase === 'exit'
             ? { clipPath: 'inset(0 0 100% 0)' }
