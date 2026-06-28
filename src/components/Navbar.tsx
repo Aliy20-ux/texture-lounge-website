@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 
 const LINKS = [
-  { label: 'Story',     href: '#about'     },
+  { label: 'Story',     href: '/about.html' },
   { label: 'Services',  href: '#services'  },
   { label: 'The Space', href: '#space'     },
   { label: 'Barbers',   href: '#team'      },

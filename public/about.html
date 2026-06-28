@@ -518,15 +518,15 @@
 
   <!-- Nav -->
   <nav class="nav" id="mainNav" aria-label="Main navigation">
-    <a href="index.html" aria-label="Texture Lounge — home">
+    <a href="/" aria-label="Texture Lounge — home">
       <img src="assets/logo.jpg" alt="Texture Lounge" class="nav-logo">
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#space">The Space</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#space">The Space</a></li>
       <li><a href="about.html" class="active">About Us</a></li>
-      <li><a href="index.html#team">The Team</a></li>
-      <li><a href="index.html#booking" class="nav-book">Book Now</a></li>
+      <li><a href="/#team">The Team</a></li>
+      <li><a href="/#booking" class="nav-book">Book Now</a></li>
     </ul>
   </nav>
 
@@ -577,8 +577,8 @@
         </span>
       </div>
       <div class="hero-cta-row reveal">
-        <a href="index.html#booking" class="btn-primary">Book with Erin</a>
-        <a href="index.html" class="btn-ghost">← Back to Texture Lounge</a>
+        <a href="/#booking" class="btn-primary">Book with Erin</a>
+        <a href="/" class="btn-ghost">← Back to Texture Lounge</a>
       </div>
     </div>
   </section>
@@ -712,7 +712,7 @@
       She's proof that it is. Texture Lounge exists partly because of that belief: that craft has no gender, precision knows no ceiling, and the best barbers in the world haven't all been found yet.
     </p>
 
-    <a href="index.html#booking" class="btn-primary reveal">Book Your Appointment</a>
+    <a href="/#booking" class="btn-primary reveal">Book Your Appointment</a>
   </section>
 
   <div class="divider"></div>
@@ -721,9 +721,9 @@
   <footer class="page-footer">
     <p class="footer-brand">Texture Lounge</p>
     <ul class="footer-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#booking">Book Now</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/#booking">Book Now</a></li>
     </ul>
   </footer>
 
@@ -737,7 +737,7 @@
         ov.classList.add('wipe-out');
       });
       // Wire up back-links
-      document.querySelectorAll('a[href^="index"]').forEach(link => {
+      document.querySelectorAll('a[href^="/"]').forEach(link => {
         link.addEventListener('click', e => {
           e.preventDefault();
           const dest = link.href;
