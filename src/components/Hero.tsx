@@ -41,7 +41,7 @@ export default function Hero() {
         <video
           autoPlay muted loop playsInline preload="auto"
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: 'saturate(0.82) sepia(0.14) brightness(0.88)' }}
+          style={{ filter: 'saturate(1.18) sepia(0.06) brightness(0.88)' }}
         >
           <source src={VIDEO_WEBM} type="video/webm" />
           <source src={VIDEO_MP4}  type="video/mp4"  />
