@@ -2,10 +2,10 @@ import { useState, useEffect, useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 
 const LINKS = [
+  { label: 'Story',     href: '#about'     },
   { label: 'Services',  href: '#services'  },
   { label: 'The Space', href: '#space'     },
-  { label: 'About Us',  href: '/about.html'},
-  { label: 'Our Team',  href: '#team'      },
+  { label: 'Barbers',   href: '#team'      },
 ]
 
 function MagneticCTA() {
@@ -26,13 +26,13 @@ function MagneticCTA() {
       href="#booking"
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="hidden md:flex group items-center gap-2 bg-cream/90 backdrop-blur-sm rounded-full pl-5 pr-1.5 py-1.5 hover:bg-ivory transition-all duration-500 shadow-lg"
+      className="hidden md:flex group items-center gap-2 bg-sage rounded-full pl-5 pr-1.5 py-1.5 hover:bg-cream transition-all duration-500 shadow-lg"
       style={{ transition: 'background 0.3s ease, box-shadow 0.3s ease' }}
     >
       <span className="text-charcoal text-xs md:text-sm font-geist font-medium tracking-[0.12em] uppercase">
-        Reserve Now
+        Book Now
       </span>
-      <span className="flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-terracotta/25 group-hover:bg-terracotta/50 transition-colors duration-300">
+      <span className="flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full bg-charcoal/20 group-hover:bg-charcoal/30 transition-colors duration-300">
         <ArrowRight className="w-3.5 h-3.5 text-charcoal group-hover:translate-x-0.5 transition-transform duration-300" />
       </span>
     </a>
@@ -138,7 +138,7 @@ export default function Navbar() {
             <a
               href="#booking"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center gap-3 bg-terracotta text-cream font-geist text-xs font-medium tracking-[0.22em] uppercase px-10 py-4 rounded-full shadow-[0_6px_28px_rgba(176,64,48,0.4)]"
+              className="flex items-center gap-3 bg-sage text-charcoal font-geist text-xs font-semibold tracking-[0.22em] uppercase px-10 py-4 rounded-full shadow-[0_6px_28px_rgba(123,174,142,0.35)]"
             >
               Reserve Now
               <ArrowRight className="w-3.5 h-3.5" />

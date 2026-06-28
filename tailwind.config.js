@@ -4,17 +4,18 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['"Playfair Display"', 'Georgia', 'serif'],
-        geist:   ['Raleway', 'system-ui', 'sans-serif'],
+        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        geist:   ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        terracotta: '#B04030',
+        terracotta: '#B6543C',
         rust:       '#C85428',
         amber:      '#D4852A',
-        sage:       '#72B07E',
-        cream:      '#EDE0CC',
+        sage:       '#7BAE8E',
+        clay:       '#8A3B2E',
+        cream:      '#F4EDE4',
         ivory:      '#F5EDE0',
-        charcoal:   '#1C1008',
+        charcoal:   '#1A1413',
         ink:        '#120A06',
       },
       transitionTimingFunction: {
