@@ -59,8 +59,9 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 md:py-5 flex items-center justify-between transition-all duration-700 ${
         scrolled ? 'bg-ink/88 backdrop-blur-xl shadow-[0_1px_0_rgba(237,224,204,0.06)]' : ''
       }`}>
-        <a href="/" className="relative z-50 flex-shrink-0">
-          <img src="/assets/logo.jpg" alt="Texture Lounge" className="h-8 md:h-10 w-auto object-contain" />
+        <a href="/" className="relative z-50 flex-shrink-0 leading-none text-sage">
+          <span className="font-heading italic text-2xl md:text-3xl block">texture</span>
+          <span className="font-geist text-[0.45rem] md:text-[0.55rem] tracking-[0.5em] pl-[0.5em] block uppercase">Lounge</span>
         </a>
 
         {/* Desktop links with animated underline */}

@@ -93,20 +93,17 @@ export default function Hero() {
               }}
             />
 
-            {/* Logo image */}
+            {/* Sage text wordmark */}
             <div
-              className="relative z-10 transition-all duration-[1000ms] ease-out"
+              className="relative z-10 text-center text-sage leading-none transition-all duration-[1000ms] ease-out"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? 'scale(1)' : 'scale(0.9)',
                 transitionDelay: '350ms',
               }}
             >
-              <img
-                src="/assets/logo.jpg"
-                alt="Texture Lounge"
-                className="w-20 h-20 md:w-28 md:h-28 object-contain"
-              />
+              <span className="font-heading italic text-4xl sm:text-5xl md:text-6xl block">texture</span>
+              <span className="font-geist text-[0.5rem] sm:text-xs tracking-[0.55em] pl-[0.55em] mt-1 block uppercase">Lounge</span>
             </div>
           </div>
         </div>
