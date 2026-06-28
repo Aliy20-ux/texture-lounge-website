@@ -1,61 +1,27 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const VIDEO_1_WEBM = '/assets/videos/hero-loop-hq.webm'
-const VIDEO_1_MP4  = '/assets/videos/hero-loop-hq.mp4'
-const VIDEO_2_MP4  = '/assets/videos/hero-scroll.mp4'
+const VIDEO_WEBM = '/assets/videos/dola-removal.webm'
+const VIDEO_MP4  = '/assets/videos/dola-removal.mp4'
 
 export default function Hero() {
-  const [scrolled, setScrolled] = useState(false)
   const [visible, setVisible] = useState(false)
-  const video2Ref = useRef<HTMLVideoElement>(null)
-  const wasScrolled = useRef(false)
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 200)
     return () => clearTimeout(t)
   }, [])
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 0
-      setScrolled(isScrolled)
-      const v = video2Ref.current
-      if (!v) return
-      if (isScrolled && !wasScrolled.current) {
-        v.currentTime = 0
-        v.play().catch(() => {})
-      } else if (!isScrolled && wasScrolled.current) {
-        v.pause()
-      }
-      wasScrolled.current = isScrolled
-    }
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
   return (
-    <div className="relative h-[200dvh]">
-      <div className="sticky top-0 w-full h-[100dvh] overflow-hidden">
+    <div className="relative" style={{ height: '100dvh' }}>
+      <div className="w-full h-full overflow-hidden relative">
 
-        {/* Video 2 — behind, plays when scrolled */}
-        <video
-          ref={video2Ref}
-          muted playsInline preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={VIDEO_2_MP4} type="video/mp4" />
-          <source src={VIDEO_1_MP4} type="video/mp4" />
-        </video>
-
-        {/* Video 1 — on top, loops, fades out on scroll */}
+        {/* Hero video — autoplay loop, full-bleed */}
         <video
           autoPlay muted loop playsInline preload="auto"
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-            scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}
+          className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src={VIDEO_1_WEBM} type="video/webm" />
-          <source src={VIDEO_1_MP4}  type="video/mp4"  />
+          <source src={VIDEO_WEBM} type="video/webm" />
+          <source src={VIDEO_MP4}  type="video/mp4"  />
         </video>
 
         {/* Gradient overlay */}
@@ -70,37 +36,32 @@ export default function Hero() {
           style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 50%, transparent 40%, rgba(18,10,6,0.55) 100%)' }}
         />
 
-        {/* Center logo with concentric rings */}
+        {/* Warm amber breathe */}
+        <div
+          className="absolute inset-0 z-10 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 50% 55% at 68% 35%, rgba(212,133,42,0.1) 0%, transparent 65%)',
+            animation: 'lightBreathe 9s ease-in-out infinite',
+          }}
+        />
+
+        {/* Center logo — concentric sage rings + wordmark */}
         <div className="absolute inset-0 flex items-center justify-center pb-[25vh] sm:pb-[30vh] z-20">
           <div className="relative flex items-center justify-center w-[45vw] h-[45vw] max-w-[320px] max-h-[320px] md:w-[30vw] md:h-[30vw] md:max-w-[400px] md:max-h-[400px]">
 
-            {/* Outer ring */}
             <div
               className="absolute inset-0 rounded-full border border-sage/40 transition-all duration-[1200ms] ease-out"
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? 'scale(1)' : 'scale(0.75)',
-              }}
+              style={{ opacity: visible ? 1 : 0, transform: visible ? 'scale(1)' : 'scale(0.75)' }}
             />
 
-            {/* Inner ring */}
             <div
               className="absolute inset-[12%] rounded-full border border-sage/25 transition-all duration-[1200ms] ease-out"
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? 'scale(1)' : 'scale(0.75)',
-                transitionDelay: '150ms',
-              }}
+              style={{ opacity: visible ? 1 : 0, transform: visible ? 'scale(1)' : 'scale(0.75)', transitionDelay: '150ms' }}
             />
 
-            {/* Sage text wordmark */}
             <div
               className="relative z-10 text-center text-sage leading-none transition-all duration-[1000ms] ease-out"
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? 'scale(1)' : 'scale(0.9)',
-                transitionDelay: '350ms',
-              }}
+              style={{ opacity: visible ? 1 : 0, transform: visible ? 'scale(1)' : 'scale(0.9)', transitionDelay: '350ms' }}
             >
               <span className="font-heading italic text-4xl sm:text-5xl md:text-6xl block">texture</span>
               <span className="font-geist text-[0.5rem] sm:text-xs tracking-[0.55em] pl-[0.55em] mt-1 block uppercase">Lounge</span>
@@ -144,11 +105,7 @@ export default function Hero() {
           {/* Mobile CTA */}
           <div
             className="mt-6 flex md:hidden justify-center transition-all duration-[800ms] ease-out"
-            style={{
-              opacity: visible ? 1 : 0,
-              transform: visible ? 'translateY(0)' : 'translateY(16px)',
-              transitionDelay: '1050ms',
-            }}
+            style={{ opacity: visible ? 1 : 0, transform: visible ? 'translateY(0)' : 'translateY(16px)', transitionDelay: '1050ms' }}
           >
             <a
               href="#booking"
@@ -158,7 +115,7 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Desktop scroll indicator */}
+          {/* Desktop scroll line */}
           <div
             className="mt-8 hidden md:flex flex-col items-center transition-opacity duration-[800ms] ease-out"
             style={{ opacity: visible ? 1 : 0, transitionDelay: '1200ms' }}
@@ -169,6 +126,9 @@ export default function Hero() {
       </div>
 
       <style>{`
+        @keyframes lightBreathe {
+          0%,100% { opacity:0.7; } 50% { opacity:1; }
+        }
         @keyframes scrollLine {
           0%,100% { transform:scaleY(1); opacity:0.3; }
           50%      { transform:scaleY(0.4); opacity:0.8; }
