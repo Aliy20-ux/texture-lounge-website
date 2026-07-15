@@ -26,7 +26,7 @@ function MagneticCTA() {
       href="#booking"
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="hidden md:flex group items-center gap-2 bg-sage rounded-full pl-5 pr-1.5 py-1.5 hover:bg-cream transition-all duration-500 shadow-lg"
+      className="hidden md:flex group items-center gap-2 bg-sage rounded-full pl-5 pr-1.5 py-1.5 hover:bg-cream transition-colors duration-500 shadow-lg"
       style={{ transition: 'background 0.3s ease, box-shadow 0.3s ease' }}
     >
       <span className="text-charcoal text-xs md:text-sm font-geist font-medium tracking-[0.12em] uppercase">
@@ -56,12 +56,15 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 md:py-5 flex items-center justify-between transition-all duration-700 ${
+      <nav className={`fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 md:py-5 flex items-center justify-between transition-[background-color,box-shadow,backdrop-filter] duration-700 ${
         scrolled ? 'bg-ink/88 backdrop-blur-xl shadow-[0_1px_0_rgba(237,224,204,0.06)]' : ''
       }`}>
-        <a href="/" className="relative z-50 flex-shrink-0 leading-none text-sage">
-          <span className="font-heading italic text-2xl md:text-3xl block">texture</span>
-          <span className="font-geist text-[0.45rem] md:text-[0.55rem] tracking-[0.5em] pl-[0.5em] block uppercase">Lounge</span>
+        <a href="/" className="relative z-50 flex-shrink-0 leading-none" aria-label="Texture Lounge — home">
+          <img
+            src="/assets/logo-wordmark.png"
+            alt="Texture Lounge"
+            className="h-9 md:h-11 w-auto object-contain"
+          />
         </a>
 
         {/* Desktop links with animated underline */}
@@ -74,7 +77,7 @@ export default function Navbar() {
               >
                 {l.label}
               </a>
-              <span className="absolute bottom-[-3px] left-0 h-px w-0 bg-terracotta group-hover:w-full transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]" />
+              <span className="absolute bottom-[-3px] left-0 h-px w-0 bg-terracotta group-hover:w-full transition-[width] duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]" />
             </li>
           ))}
         </ul>
@@ -87,17 +90,17 @@ export default function Navbar() {
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen(o => !o)}
         >
-          <span className={`block w-5 h-[1.5px] bg-cream rounded-full transition-all duration-400 ease-[cubic-bezier(0.77,0,0.18,1)] ${
+          <span className={`block w-5 h-[1.5px] bg-cream rounded-full transition-transform duration-400 ease-[cubic-bezier(0.77,0,0.18,1)] ${
             menuOpen ? 'rotate-45 translate-y-[3px]' : '-translate-y-[3px]'
           }`} />
-          <span className={`block w-5 h-[1.5px] bg-cream rounded-full transition-all duration-400 ease-[cubic-bezier(0.77,0,0.18,1)] ${
+          <span className={`block w-5 h-[1.5px] bg-cream rounded-full transition-transform duration-400 ease-[cubic-bezier(0.77,0,0.18,1)] ${
             menuOpen ? '-rotate-45' : 'translate-y-[3px]'
           }`} />
         </button>
       </nav>
 
       {/* Mobile overlay */}
-      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-600 ease-[cubic-bezier(0.77,0,0.18,1)] ${
+      <div className={`fixed inset-0 z-40 md:hidden transition-opacity duration-600 ease-[cubic-bezier(0.77,0,0.18,1)] ${
         menuOpen ? 'pointer-events-auto' : 'pointer-events-none'
       }`}>
         <div className={`absolute inset-0 bg-ink/97 backdrop-blur-2xl transition-opacity duration-600 ${

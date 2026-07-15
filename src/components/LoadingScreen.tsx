@@ -71,26 +71,18 @@ export default function LoadingScreen() {
             transition={{ duration: 1.0, delay: 0.25, ease: [0.19, 1, 0.22, 1] }}
           >
             <img
-              src="/assets/logo.jpg"
+              src="/assets/logo-wordmark.png"
               alt="Texture Lounge"
-              className="w-28 h-28 object-contain"
+              className="w-40 h-auto object-contain"
             />
 
-            {/* Name beneath logo */}
+            {/* Tagline beneath wordmark */}
             <div className="flex flex-col items-center gap-1">
-              <motion.p
-                className="font-heading text-cream text-xl italic font-light tracking-[0.12em]"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.55 }}
-              >
-                Texture Lounge
-              </motion.p>
               <motion.p
                 className="font-geist text-cream/35 text-[0.55rem] tracking-[0.45em] uppercase"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.75 }}
+                transition={{ duration: 0.8, delay: 0.55 }}
               >
                 Edinburgh · Est. 2026
               </motion.p>
