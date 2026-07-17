@@ -79,8 +79,8 @@ export default function Hero() {
   }, [])
 
   // Character scramble on the two big words (triggers after clip-path reveals them)
-  const quietText  = useScramble('quiet',  started, 900)
-  const luxuryText = useScramble('luxury', started, 1100)
+  const loungeText  = useScramble('lounge',  started, 900)
+  const cultureText = useScramble('culture', started, 1100)
 
   return (
     <div ref={heroRef} className="relative" style={{ height: '100dvh' }}>
@@ -144,7 +144,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* QUIET — scramble on reveal */}
+          {/* LOUNGE — scramble on reveal */}
           <motion.div
             className="overflow-hidden leading-none"
             variants={revealVariants}
@@ -156,11 +156,11 @@ export default function Hero() {
               className="font-heading font-light text-cream uppercase tracking-[-0.01em] text-center"
               style={{ fontSize: 'clamp(5.5rem, 20vw, 14.5rem)', lineHeight: 0.9 }}
             >
-              {quietText}
+              {loungeText}
             </h1>
           </motion.div>
 
-          {/* LUXURY — scramble on reveal */}
+          {/* CULTURE — scramble on reveal */}
           <motion.div
             className="overflow-hidden leading-none"
             variants={revealVariants}
@@ -172,7 +172,7 @@ export default function Hero() {
               className="font-heading italic font-light text-sage tracking-[-0.01em] text-center"
               style={{ fontSize: 'clamp(4.8rem, 18vw, 12.5rem)', lineHeight: 0.9 }}
             >
-              {luxuryText}
+              {cultureText}
             </h1>
           </motion.div>
         </div>
