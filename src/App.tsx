@@ -14,6 +14,7 @@ import Gallery         from './components/Gallery'
 import Team            from './components/Team'
 import Testimonials    from './components/Testimonials'
 import FAQ             from './components/FAQ'
+import Location        from './components/Location'
 import Booking         from './components/Booking'
 import Footer          from './components/Footer'
 import Cursor          from './components/Cursor'
@@ -41,7 +42,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="bg-ink min-h-screen">
+    <div className="bg-ink min-h-svh">
       <LoadingScreen />
       <Cursor />
       <FloatingCTA />
@@ -58,6 +59,7 @@ export default function App() {
       <Team />
       <Testimonials />
       <FAQ />
+      <Location />
       <Booking />
       <Footer />
     </div>

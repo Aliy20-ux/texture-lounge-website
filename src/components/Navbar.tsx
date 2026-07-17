@@ -6,6 +6,7 @@ const LINKS = [
   { label: 'Services',  href: '#services'  },
   { label: 'The Space', href: '#space'     },
   { label: 'Barbers',   href: '#team'      },
+  { label: 'Find Us',   href: '#location'  },
 ]
 
 function MagneticCTA() {

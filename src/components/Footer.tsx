@@ -36,7 +36,7 @@ export default function Footer() {
 
           {/* Nav links — 2 column grid on mobile */}
           <ul className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-8 gap-y-4 sm:gap-y-3 list-none w-full md:w-auto">
-            {[['Services','#services'],['The Space','#space'],['About Us','/about.html'],['Our Team','#team'],['Book Now','#booking']].map(([l,h]) => (
+            {[['Services','#services'],['The Space','#space'],['About Us','/about.html'],['Our Team','#team'],['Find Us','#location'],['Book Now','#booking']].map(([l,h]) => (
               <li key={h}>
                 <a href={h} className="font-geist text-cream/40 text-sm sm:text-xs tracking-[0.14em] uppercase hover:text-cream/80 transition-colors duration-200 py-1 block">{l}</a>
               </li>
