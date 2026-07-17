@@ -56,7 +56,7 @@ export default function CraftShowcase() {
           className="absolute top-9 left-7 md:top-11 md:left-14 z-30 font-geist text-[0.44rem] tracking-[0.5em] uppercase text-cream/38 pointer-events-none"
           style={{ opacity: labelOp }}
         >
-          The Craft · Texture Lounge
+          Definition · Texture Lounge
         </motion.p>
 
         {/* ── TEXT 1: THE CRAFT ── */}
@@ -73,7 +73,7 @@ export default function CraftShowcase() {
               y: l1Y,
             }}
           >
-            The&nbsp;Craft
+            The&nbsp;Texture
           </motion.h2>
         </motion.div>
 
@@ -91,7 +91,7 @@ export default function CraftShowcase() {
               y: l2Y,
             }}
           >
-            Precision
+            Defined
           </motion.h2>
           <motion.p
             className="font-geist text-cream/35 text-[0.46rem] tracking-[0.5em] uppercase"
