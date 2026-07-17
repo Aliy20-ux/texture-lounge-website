@@ -4,7 +4,7 @@ import { motion, useInView, AnimatePresence } from 'framer-motion'
 const FAQS = [
   {
     q: 'Do you take walk-ins?',
-    a: 'No — Texture Lounge is by appointment only. This is intentional. It means your stylist is ready for you, the space is prepared, and your time is protected from the moment you arrive. Book online or call us directly.',
+    a: 'Yes — walk-ins are welcome whenever we have a chair free. That said, only a booked appointment guarantees your preferred time and the barber of your choice, with the space prepared and your slot protected from the moment you arrive. For the smoothest visit we recommend reserving ahead — book online or call us directly.',
   },
   {
     q: 'How long does a visit take?',
@@ -46,7 +46,7 @@ function Item({ faq, index }: { faq: typeof FAQS[0]; index: number }) {
         <span className={`font-heading text-lg md:text-xl italic font-normal transition-colors duration-300 ${open ? 'text-cream' : 'text-cream/70 group-hover:text-cream'}`}>
           {faq.q}
         </span>
-        <div className={`w-8 h-8 flex-shrink-0 border flex items-center justify-center transition-all duration-400 ${
+        <div className={`w-8 h-8 flex-shrink-0 border flex items-center justify-center transition-[border-color,background-color,transform] duration-400 ${
           open ? 'border-terracotta/60 bg-terracotta/10 rotate-45' : 'border-cream/15 group-hover:border-cream/35'
         }`}>
           <svg className="w-3 h-3 text-cream/60" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

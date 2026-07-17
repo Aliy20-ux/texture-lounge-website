@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Bus, TramFront, TrainFront } from 'lucide-react'
 
 // ── Real salon details ──
 const ADDRESS_LINE = '12 Melville Place'
@@ -17,6 +18,24 @@ const HOURS = [
   { day: 'Sunday',    time: '10am – 5pm' },
 ]
 
+const TRANSPORT = [
+  {
+    icon: Bus,
+    label: 'By Bus',
+    body: 'Lothian Buses 3, 4, 25, 33 & 44 stop on Shandwick Place, a two-minute walk from the door. Night services N3, N25 & N44 also serve the West End.',
+  },
+  {
+    icon: TramFront,
+    label: 'By Tram',
+    body: 'The West End tram stop is moments away on Shandwick Place — a direct line from Edinburgh Airport through the city centre.',
+  },
+  {
+    icon: TrainFront,
+    label: 'By Train',
+    body: 'Haymarket Station is a 10-minute walk west; Edinburgh Waverley a short tram ride or 15-minute stroll to the east.',
+  },
+]
+
 const ease = [0.19, 1, 0.22, 1] as const
 
 export default function Location() {
@@ -25,7 +44,8 @@ export default function Location() {
 
   return (
     <section id="location" className="bg-ink py-28 md:py-36 px-5 md:px-12 overflow-hidden">
-      <div ref={ref} className="max-w-6xl mx-auto grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-14 lg:gap-20 items-stretch">
+      <div ref={ref} className="max-w-6xl mx-auto">
+      <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-14 lg:gap-20 items-stretch">
 
         {/* ── LEFT — address + hours ── */}
         <div className="flex flex-col">
@@ -85,15 +105,17 @@ export default function Location() {
             </ul>
           </motion.div>
 
-          {/* by-appointment note */}
+          {/* walk-ins note */}
           <motion.div
-            className="flex items-center gap-3 mt-7"
+            className="flex items-start gap-3 mt-7 max-w-sm"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.55, ease }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-sage" />
-            <span className="font-geist text-cream/40 text-[0.62rem] tracking-[0.28em] uppercase">By appointment · Book online</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-sage mt-[0.42rem] shrink-0" />
+            <p className="font-geist text-cream/50 text-[0.82rem] leading-[1.7] font-light">
+              <span className="text-cream/80">Walk-ins are welcome.</span> To guarantee your time with the barber of your choice, we recommend booking ahead.
+            </p>
           </motion.div>
 
           {/* open in maps */}
@@ -142,6 +164,26 @@ export default function Location() {
             <p className="font-geist text-cream/45 text-[0.62rem] tracking-wide mt-0.5">{CITY} · {POSTCODE}</p>
           </div>
         </motion.div>
+      </div>
+
+      {/* ── GETTING HERE — transport ── */}
+      <div className="grid sm:grid-cols-3 gap-4 md:gap-5 mt-4 md:mt-5">
+        {TRANSPORT.map((t, i) => (
+          <motion.div
+            key={t.label}
+            className="border border-cream/10 bg-charcoal/40 p-5 md:p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.5 + i * 0.1, ease }}
+          >
+            <div className="flex items-center gap-3 mb-3">
+              <t.icon className="w-4 h-4 text-terracotta" strokeWidth={1.5} />
+              <span className="font-geist text-cream/70 text-[0.58rem] tracking-[0.28em] uppercase">{t.label}</span>
+            </div>
+            <p className="font-geist text-cream/45 text-[0.8rem] leading-[1.7] font-light">{t.body}</p>
+          </motion.div>
+        ))}
+      </div>
       </div>
     </section>
   )

@@ -102,8 +102,8 @@ export default function About() {
           >
             We built Texture Lounge around that conviction. Every detail — the terracotta
             on the walls, the weight of the chairs, the unhurried pace of your appointment
-            — is an expression of how seriously we take the craft. This is not a
-            walk-in salon. This is a considered experience.
+            — is an expression of how seriously we take the craft. Book ahead or simply
+            drop in — either way, this is a considered experience, never a rushed one.
           </motion.p>
 
           {/* Animated stats */}
@@ -132,7 +132,7 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.7 }}
           >
             Meet Erin Strange
-            <span className="block w-8 h-px bg-current transition-all duration-500 group-hover:w-16" />
+            <span className="block w-8 h-px bg-current transition-[width] duration-500 group-hover:w-16" />
           </motion.a>
         </div>
       </div>

@@ -57,8 +57,8 @@ export default function Booking() {
           initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.45, ease: [0.19, 1, 0.22, 1] }}
         >
-          By appointment only. Your time is protected.
-          Book directly with one of our master barbers.
+          Walk-ins are welcome — though only a booked appointment guarantees your time
+          with the barber of your choice. Reserve directly with one of our master barbers.
         </motion.p>
 
         <motion.div
@@ -75,7 +75,7 @@ export default function Booking() {
           </button>
           <a
             href="tel:+442000000000"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border border-cream/15 hover:border-cream/45 text-cream/60 hover:text-cream font-geist text-xs font-medium tracking-[0.18em] uppercase px-10 py-4 md:py-5 transition-all duration-400 rounded-sm"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border border-cream/15 hover:border-cream/45 text-cream/60 hover:text-cream font-geist text-xs font-medium tracking-[0.18em] uppercase px-10 py-4 md:py-5 transition-colors duration-400 rounded-sm"
           >
             Call Us
           </a>
