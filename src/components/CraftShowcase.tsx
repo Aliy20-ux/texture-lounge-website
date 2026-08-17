@@ -36,7 +36,12 @@ export default function CraftShowcase() {
           <video
             autoPlay muted loop playsInline preload="auto"
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ filter: 'saturate(1.18) brightness(0.86) contrast(1.06)' }}
+            style={{
+              filter: 'saturate(1.18) brightness(0.86) contrast(1.06)',
+              objectPosition: 'left center',
+              transform: 'scale(1.35)',
+              transformOrigin: 'left center',
+            }}
           >
             <source src={WEBM} type="video/webm" />
             <source src={MP4}  type="video/mp4"  />
