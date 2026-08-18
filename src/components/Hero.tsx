@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { useBooking } from '../context/BookingContext'
+import { isOpenNow } from '../data/business'
 
 const VIDEO_WEBM = '/assets/videos/dola-removal.webm'
 const VIDEO_MP4  = '/assets/videos/dola-removal.mp4'
@@ -67,6 +69,8 @@ const revealVariants = {
 
 export default function Hero() {
   const [started, setStarted] = useState(false)
+  const { openBooking } = useBooking()
+  const status = isOpenNow()
 
   // Parallax: video moves slower than scroll
   const heroRef = useRef<HTMLDivElement>(null)
@@ -190,24 +194,27 @@ export default function Hero() {
 
           <div className="flex items-center justify-between px-6 md:px-12 mt-4 md:mt-5">
 
-            <motion.p
-              className="font-geist text-[0.44rem] md:text-[0.5rem] text-cream/28 tracking-[0.28em] uppercase"
+            <motion.div
+              className="flex items-center gap-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: started ? 1 : 0 }}
               transition={{ duration: 1, delay: 1.6 }}
             >
-              55.9533° N · 3.1883° W
-            </motion.p>
+              <span className={`w-1.5 h-1.5 rounded-full ${status.open ? 'bg-sage' : 'bg-terracotta'}`} />
+              <p className="font-geist text-[0.44rem] md:text-[0.5rem] text-cream/45 tracking-[0.24em] uppercase">
+                {status.label}
+              </p>
+            </motion.div>
 
-            <motion.a
-              href="#booking"
+            <motion.button
+              onClick={openBooking}
               className="flex items-center gap-2 bg-sage hover:bg-sage/80 text-charcoal font-geist text-[0.58rem] md:text-[0.62rem] font-semibold tracking-[0.22em] uppercase px-5 md:px-6 py-2.5 md:py-3 rounded-full transition-colors duration-300 shadow-[0_4px_20px_rgba(123,174,142,0.35)]"
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: started ? 1 : 0, y: started ? 0 : 6 }}
               transition={{ duration: 0.9, delay: 1.6 }}
             >
               Book a Visit
-            </motion.a>
+            </motion.button>
           </div>
         </div>
       </div>

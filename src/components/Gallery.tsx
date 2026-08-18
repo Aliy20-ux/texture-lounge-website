@@ -1,11 +1,12 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const PHOTOS = [
   { src: '/assets/interior-lounge.jpg', label: 'The Lounge',   ratio: 'aspect-[3/4]', delay: 0    },
   { src: '/assets/erin-strange.jpg',    label: 'The Artist',   ratio: 'aspect-[4/5]', delay: 0.12 },
   { src: '/assets/interior-barber.jpg', label: 'The Craft',    ratio: 'aspect-[3/4]', delay: 0.24 },
-  { src: '/assets/interior-lounge.jpg', label: 'The Ritual',   ratio: 'aspect-[4/5]', delay: 0.34 },
+  { src: '/assets/client-shoot.jpg',    label: 'The Clientele', ratio: 'aspect-[4/5]', delay: 0.34 },
 ]
 
 export default function Gallery() {
@@ -13,7 +14,7 @@ export default function Gallery() {
   const headIn  = useInView(headRef, { once: true, margin: '-15% 0px' })
 
   return (
-    <section className="bg-ink py-28 md:py-36 overflow-hidden">
+    <section className="bg-cream py-28 md:py-36 overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 md:px-12">
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
@@ -22,19 +23,21 @@ export default function Gallery() {
               Inside Texture Lounge
             </motion.p>
             <div className="overflow-hidden">
-              <motion.h2 className="font-heading text-cream text-5xl md:text-7xl font-normal italic leading-none"
+              <motion.h2 className="font-heading text-charcoal text-5xl md:text-7xl font-normal italic leading-none"
                 initial={{ y: '100%' }} animate={headIn ? { y: 0 } : {}}
                 transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}>
                 The Space
               </motion.h2>
             </div>
           </div>
-          <motion.a href="/about.html"
-            className="font-geist text-[0.6rem] tracking-[0.3em] uppercase text-cream/40 hover:text-cream transition-colors duration-300 flex items-center gap-3 group w-fit"
+          <motion.div
             initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.8, delay: 0.4 }}>
-            Meet the team
-            <span className="w-8 h-px bg-current group-hover:w-14 transition-all duration-500" />
-          </motion.a>
+            <Link to="/team"
+              className="font-geist text-[0.6rem] tracking-[0.3em] uppercase text-charcoal/50 hover:text-charcoal transition-colors duration-300 flex items-center gap-3 group w-fit">
+              Meet the team
+              <span className="w-8 h-px bg-current group-hover:w-14 transition-[width] duration-500" />
+            </Link>
+          </motion.div>
         </div>
 
         {/* Asymmetric editorial grid */}
@@ -75,13 +78,13 @@ export default function Gallery() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
         >
-          <div className="h-px flex-1 bg-cream/8" />
+          <div className="h-px flex-1 bg-charcoal/10" />
           <div className="flex items-center gap-6">
             <a
               href="https://www.instagram.com/erinestrange/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-cream/40 hover:text-cream transition-colors duration-300"
+              className="flex items-center gap-2.5 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-charcoal/50 hover:text-charcoal transition-colors duration-300"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -90,12 +93,12 @@ export default function Gallery() {
               </svg>
               Instagram
             </a>
-            <div className="w-px h-3 bg-cream/15" />
+            <div className="w-px h-3 bg-charcoal/20" />
             <a
               href="https://www.tiktok.com/@erinestrange"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-cream/40 hover:text-cream transition-colors duration-300"
+              className="flex items-center gap-2.5 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-charcoal/50 hover:text-charcoal transition-colors duration-300"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.54V6.78a4.85 4.85 0 01-1.02-.09z"/>
@@ -103,7 +106,7 @@ export default function Gallery() {
               TikTok
             </a>
           </div>
-          <div className="h-px flex-1 bg-cream/8" />
+          <div className="h-px flex-1 bg-charcoal/10" />
         </motion.div>
       </div>
     </section>

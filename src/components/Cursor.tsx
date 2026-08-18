@@ -75,12 +75,12 @@ export default function Cursor() {
         style={{ transform: 'translate(-200px,-200px)' }}
       >
         <div
-          className="rounded-full -translate-x-1/2 -translate-y-1/2 transition-all duration-200"
+          className="rounded-full -translate-x-1/2 -translate-y-1/2 transition-[width,height,background-color,box-shadow] duration-200"
           style={{
             width:      clicking ? 3 : 5,
             height:     clicking ? 3 : 5,
-            background: hovered ? '#B04030' : '#EDE0CC',
-            boxShadow:  hovered ? '0 0 6px rgba(176,64,48,0.6)' : 'none',
+            background: hovered ? '#B6543C' : '#1A1413',
+            boxShadow:  hovered ? '0 0 6px rgba(182,84,60,0.6)' : 'none',
           }}
         />
       </div>
@@ -97,12 +97,12 @@ export default function Cursor() {
             width:      clicking ? 16 : hovered ? 56 : 34,
             height:     clicking ? 16 : hovered ? 56 : 34,
             border:     hovered
-              ? '1.5px solid rgba(176,64,48,0.8)'
+              ? '1.5px solid rgba(182,84,60,0.8)'
               : clicking
-              ? '1px solid rgba(237,224,204,0.7)'
-              : '1px solid rgba(237,224,204,0.3)',
+              ? '1px solid rgba(26,20,19,0.5)'
+              : '1px solid rgba(26,20,19,0.22)',
             boxShadow:  hovered
-              ? '0 0 20px rgba(176,64,48,0.18), inset 0 0 10px rgba(176,64,48,0.05)'
+              ? '0 0 20px rgba(182,84,60,0.18), inset 0 0 10px rgba(182,84,60,0.05)'
               : 'none',
           }}
         />
@@ -122,7 +122,7 @@ export default function Cursor() {
           style={{
             width: 100,
             height: 100,
-            background: 'radial-gradient(circle, rgba(176,64,48,0.1) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(182,84,60,0.1) 0%, transparent 70%)',
           }}
         />
       </div>

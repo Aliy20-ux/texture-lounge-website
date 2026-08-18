@@ -1,12 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-
-const STATS = [
-  { n: 14, suffix: '+', label: 'Years combined craft' },
-  { n: 3,  suffix: '',  label: 'Master barbers'       },
-  { n: 6,  suffix: '',  label: 'Signature services'   },
-  { n: 53, suffix: '',  label: '5★ reviews'           },
-]
+import { Link } from 'react-router-dom'
+import { STATS } from '../data/business'
 
 function Counter({ n, suffix }: { n: number; suffix: string }) {
   const ref    = useRef<HTMLSpanElement>(null)
@@ -35,7 +30,7 @@ export default function About() {
   const textIn  = useInView(textRef, { once: true, margin: '-10% 0px' })
 
   return (
-    <section id="space" className="bg-charcoal py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+    <section id="philosophy" className="bg-ivory py-28 md:py-36 px-5 md:px-12 overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
         {/* Image — clip-path reveal */}
@@ -52,17 +47,17 @@ export default function About() {
               className="w-full h-full object-cover"
               style={{ filter: 'saturate(1.1)' }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
           </motion.div>
 
           {/* Floating badge */}
           <motion.div
-            className="absolute bottom-6 right-6 bg-ink/85 backdrop-blur-md border border-cream/10 px-5 py-4 z-10"
+            className="absolute bottom-6 right-6 bg-cream/92 backdrop-blur-md border border-charcoal/10 px-5 py-4 z-10"
             initial={{ opacity: 0, y: 20 }}
             animate={imgIn ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
-            <p className="font-heading text-2xl text-cream italic font-light">Est.</p>
+            <p className="font-heading text-2xl text-charcoal italic font-light">Est.</p>
             <p className="font-heading text-4xl text-terracotta font-light leading-none">2026</p>
           </motion.div>
         </div>
@@ -83,7 +78,7 @@ export default function About() {
           {/* Quote — word-mask */}
           <div className="overflow-hidden">
             <motion.h2
-              className="font-heading text-cream text-3xl md:text-4xl lg:text-[2.6rem] font-light italic leading-[1.15]"
+              className="font-heading text-charcoal text-3xl md:text-4xl lg:text-[2.6rem] font-light italic leading-[1.15]"
               initial={{ y: '100%' }}
               animate={textIn ? { y: 0 } : {}}
               transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
@@ -95,7 +90,7 @@ export default function About() {
 
           {/* Body */}
           <motion.p
-            className="font-geist text-cream/55 text-[0.85rem] leading-[1.9] font-light"
+            className="font-geist text-charcoal/60 text-[0.85rem] leading-[1.9] font-light"
             initial={{ opacity: 0, y: 16 }}
             animate={textIn ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35, ease: [0.19, 1, 0.22, 1] }}
@@ -115,25 +110,28 @@ export default function About() {
           >
             {STATS.map(s => (
               <div key={s.label} className="border-l border-terracotta/30 pl-4">
-                <p className="font-heading text-3xl md:text-4xl text-cream font-light italic tabular-nums">
+                <p className="font-heading text-3xl md:text-4xl text-charcoal font-light italic tabular-nums">
                   <Counter n={s.n} suffix={s.suffix} />
                 </p>
-                <p className="font-geist text-cream/40 text-[0.65rem] tracking-[0.18em] uppercase mt-1">{s.label}</p>
+                <p className="font-geist text-charcoal/45 text-[0.65rem] tracking-[0.18em] uppercase mt-1">{s.label}</p>
               </div>
             ))}
           </motion.div>
 
           {/* CTA link */}
-          <motion.a
-            href="/about.html"
-            className="inline-flex items-center gap-4 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-cream/50 hover:text-cream transition-colors duration-400 group w-fit"
+          <motion.div
             initial={{ opacity: 0 }}
             animate={textIn ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Meet Erin Strange
-            <span className="block w-8 h-px bg-current transition-[width] duration-500 group-hover:w-16" />
-          </motion.a>
+            <Link
+              to="/team"
+              className="inline-flex items-center gap-4 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-charcoal/55 hover:text-charcoal transition-colors duration-400 group w-fit"
+            >
+              Meet the team
+              <span className="block w-8 h-px bg-current transition-[width] duration-500 group-hover:w-16" />
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

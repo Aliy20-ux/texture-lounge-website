@@ -1,67 +1,24 @@
-import { useEffect } from 'react'
-import Lenis from 'lenis'
-
-import Navbar          from './components/Navbar'
-import Hero            from './components/Hero'
-import MarqueeStrip    from './components/MarqueeStrip'
-import About           from './components/About'
-import Press           from './components/Press'
-import Experience      from './components/Experience'
-import Services        from './components/Services'
-import ErinSection     from './components/ErinSection'
-import CraftShowcase   from './components/CraftShowcase'
-import Gallery         from './components/Gallery'
-import Team            from './components/Team'
-import Testimonials    from './components/Testimonials'
-import FAQ             from './components/FAQ'
-import Location        from './components/Location'
-import Booking         from './components/Booking'
-import Footer          from './components/Footer'
-import Cursor          from './components/Cursor'
-import LoadingScreen   from './components/LoadingScreen'
-import FloatingCTA     from './components/FloatingCTA'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Layout    from './Layout'
+import Home      from './pages/Home'
+import Story     from './pages/Story'
+import Services  from './pages/Services'
+import Team      from './pages/Team'
+import Space     from './pages/Space'
+import FindUs    from './pages/FindUs'
 
 export default function App() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.35,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    })
-
-    let rafId: number
-    const raf = (time: number) => {
-      lenis.raf(time)
-      rafId = requestAnimationFrame(raf)
-    }
-    rafId = requestAnimationFrame(raf)
-
-    return () => {
-      cancelAnimationFrame(rafId)
-      lenis.destroy()
-    }
-  }, [])
-
   return (
-    <div className="bg-ink min-h-svh">
-      <LoadingScreen />
-      <Cursor />
-      <FloatingCTA />
-      <Navbar />
-      <Hero />
-      <MarqueeStrip />
-      <About />
-      <Press />
-      <Experience />
-      <Services />
-      <ErinSection />
-      <CraftShowcase />
-      <Gallery />
-      <Team />
-      <Testimonials />
-      <FAQ />
-      <Location />
-      <Booking />
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/"          element={<Home />} />
+        <Route path="/story"     element={<Story />} />
+        <Route path="/services"  element={<Services />} />
+        <Route path="/team"      element={<Team />} />
+        <Route path="/space"     element={<Space />} />
+        <Route path="/find-us"   element={<FindUs />} />
+        <Route path="*"          element={<Navigate to="/" replace />} />
+      </Route>
+    </Routes>
   )
 }

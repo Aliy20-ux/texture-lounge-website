@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-const AWARDS = [
+export const AWARDS = [
   {
     logo: 'BBC',
     quote: '"A salon changing the standard of grooming in Edinburgh — Erin Strange is the name to know."',
@@ -27,7 +27,7 @@ export default function Press() {
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
 
   return (
-    <section className="bg-charcoal border-y border-cream/6 py-20 md:py-24 px-5 md:px-12 overflow-hidden">
+    <section className="bg-ivory border-y border-charcoal/8 py-20 md:py-24 px-5 md:px-12 overflow-hidden">
       <div className="max-w-6xl mx-auto">
 
         {/* Label */}
@@ -54,16 +54,16 @@ export default function Press() {
                   <span className="font-heading text-terracotta text-sm font-semibold">{a.logo}</span>
                 </div>
                 <div>
-                  <p className="font-geist text-cream/60 text-xs tracking-wider">{a.source}</p>
-                  <p className="font-geist text-cream/25 text-[0.6rem] tracking-wider">{a.year}</p>
+                  <p className="font-geist text-charcoal/70 text-xs tracking-wider">{a.source}</p>
+                  <p className="font-geist text-charcoal/35 text-[0.6rem] tracking-wider">{a.year}</p>
                 </div>
               </div>
               {/* Quote */}
-              <p className="font-heading text-cream/75 text-base italic font-normal leading-relaxed">
+              <p className="font-heading text-charcoal/80 text-base italic font-normal leading-relaxed">
                 {a.quote}
               </p>
               {/* Line */}
-              <div className="h-px w-8 bg-terracotta/30 group-hover:w-16 transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]" />
+              <div className="h-px w-8 bg-terracotta/30 group-hover:w-16 transition-[width] duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]" />
             </motion.div>
           ))}
         </div>

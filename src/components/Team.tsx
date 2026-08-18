@@ -1,18 +1,13 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-
-const TEAM = [
-  { name: 'Erin Strange', role: 'Founder & Master Barber', note: 'Scottish Barber of the Year · BBC Scotland', img: '/assets/erin-strange.jpg' },
-  { name: 'James Okafor', role: 'Senior Barber',           note: '9 years · precision & fade specialist',     img: '/assets/interior-barber.jpg' },
-  { name: 'Marcus Webb',  role: 'Lead Stylist',            note: 'Beard architecture & wet shave expert',     img: '/assets/interior-lounge.jpg' },
-]
+import { TEAM } from '../data/business'
 
 export default function Team() {
   const headRef = useRef<HTMLDivElement>(null)
   const headIn  = useInView(headRef, { once: true, margin: '-15% 0px' })
 
   return (
-    <section id="team" className="bg-ink py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+    <section id="team" className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div ref={headRef} className="mb-18 md:mb-24">
           <motion.p
@@ -23,7 +18,7 @@ export default function Team() {
           </motion.p>
           <div className="overflow-hidden">
             <motion.h2
-              className="font-heading text-cream text-5xl md:text-7xl font-light italic leading-none"
+              className="font-heading text-charcoal text-5xl md:text-7xl font-light italic leading-none"
               initial={{ y: '100%' }}
               animate={headIn ? { y: 0 } : {}}
               transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
@@ -67,12 +62,12 @@ function TeamCard({ member, index }: { member: typeof TEAM[0]; index: number }) 
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             style={{ filter: 'saturate(0.9)' }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/55 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/45 to-transparent" />
         </motion.div>
       </div>
-      <p className="font-heading text-xl text-cream italic font-light">{member.name}</p>
+      <p className="font-heading text-xl text-charcoal italic font-light">{member.name}</p>
       <p className="font-geist text-terracotta text-[0.6rem] tracking-[0.22em] uppercase mt-1.5">{member.role}</p>
-      <p className="font-geist text-cream/35 text-xs mt-2 leading-relaxed font-light">{member.note}</p>
+      <p className="font-geist text-charcoal/50 text-xs mt-2 leading-relaxed font-light">{member.note}</p>
     </motion.div>
   )
 }

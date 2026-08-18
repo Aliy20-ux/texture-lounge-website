@@ -1,19 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-export default function PageCurtain() {
-  const [phase, setPhase] = useState<'in' | 'out' | 'gone'>('in')
+interface Props { routeKey: string }
+
+export default function PageCurtain({ routeKey }: Props) {
+  const [phase, setPhase] = useState<'in' | 'out'>('in')
+  const firstRun = useRef(true)
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase('out'), 300)
-    const t2 = setTimeout(() => setPhase('gone'), 1100)
-    return () => { clearTimeout(t1); clearTimeout(t2) }
-  }, [])
+    // Skip the wipe-in on first mount if this is the very first paint of the app —
+    // still shows a brief wipe-out for a considered first impression.
+    if (firstRun.current) {
+      firstRun.current = false
+      const t = setTimeout(() => setPhase('out'), 300)
+      return () => clearTimeout(t)
+    }
 
-  if (phase === 'gone') return null
+    setPhase('in')
+    const t = setTimeout(() => setPhase('out'), 300)
+    return () => clearTimeout(t)
+  }, [routeKey])
 
   return (
     <div
-      className="fixed inset-0 z-[9990] bg-ink origin-top pointer-events-none"
+      className="fixed inset-0 z-[9990] bg-charcoal origin-top pointer-events-none"
       style={{
         transform:  phase === 'out' ? 'scaleY(0)' : 'scaleY(1)',
         transition: 'transform 0.9s cubic-bezier(0.76,0,0.24,1)',

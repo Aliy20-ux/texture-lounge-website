@@ -1,13 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ArrowRight, Check } from 'lucide-react'
-
-const SERVICES = [
-  'The Signature Cut', 'Beard Architecture', 'Hot Towel Shave',
-  'Cut & Beard', 'Fade & Style', 'The Lounge Experience',
-  'The Full Ritual', 'The Monthly Gentleman',
-]
-const STYLISTS = ['Erin Strange', 'James Okafor', 'Marcus Webb', 'No preference']
+import { SERVICES, STYLISTS } from '../data/business'
 
 interface Props { isOpen: boolean; onClose: () => void }
 
@@ -31,7 +25,7 @@ export default function BookingModal({ isOpen, onClose }: Props) {
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 z-[9980] bg-ink/80 backdrop-blur-md"
+            className="fixed inset-0 z-[9980] bg-charcoal/50 backdrop-blur-md"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
             onClick={close}
@@ -39,17 +33,17 @@ export default function BookingModal({ isOpen, onClose }: Props) {
 
           {/* Panel */}
           <motion.div
-            className="fixed top-0 right-0 bottom-0 z-[9985] w-full max-w-lg bg-charcoal border-l border-cream/8 overflow-y-auto"
+            className="fixed top-0 right-0 bottom-0 z-[9985] w-full max-w-lg bg-cream border-l border-charcoal/10 overflow-y-auto"
             initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
             transition={{ duration: 0.65, ease: [0.76, 0, 0.24, 1] }}
           >
             {/* Header */}
-            <div className="sticky top-0 bg-charcoal/95 backdrop-blur-md border-b border-cream/6 px-8 py-6 flex items-start justify-between z-10">
+            <div className="sticky top-0 bg-cream/95 backdrop-blur-md border-b border-charcoal/8 px-8 py-6 flex items-start justify-between z-10">
               <div>
                 <p className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-1">Texture Lounge</p>
-                <h3 className="font-heading text-cream text-2xl italic font-normal">Reserve Your Visit</h3>
+                <h3 className="font-heading text-charcoal text-2xl italic font-normal">Reserve Your Visit</h3>
               </div>
-              <button onClick={close} className="w-9 h-9 flex items-center justify-center border border-cream/15 hover:border-cream/40 text-cream/50 hover:text-cream transition-all duration-300 mt-1">
+              <button onClick={close} className="w-9 h-9 flex items-center justify-center border border-charcoal/15 hover:border-charcoal/40 text-charcoal/50 hover:text-charcoal transition-colors duration-300 mt-1">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -62,13 +56,13 @@ export default function BookingModal({ isOpen, onClose }: Props) {
                   <div className="flex items-center gap-2 mb-2">
                     {[1, 2].map(s => (
                       <div key={s} className="flex items-center gap-2">
-                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center text-[0.55rem] font-geist transition-all duration-300 ${
-                          step >= s ? 'border-terracotta bg-terracotta/20 text-cream' : 'border-cream/20 text-cream/30'
+                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center text-[0.55rem] font-geist transition-colors duration-300 ${
+                          step >= s ? 'border-terracotta bg-terracotta/15 text-charcoal' : 'border-charcoal/20 text-charcoal/35'
                         }`}>{s}</div>
-                        {s < 2 && <div className={`w-8 h-px transition-all duration-500 ${step > s ? 'bg-terracotta/40' : 'bg-cream/10'}`} />}
+                        {s < 2 && <div className={`w-8 h-px transition-colors duration-500 ${step > s ? 'bg-terracotta/50' : 'bg-charcoal/12'}`} />}
                       </div>
                     ))}
-                    <span className="font-geist text-cream/30 text-[0.6rem] tracking-wider ml-2 uppercase">
+                    <span className="font-geist text-charcoal/40 text-[0.6rem] tracking-wider ml-2 uppercase">
                       {step === 1 ? 'Choose service' : 'Your details'}
                     </span>
                   </div>
@@ -81,20 +75,20 @@ export default function BookingModal({ isOpen, onClose }: Props) {
                     >
                       {/* Service */}
                       <div className="flex flex-col gap-3">
-                        <label className="font-geist text-cream/50 text-[0.65rem] tracking-[0.25em] uppercase">Service</label>
+                        <label className="font-geist text-charcoal/55 text-[0.65rem] tracking-[0.25em] uppercase">Service</label>
                         <div className="grid grid-cols-1 gap-2">
                           {SERVICES.map(s => (
                             <button
                               type="button"
-                              key={s}
-                              onClick={() => set('service', s)}
-                              className={`text-left px-4 py-3 border text-sm font-geist font-light transition-all duration-300 ${
-                                form.service === s
-                                  ? 'border-terracotta/60 bg-terracotta/8 text-cream'
-                                  : 'border-cream/8 text-cream/55 hover:border-cream/25 hover:text-cream/80'
+                              key={s.name}
+                              onClick={() => set('service', s.name)}
+                              className={`text-left px-4 py-3 border text-sm font-geist font-light transition-colors duration-300 ${
+                                form.service === s.name
+                                  ? 'border-terracotta/60 bg-terracotta/8 text-charcoal'
+                                  : 'border-charcoal/10 text-charcoal/60 hover:border-charcoal/25 hover:text-charcoal/85'
                               }`}
                             >
-                              {s}
+                              {s.name}
                             </button>
                           ))}
                         </div>
@@ -102,17 +96,17 @@ export default function BookingModal({ isOpen, onClose }: Props) {
 
                       {/* Stylist */}
                       <div className="flex flex-col gap-3">
-                        <label className="font-geist text-cream/50 text-[0.65rem] tracking-[0.25em] uppercase">Preferred Stylist</label>
+                        <label className="font-geist text-charcoal/55 text-[0.65rem] tracking-[0.25em] uppercase">Preferred Stylist</label>
                         <div className="grid grid-cols-2 gap-2">
                           {STYLISTS.map(s => (
                             <button
                               type="button"
                               key={s}
                               onClick={() => set('stylist', s)}
-                              className={`text-left px-4 py-3 border text-xs font-geist font-light transition-all duration-300 ${
+                              className={`text-left px-4 py-3 border text-xs font-geist font-light transition-colors duration-300 ${
                                 form.stylist === s
-                                  ? 'border-terracotta/60 bg-terracotta/8 text-cream'
-                                  : 'border-cream/8 text-cream/55 hover:border-cream/25'
+                                  ? 'border-terracotta/60 bg-terracotta/8 text-charcoal'
+                                  : 'border-charcoal/10 text-charcoal/60 hover:border-charcoal/25'
                               }`}
                             >
                               {s}
@@ -139,9 +133,9 @@ export default function BookingModal({ isOpen, onClose }: Props) {
                       transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
                     >
                       {/* Summary */}
-                      <div className="border border-terracotta/20 bg-terracotta/5 px-5 py-4 flex items-center justify-between">
-                        <span className="font-heading italic text-cream text-sm">{form.service}</span>
-                        <span className="font-geist text-cream/40 text-xs">{form.stylist}</span>
+                      <div className="border border-terracotta/25 bg-terracotta/5 px-5 py-4 flex items-center justify-between">
+                        <span className="font-heading italic text-charcoal text-sm">{form.service}</span>
+                        <span className="font-geist text-charcoal/45 text-xs">{form.stylist}</span>
                       </div>
 
                       {[
@@ -150,33 +144,35 @@ export default function BookingModal({ isOpen, onClose }: Props) {
                         { label: 'Preferred Date',key: 'date',  type: 'date',  placeholder: '' },
                       ].map(f => (
                         <div key={f.key} className="flex flex-col gap-2">
-                          <label className="font-geist text-cream/50 text-[0.65rem] tracking-[0.25em] uppercase">{f.label}</label>
+                          <label htmlFor={`booking-${f.key}`} className="font-geist text-charcoal/55 text-[0.65rem] tracking-[0.25em] uppercase">{f.label}</label>
                           <input
+                            id={`booking-${f.key}`}
                             type={f.type}
                             required
                             placeholder={f.placeholder}
                             value={form[f.key as keyof typeof form]}
                             onChange={e => set(f.key as keyof typeof form, e.target.value)}
-                            className="bg-transparent border border-cream/12 px-4 py-3 text-cream font-geist text-sm font-light placeholder-cream/25 focus:outline-none focus:border-cream/35 transition-colors duration-300"
-                            style={{ colorScheme: 'dark' }}
+                            className="bg-transparent border border-charcoal/18 px-4 py-3 text-charcoal font-geist text-sm font-light placeholder-charcoal/30 focus:outline-none focus:border-charcoal/45 transition-colors duration-300"
+                            style={{ colorScheme: 'light' }}
                           />
                         </div>
                       ))}
 
                       <div className="flex flex-col gap-2">
-                        <label className="font-geist text-cream/50 text-[0.65rem] tracking-[0.25em] uppercase">Notes (optional)</label>
+                        <label htmlFor="booking-notes" className="font-geist text-charcoal/55 text-[0.65rem] tracking-[0.25em] uppercase">Notes (optional)</label>
                         <textarea
+                          id="booking-notes"
                           rows={3}
                           placeholder="Anything you'd like us to know..."
                           value={form.notes}
                           onChange={e => set('notes', e.target.value)}
-                          className="bg-transparent border border-cream/12 px-4 py-3 text-cream font-geist text-sm font-light placeholder-cream/25 focus:outline-none focus:border-cream/35 transition-colors duration-300 resize-none"
+                          className="bg-transparent border border-charcoal/18 px-4 py-3 text-charcoal font-geist text-sm font-light placeholder-charcoal/30 focus:outline-none focus:border-charcoal/45 transition-colors duration-300 resize-none"
                         />
                       </div>
 
                       <div className="flex gap-3 mt-2">
                         <button type="button" onClick={() => setStep(1)}
-                          className="px-6 py-4 border border-cream/12 text-cream/50 font-geist text-xs tracking-wider uppercase hover:border-cream/30 hover:text-cream/80 transition-all duration-300">
+                          className="px-6 py-4 border border-charcoal/15 text-charcoal/55 font-geist text-xs tracking-wider uppercase hover:border-charcoal/35 hover:text-charcoal/85 transition-colors duration-300">
                           Back
                         </button>
                         <button type="submit"
@@ -194,17 +190,17 @@ export default function BookingModal({ isOpen, onClose }: Props) {
                   initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
                 >
-                  <div className="w-16 h-16 rounded-full border border-sage/40 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full border border-sage/50 flex items-center justify-center">
                     <Check className="w-6 h-6 text-sage" />
                   </div>
                   <div>
-                    <h4 className="font-heading text-cream text-2xl italic mb-2">Request Received</h4>
-                    <p className="font-geist text-cream/50 text-sm font-light leading-relaxed max-w-xs mx-auto">
-                      We'll confirm your appointment for <em className="text-cream/80 not-italic">{form.service}</em> with {form.stylist} by email within 2 hours.
+                    <h4 className="font-heading text-charcoal text-2xl italic mb-2">Request Received</h4>
+                    <p className="font-geist text-charcoal/55 text-sm font-light leading-relaxed max-w-xs mx-auto">
+                      We'll confirm your appointment for <em className="text-charcoal/85 not-italic">{form.service}</em> with {form.stylist} by email within 2 hours.
                     </p>
                   </div>
                   <button onClick={close}
-                    className="mt-4 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-cream/40 hover:text-cream transition-colors duration-300">
+                    className="mt-4 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-charcoal/45 hover:text-charcoal transition-colors duration-300">
                     Close
                   </button>
                 </motion.div>

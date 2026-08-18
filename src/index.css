@@ -17,11 +17,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
-  background: #120A06;
+  background: #F4EDE4;
 }
 
-.font-heading { font-family: 'Cormorant Garamond', Georgia, serif; }
+.font-heading { font-family: 'Fraunces', Georgia, serif; }
 .font-geist   { font-family: 'Inter', system-ui, sans-serif; }
+
+/* Selection color */
+::selection { background: #B6543C; color: #F4EDE4; }
 
 /* Grain overlay */
 body::before {
@@ -31,13 +34,14 @@ body::before {
   z-index: 9999;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity: 0.3;
+  opacity: 0.25;
+  mix-blend-mode: multiply;
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #120A06; }
-::-webkit-scrollbar-thumb { background: #B04030; border-radius: 2px; }
+::-webkit-scrollbar-track { background: #F4EDE4; }
+::-webkit-scrollbar-thumb { background: #B6543C; border-radius: 2px; }
 
 /* Mobile: hide scrollbar on horizontal scroll areas */
 .overflow-x-auto { -webkit-overflow-scrolling: touch; }

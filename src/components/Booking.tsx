@@ -1,12 +1,12 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import BookingModal from './BookingModal'
+import { useBooking } from '../context/BookingContext'
 
 export default function Booking() {
   const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
-  const [modalOpen, setModalOpen] = useState(false)
+  const { openBooking } = useBooking()
 
   return (
     <section id="booking" className="relative py-32 md:py-44 px-5 md:px-12 overflow-hidden">
@@ -67,7 +67,7 @@ export default function Booking() {
           transition={{ duration: 0.9, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
         >
           <button
-            onClick={() => setModalOpen(true)}
+            onClick={openBooking}
             className="group w-full sm:w-auto sm:inline-flex inline-flex items-center justify-center gap-3 bg-terracotta hover:bg-rust text-cream font-geist text-xs font-medium tracking-[0.18em] uppercase px-10 py-4 md:py-5 transition-colors duration-400 rounded-sm"
           >
             Book Online
@@ -89,7 +89,6 @@ export default function Booking() {
           Sat 09:00–19:00 · Sun 10:00–17:00
         </motion.p>
       </div>
-      <BookingModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </section>
   )
 }

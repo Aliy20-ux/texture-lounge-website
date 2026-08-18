@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        heading: ['"Fraunces"', 'Georgia', 'serif'],
         geist:   ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
