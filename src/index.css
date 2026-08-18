@@ -12,6 +12,10 @@
   * { cursor: none !important; }
 }
 
+html, body {
+  overscroll-behavior: none;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;

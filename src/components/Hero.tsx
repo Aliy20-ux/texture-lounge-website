@@ -6,61 +6,6 @@ import { isOpenNow } from '../data/business'
 const VIDEO_WEBM = '/assets/videos/dola-removal.webm'
 const VIDEO_MP4  = '/assets/videos/dola-removal.mp4'
 
-const MARQUEE = 'PRECISION CUTS · HOT TOWEL SHAVE · BEARD ARCHITECTURE · COLOUR & TONE · EDINBURGH · '
-
-// ── Character scramble hook ─────────────────────────────────────────────────
-const CHARS = 'abcdefghijklmnopqrstuvwxyz'
-
-function useScramble(finalText: string, trigger: boolean, delayMs = 0) {
-  const [display, setDisplay] = useState(() =>
-    finalText.split('').map(c => c === ' ' ? ' ' : CHARS[Math.floor(Math.random() * CHARS.length)]).join('')
-  )
-  const doneRef = useRef(false)
-
-  useEffect(() => {
-    if (!trigger || doneRef.current) return
-    const timeout = setTimeout(() => {
-      doneRef.current = true
-      const chars = finalText.split('')
-      const FRAMES = 32
-      let frame = 0
-
-      const id = setInterval(() => {
-        frame++
-        const locked = Math.floor((frame / FRAMES) * chars.length)
-        setDisplay(
-          chars.map((c, i) => {
-            if (c === ' ') return ' '
-            if (i < locked) return c
-            return CHARS[Math.floor(Math.random() * CHARS.length)]
-          }).join('')
-        )
-        if (frame >= FRAMES) { setDisplay(finalText); clearInterval(id) }
-      }, 42)
-
-      return () => clearInterval(id)
-    }, delayMs)
-
-    return () => clearTimeout(timeout)
-  }, [trigger, finalText, delayMs])
-
-  return display
-}
-
-// ── Marquee strip ───────────────────────────────────────────────────────────
-function Marquee() {
-  return (
-    <div className="w-full overflow-hidden border-t border-cream/10 pt-4">
-      <div
-        className="whitespace-nowrap font-geist text-[0.44rem] md:text-[0.48rem] tracking-[0.4em] uppercase text-cream/25"
-        style={{ animation: 'marqueeScroll 28s linear infinite' }}
-      >
-        {MARQUEE.repeat(8)}
-      </div>
-    </div>
-  )
-}
-
 // ── Hero ─────────────────────────────────────────────────────────────────────
 const revealVariants = {
   hidden: { clipPath: 'inset(0 0 100% 0)', opacity: 0 },
@@ -81,10 +26,6 @@ export default function Hero() {
     const t = setTimeout(() => setStarted(true), 350)
     return () => clearTimeout(t)
   }, [])
-
-  // Character scramble on the two big words (triggers after clip-path reveals them)
-  const loungeText  = useScramble('lounge',  started, 900)
-  const cultureText = useScramble('culture', started, 1100)
 
   return (
     <div ref={heroRef} className="relative" style={{ height: '100dvh' }}>
@@ -148,7 +89,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* LOUNGE — scramble on reveal */}
+          {/* LOUNGE */}
           <motion.div
             className="overflow-hidden leading-none"
             variants={revealVariants}
@@ -160,11 +101,11 @@ export default function Hero() {
               className="font-heading font-light text-cream uppercase tracking-[-0.01em] text-center"
               style={{ fontSize: 'clamp(5.5rem, 20vw, 14.5rem)', lineHeight: 0.9 }}
             >
-              {loungeText}
+              lounge
             </h1>
           </motion.div>
 
-          {/* CULTURE — scramble on reveal */}
+          {/* CULTURE */}
           <motion.div
             className="overflow-hidden leading-none"
             variants={revealVariants}
@@ -176,7 +117,7 @@ export default function Hero() {
               className="font-heading italic font-light text-sage tracking-[-0.01em] text-center"
               style={{ fontSize: 'clamp(4.8rem, 18vw, 12.5rem)', lineHeight: 0.9 }}
             >
-              {cultureText}
+              culture
             </h1>
           </motion.div>
         </div>
@@ -184,15 +125,7 @@ export default function Hero() {
         {/* ── BOTTOM BAR ── */}
         <div className="absolute bottom-0 left-0 right-0 z-20 pb-7 md:pb-9">
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: started ? 1 : 0 }}
-            transition={{ duration: 1.2, delay: 1.5 }}
-          >
-            <Marquee />
-          </motion.div>
-
-          <div className="flex items-center justify-between px-6 md:px-12 mt-4 md:mt-5">
+          <div className="flex items-center justify-between px-6 md:px-12 pt-4 md:pt-5 border-t border-cream/10 mx-6 md:mx-12">
 
             <motion.div
               className="flex items-center gap-2"
@@ -223,10 +156,6 @@ export default function Hero() {
         @keyframes breathe {
           0%, 100% { opacity: 0.6; }
           50%       { opacity: 1;   }
-        }
-        @keyframes marqueeScroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
         }
       `}</style>
     </div>

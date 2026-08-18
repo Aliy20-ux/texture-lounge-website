@@ -10,10 +10,10 @@ export default function ErinSection() {
     <section ref={ref} className="bg-cream overflow-hidden">
       <div className="grid md:grid-cols-[3fr_2fr] min-h-[80vh]">
 
-        {/* Video — full source clip, full frame visible (9:16, object-contain) */}
-        <div className="relative overflow-hidden bg-charcoal flex items-center justify-center">
+        {/* Video — full-bleed, no letterboxing */}
+        <div className="relative overflow-hidden min-h-[55vw] md:min-h-0">
           <motion.div
-            className="relative w-full aspect-[9/16] md:h-full md:w-auto md:aspect-[9/16] mx-auto"
+            className="absolute inset-0"
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
             animate={inView ? { clipPath: 'inset(0 0% 0 0)' } : {}}
             transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
@@ -22,7 +22,7 @@ export default function ErinSection() {
               autoPlay muted loop playsInline preload="auto"
               poster="/assets/erin-street-cut-poster.jpg"
               aria-label="Erin Strange cutting a client's hair on location in Edinburgh"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover object-[center_28%] md:object-top"
             >
               <source src="/assets/videos/erin-street-cut.webm" type="video/webm" />
               <source src="/assets/videos/erin-street-cut.mp4"  type="video/mp4"  />
