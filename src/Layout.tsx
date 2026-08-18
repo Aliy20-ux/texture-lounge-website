@@ -9,6 +9,8 @@ import BookingModal   from './components/BookingModal'
 import Cursor         from './components/Cursor'
 import ChatWidget     from './components/ChatWidget'
 import PageCurtain    from './components/PageCurtain'
+import CookieNotice   from './components/CookieNotice'
+import LocalBusinessSchema from './components/LocalBusinessSchema'
 import { BookingProvider, useBooking } from './context/BookingContext'
 
 function GlobalBookingModal() {
@@ -46,6 +48,7 @@ export default function Layout() {
   return (
     <BookingProvider>
       <div className="bg-cream min-h-svh">
+        <LocalBusinessSchema />
         <PageCurtain routeKey={location.key} />
         <Cursor />
         <FloatingCTA />
@@ -53,6 +56,7 @@ export default function Layout() {
         <Outlet />
         <Footer />
         <ChatWidget />
+        <CookieNotice />
         <GlobalBookingModal />
       </div>
     </BookingProvider>

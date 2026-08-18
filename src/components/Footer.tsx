@@ -82,6 +82,12 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* Legal links */}
+        <div className="mt-8 pt-6 border-t border-cream/10 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <Link to="/privacy" className="font-geist text-cream/35 text-[0.6rem] tracking-[0.14em] uppercase hover:text-cream/70 transition-colors duration-200">Privacy Policy</Link>
+          <Link to="/terms" className="font-geist text-cream/35 text-[0.6rem] tracking-[0.14em] uppercase hover:text-cream/70 transition-colors duration-200">Terms of Service</Link>
+        </div>
+
         {/* Mobile copyright bar */}
         <div className="mt-10 pt-5 border-t border-cream/10 flex items-center justify-between md:hidden">
           <p className="font-geist text-cream/35 text-[0.55rem] tracking-[0.15em] uppercase">© 2026 Texture Lounge</p>

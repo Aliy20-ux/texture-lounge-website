@@ -6,6 +6,8 @@ import Services  from './pages/Services'
 import Team      from './pages/Team'
 import Space     from './pages/Space'
 import FindUs    from './pages/FindUs'
+import Privacy   from './pages/Privacy'
+import Terms     from './pages/Terms'
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
         <Route path="/team"      element={<Team />} />
         <Route path="/space"     element={<Space />} />
         <Route path="/find-us"   element={<FindUs />} />
+        <Route path="/privacy"   element={<Privacy />} />
+        <Route path="/terms"     element={<Terms />} />
         <Route path="*"          element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

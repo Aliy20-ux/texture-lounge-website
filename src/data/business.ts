@@ -9,6 +9,12 @@ export const BRAND = {
   established: 2026,
 }
 
+// TODO: replace with the real production domain once one is connected (currently the .pages.dev URL).
+export const SITE_URL = 'https://texture-lounge-website.pages.dev'
+
+// TODO: replace with a real, monitored inbox before relying on this for data requests.
+export const CONTACT_EMAIL = 'hello@texturelounge.co.uk'
+
 export const ADDRESS = {
   line: '12 Melville Place',
   city: 'Edinburgh',
