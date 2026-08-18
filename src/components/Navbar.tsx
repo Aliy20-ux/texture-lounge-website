@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { ArrowRight, Scissors, X } from 'lucide-react'
+import { ArrowRight, Scissors, Menu } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
 
 const LINKS = [
@@ -64,7 +64,7 @@ export default function Navbar() {
       <nav className={`fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 md:py-5 flex items-center justify-between bg-cream/85 backdrop-blur-xl transition-[box-shadow] duration-500 ${
         scrolled ? 'shadow-[0_1px_0_rgba(26,20,19,0.08)]' : ''
       }`}>
-        <Link to="/" className="relative z-50 flex-shrink-0 leading-none" aria-label="Texture Lounge — home">
+        <Link to="/" onClick={() => setMenuOpen(false)} className="relative z-50 flex-shrink-0 leading-none" aria-label="Texture Lounge — home">
           <img
             src="/assets/logo-wordmark.png"
             alt="Texture Lounge"
@@ -99,14 +99,14 @@ export default function Navbar() {
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen(o => !o)}
         >
-          <Scissors
+          <Menu
             className="absolute w-5 h-5 text-charcoal transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
             style={{
               opacity: menuOpen ? 0 : 1,
               transform: menuOpen ? 'rotate(-45deg) scale(0.6)' : 'rotate(0deg) scale(1)',
             }}
           />
-          <X
+          <Scissors
             className="absolute w-5 h-5 text-charcoal transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
             style={{
               opacity: menuOpen ? 1 : 0,
@@ -160,7 +160,7 @@ export default function Navbar() {
               onClick={() => { setMenuOpen(false); openBooking() }}
               className="flex items-center gap-3 bg-terracotta text-cream font-geist text-xs font-semibold tracking-[0.22em] uppercase px-10 py-4 rounded-full shadow-[0_6px_28px_rgba(182,84,60,0.35)]"
             >
-              Reserve Now
+              Book Now
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

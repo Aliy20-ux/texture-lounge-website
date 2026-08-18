@@ -25,6 +25,11 @@ export default function LocalBusinessSchema() {
         opens: h.open,
         closes: h.close,
       })),
+      priceRange: '££',
+      sameAs: [
+        'https://www.instagram.com/erinestrange/',
+        'https://www.tiktok.com/@erinestrange',
+      ],
     }
 
     const el = document.createElement('script')

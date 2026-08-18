@@ -9,6 +9,7 @@ export default function TeamPage() {
   )
   return (
     <div>
+      <h1 className="sr-only">Our Barbers — Texture Lounge Edinburgh</h1>
       <TeamSection />
     </div>
   )

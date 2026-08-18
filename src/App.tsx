@@ -1,26 +1,30 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout    from './Layout'
 import Home      from './pages/Home'
-import Story     from './pages/Story'
-import Services  from './pages/Services'
-import Team      from './pages/Team'
-import Space     from './pages/Space'
-import FindUs    from './pages/FindUs'
-import Privacy   from './pages/Privacy'
-import Terms     from './pages/Terms'
+
+const Story    = lazy(() => import('./pages/Story'))
+const Services = lazy(() => import('./pages/Services'))
+const Team     = lazy(() => import('./pages/Team'))
+const Space    = lazy(() => import('./pages/Space'))
+const FindUs   = lazy(() => import('./pages/FindUs'))
+const Privacy  = lazy(() => import('./pages/Privacy'))
+const Terms    = lazy(() => import('./pages/Terms'))
 
 export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route path="/"          element={<Home />} />
-        <Route path="/story"     element={<Story />} />
-        <Route path="/services"  element={<Services />} />
-        <Route path="/team"      element={<Team />} />
-        <Route path="/space"     element={<Space />} />
-        <Route path="/find-us"   element={<FindUs />} />
-        <Route path="/privacy"   element={<Privacy />} />
-        <Route path="/terms"     element={<Terms />} />
+        {/* Home ships in the main bundle — it's the most common entry point.
+            Every other page is a separate chunk, loaded on demand. */}
+        <Route path="/" element={<Home />} />
+        <Route path="/story"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Story /></Suspense>} />
+        <Route path="/services"  element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Services /></Suspense>} />
+        <Route path="/team"      element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Team /></Suspense>} />
+        <Route path="/space"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Space /></Suspense>} />
+        <Route path="/find-us"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><FindUs /></Suspense>} />
+        <Route path="/privacy"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Privacy /></Suspense>} />
+        <Route path="/terms"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Terms /></Suspense>} />
         <Route path="*"          element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

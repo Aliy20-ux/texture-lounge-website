@@ -11,6 +11,7 @@ export default function Story() {
   )
   return (
     <div>
+      <h1 className="sr-only">Our Story — Texture Lounge Edinburgh</h1>
       <About />
       <Press />
       <ErinSection />

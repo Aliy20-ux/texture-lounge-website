@@ -113,12 +113,12 @@ export default function Hero() {
             animate={started ? 'show' : 'hidden'}
             transition={{ duration: 1.1, delay: 0.92, ease: [0.76, 0, 0.24, 1] }}
           >
-            <h1
+            <p
               className="font-heading italic font-light text-sage tracking-[-0.01em] text-center"
               style={{ fontSize: 'clamp(4.8rem, 18vw, 12.5rem)', lineHeight: 0.9 }}
             >
               culture
-            </h1>
+            </p>
           </motion.div>
         </div>
 
@@ -146,7 +146,7 @@ export default function Hero() {
               animate={{ opacity: started ? 1 : 0, y: started ? 0 : 6 }}
               transition={{ duration: 0.9, delay: 1.6 }}
             >
-              Book a Visit
+              Book Now
             </motion.button>
           </div>
         </div>

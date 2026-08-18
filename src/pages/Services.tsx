@@ -10,6 +10,7 @@ export default function ServicesPage() {
   )
   return (
     <div>
+      <h1 className="sr-only">Services &amp; Prices — Texture Lounge Edinburgh</h1>
       <ServicesSection />
       <Experience />
     </div>

@@ -21,7 +21,7 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <img src="/assets/logo-wordmark.png" alt="Texture Lounge" className="h-9 w-auto object-contain mb-4 opacity-90" />
+            <img src="/assets/logo-wordmark.png" alt="Texture Lounge" loading="lazy" decoding="async" className="h-9 w-auto object-contain mb-4 opacity-90" />
             <p className="font-geist text-cream/45 text-xs leading-relaxed max-w-xs">
               Premium hair & grooming salon in Edinburgh.<br />
               Where craft meets lounge culture.

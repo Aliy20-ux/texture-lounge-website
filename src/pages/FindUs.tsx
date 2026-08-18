@@ -10,6 +10,7 @@ export default function FindUs() {
   )
   return (
     <div>
+      <h1 className="sr-only">Find Us — Texture Lounge Edinburgh</h1>
       <Location />
       <FAQ />
     </div>

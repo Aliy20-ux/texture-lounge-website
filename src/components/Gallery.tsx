@@ -54,6 +54,8 @@ export default function Gallery() {
               <img
                 src={p.src}
                 alt={p.label}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
                 style={{ filter: 'saturate(0.85) brightness(0.95)' }}
               />

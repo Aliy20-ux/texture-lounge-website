@@ -9,6 +9,7 @@ export default function Space() {
   )
   return (
     <div>
+      <h1 className="sr-only">The Space — Texture Lounge Edinburgh</h1>
       <Gallery />
     </div>
   )

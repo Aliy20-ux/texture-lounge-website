@@ -59,6 +59,8 @@ function TeamCard({ member, index }: { member: typeof TEAM[0]; index: number }) 
           <img
             src={member.img}
             alt={member.name}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
             style={{ filter: 'saturate(0.9)' }}
           />

@@ -10,8 +10,9 @@ export default function ErinSection() {
     <section ref={ref} className="bg-cream overflow-hidden">
       <div className="grid md:grid-cols-[3fr_2fr] min-h-[80vh]">
 
-        {/* Video — full-bleed, no letterboxing */}
-        <div className="relative overflow-hidden min-h-[55vw] md:min-h-0">
+        {/* Video — mobile: container matches the video's native 9:16 ratio exactly, so the
+            full frame shows with zero cropping. Desktop: fills the grid column, object-top. */}
+        <div className="relative overflow-hidden aspect-[9/16] md:aspect-auto md:min-h-0">
           <motion.div
             className="absolute inset-0"
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
@@ -22,7 +23,7 @@ export default function ErinSection() {
               autoPlay muted loop playsInline preload="auto"
               poster="/assets/erin-street-cut-poster.jpg"
               aria-label="Erin Strange cutting a client's hair on location in Edinburgh"
-              className="w-full h-full object-cover object-[center_28%] md:object-top"
+              className="w-full h-full object-cover md:object-top"
             >
               <source src="/assets/videos/erin-street-cut.webm" type="video/webm" />
               <source src="/assets/videos/erin-street-cut.mp4"  type="video/mp4"  />

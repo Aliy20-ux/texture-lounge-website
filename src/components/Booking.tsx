@@ -70,7 +70,7 @@ export default function Booking() {
             onClick={openBooking}
             className="group w-full sm:w-auto sm:inline-flex inline-flex items-center justify-center gap-3 bg-terracotta hover:bg-rust text-cream font-geist text-xs font-medium tracking-[0.18em] uppercase px-10 py-4 md:py-5 transition-colors duration-400 rounded-sm"
           >
-            Book Online
+            Book Now
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
           <a

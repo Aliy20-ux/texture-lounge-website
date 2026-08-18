@@ -28,7 +28,7 @@ export default function FloatingCTA() {
             onClick={openBooking}
             className="flex items-center gap-3 bg-terracotta text-cream font-geist text-xs font-medium tracking-[0.2em] uppercase px-7 py-3.5 rounded-full shadow-[0_8px_32px_rgba(182,84,60,0.4)] hover:bg-rust transition-colors duration-300"
           >
-            Reserve Now
+            Book Now
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </motion.div>
