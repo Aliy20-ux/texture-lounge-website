@@ -2,6 +2,22 @@ import { HOURS, SERVICES, PACKAGES, TEAM, ADDRESS, FAQS, TRANSPORT, MAPS_LINK, B
 
 interface Env {
   AI: Ai
+  CHAT_RATE_LIMIT: KVNamespace
+}
+
+// Simple, best-effort counters (read-then-write, not atomic — fine at this traffic scale;
+// worst case under heavy concurrency is a slightly loose limit, never a broken chat).
+const BURST_LIMIT       = 8    // messages per visitor per minute
+const BURST_WINDOW_SEC  = 60
+const DAILY_LIMIT       = 25   // messages per visitor per day
+const GLOBAL_DAILY_LIMIT = 400 // messages across all visitors per day
+const DAY_TTL_SEC       = 90_000 // ~25h, safely covers a full UTC day
+
+async function checkAndIncrement(kv: KVNamespace, key: string, limit: number, ttlSec: number): Promise<boolean> {
+  const current = Number(await kv.get(key)) || 0
+  if (current >= limit) return false
+  await kv.put(key, String(current + 1), { expirationTtl: ttlSec })
+  return true
 }
 
 function buildSystemPrompt(): string {
@@ -61,6 +77,24 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
     if (body.message.length > MAX_MESSAGE_LENGTH) {
       return new Response(JSON.stringify({ error: 'Message too long' }), { status: 400 })
+    }
+
+    const ip = context.request.headers.get('CF-Connecting-IP') ?? 'unknown'
+    const today = new Date().toISOString().slice(0, 10)
+    const kv = context.env.CHAT_RATE_LIMIT
+
+    const withinBurst  = await checkAndIncrement(kv, `burst:${ip}:${Math.floor(Date.now() / (BURST_WINDOW_SEC * 1000))}`, BURST_LIMIT, BURST_WINDOW_SEC + 10)
+    const withinDaily  = withinBurst  && await checkAndIncrement(kv, `daily:${ip}:${today}`, DAILY_LIMIT, DAY_TTL_SEC)
+    const withinGlobal = withinDaily  && await checkAndIncrement(kv, `global:${today}`, GLOBAL_DAILY_LIMIT, DAY_TTL_SEC)
+
+    if (!withinBurst) {
+      return new Response(JSON.stringify({ error: "You're sending messages a little fast — give it a minute and try again." }), { status: 429 })
+    }
+    if (!withinDaily) {
+      return new Response(JSON.stringify({ error: "You've reached today's question limit for the chat assistant. Please call or use Book Now instead." }), { status: 429 })
+    }
+    if (!withinGlobal) {
+      return new Response(JSON.stringify({ error: "The chat assistant is at capacity for today. Please call or use Book Now instead." }), { status: 429 })
     }
 
     const messages = [

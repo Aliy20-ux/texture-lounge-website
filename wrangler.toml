@@ -4,3 +4,7 @@ pages_build_output_dir = "./dist"
 
 [ai]
 binding = "AI"
+
+[[kv_namespaces]]
+binding = "CHAT_RATE_LIMIT"
+id = "d215b2b5ec59449ea2e83ac1e479fe6e"
