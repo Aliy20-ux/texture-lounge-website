@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Scissors, X } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
 
 const LINKS = [
@@ -93,18 +93,26 @@ export default function Navbar() {
 
         <MagneticCTA />
 
-        {/* Hamburger */}
+        {/* Scissors menu toggle */}
         <button
-          className="relative z-50 md:hidden flex flex-col items-center justify-center w-10 h-10 gap-0"
+          className="relative z-50 md:hidden flex items-center justify-center w-10 h-10"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           onClick={() => setMenuOpen(o => !o)}
         >
-          <span className={`block w-5 h-[1.5px] bg-charcoal rounded-full transition-transform duration-400 ease-[cubic-bezier(0.77,0,0.18,1)] ${
-            menuOpen ? 'rotate-45 translate-y-[3px]' : '-translate-y-[3px]'
-          }`} />
-          <span className={`block w-5 h-[1.5px] bg-charcoal rounded-full transition-transform duration-400 ease-[cubic-bezier(0.77,0,0.18,1)] ${
-            menuOpen ? '-rotate-45' : 'translate-y-[3px]'
-          }`} />
+          <Scissors
+            className="absolute w-5 h-5 text-charcoal transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
+            style={{
+              opacity: menuOpen ? 0 : 1,
+              transform: menuOpen ? 'rotate(-45deg) scale(0.6)' : 'rotate(0deg) scale(1)',
+            }}
+          />
+          <X
+            className="absolute w-5 h-5 text-charcoal transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
+            style={{
+              opacity: menuOpen ? 1 : 0,
+              transform: menuOpen ? 'rotate(0deg) scale(1)' : 'rotate(45deg) scale(0.6)',
+            }}
+          />
         </button>
       </nav>
 
