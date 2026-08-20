@@ -8,11 +8,12 @@ export default function ErinSection() {
 
   return (
     <section ref={ref} className="bg-cream overflow-hidden">
-      <div className="grid md:grid-cols-[3fr_2fr] min-h-[80vh]">
+      <div className="flex flex-col md:flex-row md:min-h-[80vh]">
 
-        {/* Video — mobile: container matches the video's native 9:16 ratio exactly, so the
-            full frame shows with zero cropping. Desktop: fills the grid column, object-top. */}
-        <div className="relative overflow-hidden aspect-[9/16] md:aspect-auto md:min-h-0">
+        {/* Video — the source clip is a portrait 9:16 recording. Container always matches that
+            exact ratio (full width on mobile, fixed height on desktop) so object-cover never has
+            to crop anything — the entire frame is visible on every breakpoint. */}
+        <div className="relative overflow-hidden aspect-[9/16] w-full md:w-auto md:h-[80vh] md:flex-shrink-0">
           <motion.div
             className="absolute inset-0"
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
@@ -23,7 +24,7 @@ export default function ErinSection() {
               autoPlay muted loop playsInline preload="auto"
               poster="/assets/erin-street-cut-poster.jpg"
               aria-label="Erin Strange cutting a client's hair on location in Edinburgh"
-              className="w-full h-full object-cover md:object-top"
+              className="w-full h-full object-cover"
             >
               <source src="/assets/videos/erin-street-cut.webm" type="video/webm" />
               <source src="/assets/videos/erin-street-cut.mp4"  type="video/mp4"  />
@@ -43,7 +44,7 @@ export default function ErinSection() {
         </div>
 
         {/* Text panel */}
-        <div className="relative flex flex-col justify-center px-8 md:px-14 py-16 md:py-24 bg-cream">
+        <div className="relative flex flex-col justify-center px-8 md:px-14 py-16 md:py-24 bg-cream flex-1 md:max-w-xl">
 
           <motion.p
             className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-6"
