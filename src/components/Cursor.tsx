@@ -79,8 +79,8 @@ export default function Cursor() {
           style={{
             width:      clicking ? 3 : 5,
             height:     clicking ? 3 : 5,
-            background: hovered ? '#B6543C' : '#1A1413',
-            boxShadow:  hovered ? '0 0 6px rgba(182,84,60,0.6)' : 'none',
+            background: '#B6543C',
+            boxShadow:  hovered ? '0 0 6px rgba(182,84,60,0.6)' : '0 0 3px rgba(182,84,60,0.5)',
           }}
         />
       </div>
@@ -99,8 +99,8 @@ export default function Cursor() {
             border:     hovered
               ? '1.5px solid rgba(182,84,60,0.8)'
               : clicking
-              ? '1px solid rgba(26,20,19,0.5)'
-              : '1px solid rgba(26,20,19,0.22)',
+              ? '1px solid rgba(182,84,60,0.55)'
+              : '1px solid rgba(182,84,60,0.4)',
             boxShadow:  hovered
               ? '0 0 20px rgba(182,84,60,0.18), inset 0 0 10px rgba(182,84,60,0.05)'
               : 'none',
