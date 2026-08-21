@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BRAND, ADDRESS, HOURS, SITE_URL } from '../data/business'
+import { BRAND, ADDRESS, HOURS, SITE_URL, PHONE } from '../data/business'
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
@@ -11,6 +11,7 @@ export default function LocalBusinessSchema() {
       name: BRAND.name,
       description: BRAND.tagline,
       url: SITE_URL,
+      telephone: PHONE.tel,
       image: `${SITE_URL}/assets/interior-lounge.jpg`,
       address: {
         '@type': 'PostalAddress',

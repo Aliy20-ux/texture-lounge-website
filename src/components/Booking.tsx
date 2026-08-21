@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
+import { PHONE } from '../data/business'
 
 export default function Booking() {
   const ref    = useRef<HTMLDivElement>(null)
@@ -74,10 +75,10 @@ export default function Booking() {
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
           <a
-            href="tel:+442000000000"
+            href={`tel:${PHONE.tel}`}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-3 border border-cream/15 hover:border-cream/45 text-cream/60 hover:text-cream font-geist text-xs font-medium tracking-[0.18em] uppercase px-10 py-4 md:py-5 transition-colors duration-400 rounded-sm"
           >
-            Call Us
+            {PHONE.display}
           </a>
         </motion.div>
 

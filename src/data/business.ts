@@ -15,6 +15,11 @@ export const SITE_URL = 'https://texture-lounge-website.pages.dev'
 // TODO: replace with a real, monitored inbox before relying on this for data requests.
 export const CONTACT_EMAIL = 'hello@texturelounge.co.uk'
 
+export const PHONE = {
+  display: '0131 248 7575',
+  tel: '+441312487575',
+}
+
 export const ADDRESS = {
   line: '12 Melville Place',
   city: 'Edinburgh',

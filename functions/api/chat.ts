@@ -1,4 +1,4 @@
-import { HOURS, SERVICES, PACKAGES, TEAM, ADDRESS, FAQS, TRANSPORT, MAPS_LINK, BRAND } from '../../src/data/business'
+import { HOURS, SERVICES, PACKAGES, TEAM, ADDRESS, FAQS, TRANSPORT, MAPS_LINK, BRAND, PHONE } from '../../src/data/business'
 
 interface Env {
   AI: Ai
@@ -33,6 +33,7 @@ function buildSystemPrompt(): string {
 ADDRESS
 ${ADDRESS.line}, ${ADDRESS.city} ${ADDRESS.postcode}
 Directions: ${MAPS_LINK}
+Phone: ${PHONE.display}
 
 HOURS
 ${hoursText}

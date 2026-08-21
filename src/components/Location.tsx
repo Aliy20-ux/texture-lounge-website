@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Bus, TramFront, TrainFront } from 'lucide-react'
-import { ADDRESS, HOURS_GROUPED, TRANSPORT, MAPS_EMBED_SRC, MAPS_LINK } from '../data/business'
+import { ADDRESS, HOURS_GROUPED, TRANSPORT, MAPS_EMBED_SRC, MAPS_LINK, PHONE } from '../data/business'
 
 const TRANSPORT_ICONS = { 'By Bus': Bus, 'By Tram': TramFront, 'By Train': TrainFront } as const
 
@@ -48,6 +48,16 @@ export default function Location() {
           >
             {ADDRESS.postcode}
           </motion.p>
+
+          <motion.a
+            href={`tel:${PHONE.tel}`}
+            className="font-geist text-charcoal/70 hover:text-charcoal text-sm tracking-[0.1em] mt-3 w-fit transition-colors duration-300"
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.32, ease }}
+          >
+            {PHONE.display}
+          </motion.a>
 
           {/* divider */}
           <motion.div
