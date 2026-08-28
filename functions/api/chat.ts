@@ -25,7 +25,7 @@ function buildSystemPrompt(): string {
   const servicesText = SERVICE_CATEGORIES.map(cat =>
     `${cat.name}:\n` + cat.services.map(s => `- ${s.name} — ${s.price} (${s.dur})`).join('\n')
   ).join('\n\n')
-  const teamText = TEAM.map(t => `${t.name} — ${t.role} (${t.note})`).join('\n')
+  const teamText = TEAM.map(t => t.note ? `${t.name} — ${t.role} (${t.note})` : `${t.name} — ${t.role}`).join('\n')
   const faqText = FAQS.map(f => `Q: ${f.q}\nA: ${f.a}`).join('\n\n')
   const transportText = TRANSPORT.map(t => `${t.label}: ${t.body}`).join('\n')
 

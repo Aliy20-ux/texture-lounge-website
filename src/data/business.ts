@@ -97,17 +97,21 @@ export const SERVICE_CATEGORIES = [
   },
 ]
 
+// Real staff, pulled from the professional list in Treatwell's own booking flow
+// (widget.treatwell.co.uk/place/539710) — Treatwell only exposes first names and no
+// role/specialty detail for anyone but Erin, so those fields stay generic rather than
+// invented. No photo on file for these four — img is left unset, not filled with a stand-in.
 export const TEAM = [
   { name: 'Erin Strange', role: 'Founder & Master Barber', note: 'Scottish Barber of the Year · BBC Scotland', img: '/assets/erin-strange.jpg' },
-  { name: 'James Okafor', role: 'Senior Barber',           note: '9 years · precision & fade specialist',     img: '/assets/interior-barber.jpg' },
-  { name: 'Marcus Webb',  role: 'Lead Stylist',            note: 'Beard architecture & wet shave expert',     img: '/assets/interior-lounge.jpg' },
+  { name: 'Ryan',   role: 'Master Barber', note: '', img: null },
+  { name: 'Mo',     role: 'Master Barber', note: '', img: null },
+  { name: 'Meria',  role: 'Master Barber', note: '', img: null },
+  { name: 'Robert', role: 'Master Barber', note: '', img: null },
 ]
-
-export const STYLISTS = ['Erin Strange', 'James Okafor', 'Marcus Webb', 'No preference']
 
 export const STATS: { n: number; suffix: string; label: string; href?: string }[] = [
   { n: 7,  suffix: '', label: 'Years experience' },
-  { n: 3,  suffix: '', label: 'Master barbers', href: '/team' },
+  { n: 5,  suffix: '', label: 'Master barbers', href: '/team' },
   { n: 12, suffix: '', label: 'Services offered' },
   { n: 53, suffix: '', label: '5★ reviews' },
 ]

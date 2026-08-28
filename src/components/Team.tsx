@@ -48,7 +48,8 @@ function TeamCard({ member, index }: { member: typeof TEAM[0]; index: number }) 
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1.0, delay: index * 0.12, ease: [0.19, 1, 0.22, 1] }}
     >
-      {/* Image with clip-path reveal */}
+      {/* Image with clip-path reveal — falls back to an initial when no photo is on file yet,
+          rather than standing in an unrelated stock photo for a real person. */}
       <div className="overflow-hidden aspect-[3/4] mb-6 relative">
         <motion.div
           className="absolute inset-0"
@@ -56,20 +57,32 @@ function TeamCard({ member, index }: { member: typeof TEAM[0]; index: number }) 
           animate={inView ? { clipPath: 'inset(0% 0 0 0)' } : {}}
           transition={{ duration: 1.1, delay: index * 0.12 + 0.15, ease: [0.76, 0, 0.24, 1] }}
         >
-          <img
-            src={member.img}
-            alt={member.name}
-            loading={index === 0 ? 'eager' : 'lazy'}
-            decoding="async"
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-            style={{ filter: 'saturate(0.9)' }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/45 to-transparent" />
+          {member.img ? (
+            <>
+              <img
+                src={member.img}
+                alt={member.name}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                style={{ filter: 'saturate(0.9)' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/45 to-transparent" />
+            </>
+          ) : (
+            <div className="w-full h-full bg-ivory border border-charcoal/10 flex items-center justify-center">
+              <span className="font-heading text-6xl md:text-7xl text-terracotta/35 italic font-light">
+                {member.name.charAt(0)}
+              </span>
+            </div>
+          )}
         </motion.div>
       </div>
       <p className="font-heading text-xl text-charcoal italic font-light">{member.name}</p>
       <p className="font-geist text-terracotta text-[0.6rem] tracking-[0.22em] uppercase mt-1.5">{member.role}</p>
-      <p className="font-geist text-charcoal/50 text-xs mt-2 leading-relaxed font-light">{member.note}</p>
+      {member.note && (
+        <p className="font-geist text-charcoal/50 text-xs mt-2 leading-relaxed font-light">{member.note}</p>
+      )}
     </motion.div>
   )
 }
