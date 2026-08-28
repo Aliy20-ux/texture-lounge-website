@@ -115,7 +115,9 @@ export default function Navbar() {
       <div className={`fixed inset-0 z-40 md:hidden transition-opacity duration-600 ease-[cubic-bezier(0.77,0,0.18,1)] ${
         menuOpen ? 'pointer-events-auto' : 'pointer-events-none'
       }`}>
-        <div className={`absolute inset-0 bg-cream/98 backdrop-blur-2xl transition-opacity duration-600 ${
+        {/* Fully opaque so whatever's scrolled behind it (hero video, dark sections) never
+            bleeds through and fights with the link text for contrast. */}
+        <div className={`absolute inset-0 bg-charcoal transition-opacity duration-600 ${
           menuOpen ? 'opacity-100' : 'opacity-0'
         }`} />
         {/* Scrollable so content is never clipped/unreachable on short viewports — the six
@@ -127,7 +129,7 @@ export default function Navbar() {
               transition: `opacity 0.5s ease ${menuOpen ? 60 : 0}ms`,
               opacity: menuOpen ? 1 : 0,
             }} className="mb-6">
-              <p className="font-geist text-[0.55rem] tracking-[0.35em] uppercase text-charcoal/40 text-center">Edinburgh, Scotland</p>
+              <p className="font-geist text-[0.55rem] tracking-[0.35em] uppercase text-cream/40 text-center">Edinburgh, Scotland</p>
             </div>
 
             <ul className="flex flex-col items-center gap-3.5 list-none w-full">
@@ -140,7 +142,7 @@ export default function Navbar() {
                   <Link
                     to={l.href}
                     onClick={() => setMenuOpen(false)}
-                    className="font-heading text-[1.7rem] font-light italic text-charcoal tracking-wide hover:text-terracotta transition-colors duration-300 block text-center"
+                    className="font-heading text-[1.7rem] font-light italic text-cream tracking-wide hover:text-terracotta transition-colors duration-300 block text-center"
                   >
                     {l.label}
                   </Link>
@@ -170,16 +172,16 @@ export default function Navbar() {
             }}>
               <div className="flex items-center gap-5">
                 <a href="https://www.instagram.com/erinestrange/" target="_blank" rel="noopener noreferrer"
-                  className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-charcoal/40 hover:text-charcoal/80 transition-colors duration-300">
+                  className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-cream/40 hover:text-cream/80 transition-colors duration-300">
                   Instagram
                 </a>
-                <span className="w-px h-3 bg-charcoal/15" />
+                <span className="w-px h-3 bg-cream/15" />
                 <a href="https://www.tiktok.com/@erinestrange" target="_blank" rel="noopener noreferrer"
-                  className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-charcoal/40 hover:text-charcoal/80 transition-colors duration-300">
+                  className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-cream/40 hover:text-cream/80 transition-colors duration-300">
                   TikTok
                 </a>
               </div>
-              <p className="font-geist text-charcoal/30 text-[0.5rem] tracking-[0.15em] text-center leading-loose">
+              <p className="font-geist text-cream/30 text-[0.5rem] tracking-[0.15em] text-center leading-loose">
                 Open every day · 10am – 6pm
               </p>
             </div>
