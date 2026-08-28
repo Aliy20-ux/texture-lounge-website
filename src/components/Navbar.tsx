@@ -118,67 +118,71 @@ export default function Navbar() {
         <div className={`absolute inset-0 bg-cream/98 backdrop-blur-2xl transition-opacity duration-600 ${
           menuOpen ? 'opacity-100' : 'opacity-0'
         }`} />
-        <div className="relative h-full flex flex-col items-center justify-center px-6">
-          {/* Location pill */}
-          <div style={{
-            transition: `opacity 0.5s ease ${menuOpen ? 60 : 0}ms`,
-            opacity: menuOpen ? 1 : 0,
-          }} className="mb-10">
-            <p className="font-geist text-[0.55rem] tracking-[0.35em] uppercase text-charcoal/40 text-center">Edinburgh, Scotland</p>
-          </div>
-
-          <ul className="flex flex-col items-center gap-6 list-none w-full">
-            {LINKS.map((l, i) => (
-              <li key={l.href} style={{
-                transition: `opacity 0.6s ease ${menuOpen ? 80 + i * 70 : 0}ms, transform 0.6s cubic-bezier(0.19,1,0.22,1) ${menuOpen ? 80 + i * 70 : 0}ms`,
-                opacity:   menuOpen ? 1 : 0,
-                transform: menuOpen ? 'translateY(0)' : 'translateY(28px)',
-              }}>
-                <Link
-                  to={l.href}
-                  onClick={() => setMenuOpen(false)}
-                  className="font-heading text-[2.2rem] font-light italic text-charcoal tracking-wide hover:text-terracotta transition-colors duration-300 block text-center"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Reserve CTA */}
-          <div className="mt-10" style={{
-            transition: `opacity 0.6s ease ${menuOpen ? 400 : 0}ms, transform 0.6s cubic-bezier(0.19,1,0.22,1) ${menuOpen ? 400 : 0}ms`,
-            opacity: menuOpen ? 1 : 0,
-            transform: menuOpen ? 'translateY(0)' : 'translateY(16px)',
-          }}>
-            <button
-              onClick={() => { setMenuOpen(false); openBooking() }}
-              className="flex items-center gap-3 bg-terracotta text-cream font-geist text-xs font-semibold tracking-[0.22em] uppercase px-10 py-4 rounded-full shadow-[0_6px_28px_rgba(182,84,60,0.35)]"
-            >
-              Book Now
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* Social + hours */}
-          <div className="mt-10 flex flex-col items-center gap-4" style={{
-            transition: `opacity 0.5s ease ${menuOpen ? 520 : 0}ms`,
-            opacity: menuOpen ? 1 : 0,
-          }}>
-            <div className="flex items-center gap-5">
-              <a href="https://www.instagram.com/erinestrange/" target="_blank" rel="noopener noreferrer"
-                className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-charcoal/40 hover:text-charcoal/80 transition-colors duration-300">
-                Instagram
-              </a>
-              <span className="w-px h-3 bg-charcoal/15" />
-              <a href="https://www.tiktok.com/@erinestrange" target="_blank" rel="noopener noreferrer"
-                className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-charcoal/40 hover:text-charcoal/80 transition-colors duration-300">
-                TikTok
-              </a>
+        {/* Scrollable so content is never clipped/unreachable on short viewports — the six
+            links plus CTA and footer block can be taller than the screen on smaller phones. */}
+        <div className="relative h-full overflow-y-auto">
+          <div className="min-h-full flex flex-col items-center justify-center px-6 py-24">
+            {/* Location pill */}
+            <div style={{
+              transition: `opacity 0.5s ease ${menuOpen ? 60 : 0}ms`,
+              opacity: menuOpen ? 1 : 0,
+            }} className="mb-6">
+              <p className="font-geist text-[0.55rem] tracking-[0.35em] uppercase text-charcoal/40 text-center">Edinburgh, Scotland</p>
             </div>
-            <p className="font-geist text-charcoal/30 text-[0.5rem] tracking-[0.15em] text-center leading-loose">
-              Open every day · 10am – 6pm
-            </p>
+
+            <ul className="flex flex-col items-center gap-3.5 list-none w-full">
+              {LINKS.map((l, i) => (
+                <li key={l.href} style={{
+                  transition: `opacity 0.6s ease ${menuOpen ? 80 + i * 70 : 0}ms, transform 0.6s cubic-bezier(0.19,1,0.22,1) ${menuOpen ? 80 + i * 70 : 0}ms`,
+                  opacity:   menuOpen ? 1 : 0,
+                  transform: menuOpen ? 'translateY(0)' : 'translateY(28px)',
+                }}>
+                  <Link
+                    to={l.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="font-heading text-[1.7rem] font-light italic text-charcoal tracking-wide hover:text-terracotta transition-colors duration-300 block text-center"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Reserve CTA */}
+            <div className="mt-8" style={{
+              transition: `opacity 0.6s ease ${menuOpen ? 400 : 0}ms, transform 0.6s cubic-bezier(0.19,1,0.22,1) ${menuOpen ? 400 : 0}ms`,
+              opacity: menuOpen ? 1 : 0,
+              transform: menuOpen ? 'translateY(0)' : 'translateY(16px)',
+            }}>
+              <button
+                onClick={() => { setMenuOpen(false); openBooking() }}
+                className="flex items-center gap-3 bg-terracotta text-cream font-geist text-xs font-semibold tracking-[0.22em] uppercase px-10 py-4 rounded-full shadow-[0_6px_28px_rgba(182,84,60,0.35)]"
+              >
+                Book Now
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+
+            {/* Social + hours */}
+            <div className="mt-8 flex flex-col items-center gap-4" style={{
+              transition: `opacity 0.5s ease ${menuOpen ? 520 : 0}ms`,
+              opacity: menuOpen ? 1 : 0,
+            }}>
+              <div className="flex items-center gap-5">
+                <a href="https://www.instagram.com/erinestrange/" target="_blank" rel="noopener noreferrer"
+                  className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-charcoal/40 hover:text-charcoal/80 transition-colors duration-300">
+                  Instagram
+                </a>
+                <span className="w-px h-3 bg-charcoal/15" />
+                <a href="https://www.tiktok.com/@erinestrange" target="_blank" rel="noopener noreferrer"
+                  className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-charcoal/40 hover:text-charcoal/80 transition-colors duration-300">
+                  TikTok
+                </a>
+              </div>
+              <p className="font-geist text-charcoal/30 text-[0.5rem] tracking-[0.15em] text-center leading-loose">
+                Open every day · 10am – 6pm
+              </p>
+            </div>
           </div>
         </div>
       </div>
