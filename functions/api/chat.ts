@@ -1,4 +1,4 @@
-import { HOURS, SERVICES, PACKAGES, TEAM, ADDRESS, FAQS, TRANSPORT, MAPS_LINK, BRAND, PHONE } from '../../src/data/business'
+import { HOURS, SERVICE_CATEGORIES, TEAM, ADDRESS, FAQS, TRANSPORT, MAPS_LINK, BRAND, PHONE } from '../../src/data/business'
 
 interface Env {
   AI: Ai
@@ -22,8 +22,9 @@ async function checkAndIncrement(kv: KVNamespace, key: string, limit: number, tt
 
 function buildSystemPrompt(): string {
   const hoursText = HOURS.map(h => `${h.day}: ${h.label}`).join('\n')
-  const servicesText = SERVICES.map(s => `${s.name} — ${s.price} (${s.dur}): ${s.desc}`).join('\n')
-  const packagesText = PACKAGES.map(p => `${p.name} — ${p.price}: ${p.desc}`).join('\n')
+  const servicesText = SERVICE_CATEGORIES.map(cat =>
+    `${cat.name}:\n` + cat.services.map(s => `- ${s.name} — ${s.price} (${s.dur})`).join('\n')
+  ).join('\n\n')
   const teamText = TEAM.map(t => `${t.name} — ${t.role} (${t.note})`).join('\n')
   const faqText = FAQS.map(f => `Q: ${f.q}\nA: ${f.a}`).join('\n\n')
   const transportText = TRANSPORT.map(t => `${t.label}: ${t.body}`).join('\n')
@@ -40,9 +41,6 @@ ${hoursText}
 
 SERVICES
 ${servicesText}
-
-PACKAGES
-${packagesText}
 
 TEAM
 ${teamText}

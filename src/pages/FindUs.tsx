@@ -1,5 +1,6 @@
 import Location from '../components/Location'
 import FAQ       from '../components/FAQ'
+import Booking   from '../components/Booking'
 import { useSEO } from '../lib/seo'
 
 export default function FindUs() {
@@ -13,6 +14,7 @@ export default function FindUs() {
       <h1 className="sr-only">Find Us — Texture Lounge Edinburgh</h1>
       <Location />
       <FAQ />
+      <Booking />
     </div>
   )
 }

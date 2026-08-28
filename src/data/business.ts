@@ -4,7 +4,7 @@
 
 export const BRAND = {
   name: 'Texture Lounge',
-  tagline: 'Where craft meets lounge culture',
+  tagline: 'Premium Curly Hair Salon',
   city: 'Edinburgh',
   established: 2026,
 }
@@ -34,21 +34,18 @@ export const MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${enco
 
 // day: 0 = Sunday ... 6 = Saturday (matches Date.getDay())
 export const HOURS = [
-  { day: 'Monday',    short: 'Mon', dow: 1, open: '09:00', close: '19:00', label: '9am – 7pm'  },
-  { day: 'Tuesday',   short: 'Tue', dow: 2, open: '09:00', close: '19:00', label: '9am – 7pm'  },
-  { day: 'Wednesday', short: 'Wed', dow: 3, open: '09:00', close: '19:00', label: '9am – 7pm'  },
-  { day: 'Thursday',  short: 'Thu', dow: 4, open: '09:00', close: '20:00', label: '9am – 8pm'  },
-  { day: 'Friday',    short: 'Fri', dow: 5, open: '09:00', close: '20:00', label: '9am – 8pm'  },
-  { day: 'Saturday',  short: 'Sat', dow: 6, open: '09:00', close: '19:00', label: '9am – 7pm'  },
-  { day: 'Sunday',    short: 'Sun', dow: 0, open: '10:00', close: '17:00', label: '10am – 5pm' },
+  { day: 'Monday',    short: 'Mon', dow: 1, open: '10:00', close: '18:00', label: '10am – 6pm' },
+  { day: 'Tuesday',   short: 'Tue', dow: 2, open: '10:00', close: '18:00', label: '10am – 6pm' },
+  { day: 'Wednesday', short: 'Wed', dow: 3, open: '10:00', close: '18:00', label: '10am – 6pm' },
+  { day: 'Thursday',  short: 'Thu', dow: 4, open: '10:00', close: '18:00', label: '10am – 6pm' },
+  { day: 'Friday',    short: 'Fri', dow: 5, open: '10:00', close: '18:00', label: '10am – 6pm' },
+  { day: 'Saturday',  short: 'Sat', dow: 6, open: '10:00', close: '18:00', label: '10am – 6pm' },
+  { day: 'Sunday',    short: 'Sun', dow: 0, open: '10:00', close: '18:00', label: '10am – 6pm' },
 ]
 
 // Condensed grouping, used for compact display (Navbar mobile panel, Hero, etc.)
 export const HOURS_GROUPED = [
-  { day: 'Mon — Wed', time: '9am – 7pm'  },
-  { day: 'Thu — Fri', time: '9am – 8pm'  },
-  { day: 'Saturday',  time: '9am – 7pm'  },
-  { day: 'Sunday',    time: '10am – 5pm' },
+  { day: 'Every day', time: '10am – 6pm' },
 ]
 
 /** Returns { open, label } — whether the salon is open right now, and a short display label. */
@@ -72,18 +69,32 @@ function formatHour(h: number, m: number) {
   return m === 0 ? `${h12}${period}` : `${h12}:${String(m).padStart(2, '0')}${period}`
 }
 
-export const SERVICES = [
-  { num: '01', name: 'The Signature Cut',     price: '£35', dur: '45 min', desc: 'Precision haircut tailored to your face shape, hair texture and lifestyle. Finished with the right products and styled to leave you completely ready.' },
-  { num: '02', name: 'Beard Architecture',    price: '£25', dur: '30 min', desc: 'Sculpting, shaping and defining your beard to complement your features precisely. Clean lines, intentional structure, an immaculate finish.' },
-  { num: '03', name: 'Hot Towel Shave',       price: '£40', dur: '45 min', desc: 'The full ritual. Warm towels, premium shaving cream, a straight razor, and the kind of finish that reminds you what a proper shave actually feels like.' },
-  { num: '04', name: 'Cut & Beard',           price: '£55', dur: '75 min', desc: 'The Signature Cut paired with Beard Architecture — both services, done back-to-back, at their full standard. No shortcuts taken.' },
-  { num: '05', name: 'Fade & Style',          price: '£35', dur: '45 min', desc: 'Low, mid or high fade, blended with studied precision and finished with styling. The clean modern look, executed properly.' },
-  { num: '06', name: 'The Lounge Experience', price: '£75', dur: '90 min', desc: 'Our signature package. Signature Cut, Beard Architecture, Hot Towel finishing and a complimentary drink. The full Texture Lounge experience.' },
-]
-
-export const PACKAGES = [
-  { name: 'The Full Ritual',       price: '£95',  desc: 'Lounge Experience + Scalp Treatment + Complimentary Whisky.' },
-  { name: 'The Monthly Gentleman', price: '£120', desc: 'Monthly membership. Two Signature Cuts, one Beard Architecture.' },
+// Pulled directly from the real Treatwell menu (widget.treatwell.co.uk/place/539710) —
+// names/prices/durations are the source of truth, only obvious typos in the original
+// listing ("Haicut", "Tansformation") have been corrected for display.
+export const SERVICE_CATEGORIES = [
+  {
+    name: 'Curly Services',
+    services: [
+      { name: 'Curly Texture Cut, Wash & Style',     price: 'From £101.50', dur: '1 hr 45 min' },
+      { name: 'Texture Transformation Wash & Style', price: 'From £35',     dur: '1 hr 20 min' },
+    ],
+  },
+  {
+    name: 'Barbering',
+    services: [
+      { name: "Men's Haircut",            price: 'From £14',   dur: '30–50 min' },
+      { name: 'Beard Trim',               price: 'From £7',    dur: '10–15 min' },
+      { name: 'The Texture Cut and Wash', price: 'From £30',   dur: '45 min – 1 hr 5 min' },
+      { name: 'Line Up Only',             price: 'From £7',    dur: '10 min' },
+      { name: 'Line Up Relaxer',          price: 'From £7',    dur: '25 min' },
+      { name: '7 Days+ Enhancements',     price: 'From £3.50', dur: '35 min' },
+      { name: 'The Texture Experience',   price: 'From £55',   dur: '1 hr 5 min – 1 hr 25 min' },
+      { name: 'Facial',                   price: '£25',        dur: '20 min' },
+      { name: 'Hot Towel',                price: '£5',         dur: '5 min' },
+      { name: 'Bald Haircuts',            price: 'From £20',   dur: '20–30 min' },
+    ],
+  },
 ]
 
 export const TEAM = [
@@ -94,11 +105,11 @@ export const TEAM = [
 
 export const STYLISTS = ['Erin Strange', 'James Okafor', 'Marcus Webb', 'No preference']
 
-export const STATS = [
-  { n: 14, suffix: '+', label: 'Years combined craft' },
-  { n: 3,  suffix: '',  label: 'Master barbers'       },
-  { n: 6,  suffix: '',  label: 'Signature services'   },
-  { n: 53, suffix: '',  label: '5★ reviews'           },
+export const STATS: { n: number; suffix: string; label: string; href?: string }[] = [
+  { n: 7,  suffix: '', label: 'Years experience' },
+  { n: 3,  suffix: '', label: 'Master barbers', href: '/team' },
+  { n: 12, suffix: '', label: 'Services offered' },
+  { n: 53, suffix: '', label: '5★ reviews' },
 ]
 
 export const TRANSPORT = [
@@ -117,12 +128,12 @@ export const TRANSPORT = [
 ]
 
 export const REVIEWS = [
-  { name: 'Marcus T.',     score: 5, text: "I've been to salons across Edinburgh and nothing comes close. Erin has an instinct for what actually suits your face — she didn't just cut my hair, she changed the way I carry myself.", service: 'Signature Cut' },
-  { name: 'Callum R.',     score: 5, text: "The hot towel shave is a full ritual. I came in stressed and left feeling completely reset. The space itself does something to you — it's genuinely unlike anywhere else.", service: 'Hot Towel Shave' },
-  { name: 'David S.',      score: 5, text: "I was sceptical about spending this much on a haircut. After the first visit I understood immediately. This is not a haircut. It's an hour of being looked after properly.", service: 'The Lounge Experience' },
-  { name: 'Rory M.',       score: 5, text: "Erin has been cutting my hair for six months now. She remembers exactly what I want, suggests subtle changes that always turn out to be exactly right. Outstanding.", service: 'Cut & Beard' },
-  { name: 'James A.',      score: 5, text: "Came in for a beard shape up and left with the best version of myself I've looked in years. The environment alone makes it worth it — dark, warm, completely calm.", service: 'Beard Architecture' },
-  { name: 'Finlay H.',     score: 5, text: "Booked for a birthday treat and it became my monthly routine. The level of attention to detail in everything — the consultation, the cut, the finish — is something I hadn't experienced before.", service: 'Fade & Style' },
+  { name: 'Marcus T.',     score: 5, text: "I've been to salons across Edinburgh and nothing comes close. Erin has an instinct for what actually suits your face — she didn't just cut my hair, she changed the way I carry myself.", service: "Men's Haircut" },
+  { name: 'Callum R.',     score: 5, text: "The hot towel finish is a full ritual. I came in stressed and left feeling completely reset. The space itself does something to you — it's genuinely unlike anywhere else.", service: 'Hot Towel' },
+  { name: 'David S.',      score: 5, text: "I was sceptical about spending this much on a haircut. After the first visit I understood immediately. This is not a haircut. It's an hour of being looked after properly.", service: 'The Texture Experience' },
+  { name: 'Rory M.',       score: 5, text: "Erin has been cutting my hair for six months now. She remembers exactly what I want, suggests subtle changes that always turn out to be exactly right. Outstanding.", service: 'The Texture Cut and Wash' },
+  { name: 'James A.',      score: 5, text: "Came in for a beard shape up and left with the best version of myself I've looked in years. The environment alone makes it worth it — dark, warm, completely calm.", service: 'Beard Trim' },
+  { name: 'Finlay H.',     score: 5, text: "Booked for a birthday treat and it became my monthly routine. The level of attention to detail in everything — the consultation, the cut, the finish — is something I hadn't experienced before.", service: 'Curly Texture Cut, Wash & Style' },
 ]
 
 export const FAQS = [
@@ -132,7 +143,7 @@ export const FAQS = [
   },
   {
     q: 'How long does a visit take?',
-    a: 'A Signature Cut or Beard Architecture takes around 45 minutes. A Hot Towel Shave is 45 minutes. The Lounge Experience — our full package — is 90 minutes. We build in time for the consultation and finish, so you\'re never rushed.',
+    a: 'It depends on the service — a Men\'s Haircut is 30–50 minutes, while a full Curly Texture Cut, Wash & Style runs around 1 hr 45. We build in time for the consultation and finish, so you\'re never rushed.',
   },
   {
     q: 'What should I do before my appointment?',

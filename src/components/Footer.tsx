@@ -24,7 +24,7 @@ export default function Footer() {
             <img src="/assets/logo-wordmark.png" alt="Texture Lounge" loading="lazy" decoding="async" className="h-9 w-auto object-contain mb-4 opacity-90" />
             <p className="font-geist text-cream/45 text-xs leading-relaxed max-w-xs">
               Premium hair & grooming salon in Edinburgh.<br />
-              Where craft meets lounge culture.
+              Premium Curly Hair Salon
             </p>
             {/* Social icons — mobile only, shows below brand */}
             <div className="flex items-center gap-5 mt-5 md:hidden">

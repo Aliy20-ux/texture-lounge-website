@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { STATS } from '../data/business'
 
 function Counter({ n, suffix }: { n: number; suffix: string }) {
@@ -38,8 +39,8 @@ export default function BrandStatement() {
             animate={inView ? { y: 0 } : {}}
             transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
           >
-            Great styling isn't just changing hair —
-            <span className="text-terracotta"> it's refining presence.</span>
+            Your Hair. Your Texture. Your Space.
+            <span className="text-terracotta"> Welcome to Texture Lounge.</span>
           </motion.h2>
         </div>
 
@@ -49,14 +50,25 @@ export default function BrandStatement() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.35, ease }}
         >
-          {STATS.map(s => (
-            <div key={s.label} className="border-t border-terracotta/30 pt-4">
-              <p className="font-heading text-3xl md:text-4xl text-charcoal font-light italic tabular-nums">
-                <Counter n={s.n} suffix={s.suffix} />
-              </p>
-              <p className="font-geist text-charcoal/50 text-[0.62rem] tracking-[0.16em] uppercase mt-1">{s.label}</p>
-            </div>
-          ))}
+          {STATS.map(s => {
+            const content = (
+              <>
+                <p className="font-heading text-3xl md:text-4xl text-charcoal font-light italic tabular-nums">
+                  <Counter n={s.n} suffix={s.suffix} />
+                </p>
+                <p className="font-geist text-charcoal/50 text-[0.62rem] tracking-[0.16em] uppercase mt-1">{s.label}</p>
+              </>
+            )
+            return s.href ? (
+              <Link key={s.label} to={s.href} className="border-t border-terracotta/30 pt-4 hover:border-terracotta transition-colors duration-300 group">
+                <span className="group-hover:opacity-70 transition-opacity duration-300 block">{content}</span>
+              </Link>
+            ) : (
+              <div key={s.label} className="border-t border-terracotta/30 pt-4">
+                {content}
+              </div>
+            )
+          })}
         </motion.div>
       </div>
     </section>

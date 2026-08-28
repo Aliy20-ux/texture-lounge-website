@@ -86,8 +86,7 @@ export default function Booking() {
           className="font-geist text-cream/25 text-[0.6rem] tracking-[0.15em] mt-12 leading-[2]"
           initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.8, delay: 0.85 }}
         >
-          Mon – Wed 09:00–19:00 · Thu – Fri 09:00–20:00<br />
-          Sat 09:00–19:00 · Sun 10:00–17:00
+          Open every day · 10:00 – 18:00
         </motion.p>
       </div>
     </section>

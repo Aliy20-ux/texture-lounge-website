@@ -7,6 +7,7 @@ const Story    = lazy(() => import('./pages/Story'))
 const Services = lazy(() => import('./pages/Services'))
 const Team     = lazy(() => import('./pages/Team'))
 const Space    = lazy(() => import('./pages/Space'))
+const Reviews  = lazy(() => import('./pages/Reviews'))
 const FindUs   = lazy(() => import('./pages/FindUs'))
 const Privacy  = lazy(() => import('./pages/Privacy'))
 const Terms    = lazy(() => import('./pages/Terms'))
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="/services"  element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Services /></Suspense>} />
         <Route path="/team"      element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Team /></Suspense>} />
         <Route path="/space"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Space /></Suspense>} />
+        <Route path="/reviews"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Reviews /></Suspense>} />
         <Route path="/find-us"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><FindUs /></Suspense>} />
         <Route path="/privacy"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Privacy /></Suspense>} />
         <Route path="/terms"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Terms /></Suspense>} />

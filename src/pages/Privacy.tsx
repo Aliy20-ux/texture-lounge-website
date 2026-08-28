@@ -1,5 +1,6 @@
 import { useSEO } from '../lib/seo'
 import { BRAND, ADDRESS, CONTACT_EMAIL } from '../data/business'
+import Booking from '../components/Booking'
 
 export default function Privacy() {
   useSEO(
@@ -53,6 +54,7 @@ export default function Privacy() {
           </section>
         </div>
       </div>
+      <Booking />
     </div>
   )
 }

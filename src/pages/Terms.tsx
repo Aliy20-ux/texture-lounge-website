@@ -1,5 +1,6 @@
 import { useSEO } from '../lib/seo'
 import { BRAND, ADDRESS, CONTACT_EMAIL } from '../data/business'
+import Booking from '../components/Booking'
 
 export default function Terms() {
   useSEO(
@@ -51,6 +52,7 @@ export default function Terms() {
           </section>
         </div>
       </div>
+      <Booking />
     </div>
   )
 }

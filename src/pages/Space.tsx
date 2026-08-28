@@ -1,4 +1,5 @@
 import Gallery from '../components/Gallery'
+import Booking from '../components/Booking'
 import { useSEO } from '../lib/seo'
 
 export default function Space() {
@@ -11,6 +12,7 @@ export default function Space() {
     <div>
       <h1 className="sr-only">The Space — Texture Lounge Edinburgh</h1>
       <Gallery />
+      <Booking />
     </div>
   )
 }

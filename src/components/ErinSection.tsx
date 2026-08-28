@@ -86,7 +86,7 @@ export default function ErinSection() {
             transition={{ duration: 0.9, delay: 0.8 }}
           >
             Featured on BBC Scotland. Named Scottish Barber of the Year.
-            53 five-star reviews. Erin brings over a decade of craft to every single appointment.
+            53 five-star reviews. Erin brings 7 years of craft to every single appointment.
           </motion.p>
 
           <motion.div

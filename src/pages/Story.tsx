@@ -1,6 +1,7 @@
 import About       from '../components/About'
 import Press        from '../components/Press'
 import ErinSection  from '../components/ErinSection'
+import Booking      from '../components/Booking'
 import { useSEO } from '../lib/seo'
 
 export default function Story() {
@@ -15,6 +16,7 @@ export default function Story() {
       <About />
       <Press />
       <ErinSection />
+      <Booking />
     </div>
   )
 }

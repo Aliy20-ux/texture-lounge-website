@@ -7,7 +7,8 @@ interface BookingContextValue {
 
 const BookingContext = createContext<BookingContextValue | null>(null)
 
-const BOOKING_SECTION_ID = 'booking'
+// The live Treatwell widget on Home — the actual place a "Book Now" click should land.
+const BOOKING_SECTION_ID = 'booking-widget'
 
 export function BookingProvider({ children }: { children: ReactNode }) {
   const navigate = useNavigate()

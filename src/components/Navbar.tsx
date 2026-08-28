@@ -186,7 +186,7 @@ export default function Navbar() {
               </a>
             </div>
             <p className="font-geist text-charcoal/30 text-[0.5rem] tracking-[0.15em] text-center leading-loose">
-              Mon–Wed 09–19 · Thu–Fri 09–20 · Sat 09–19 · Sun 10–17
+              Open every day · 10am – 6pm
             </p>
           </div>
         </div>

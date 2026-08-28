@@ -70,54 +70,41 @@ export default function Hero() {
           animate={{ opacity: started ? 1 : 0 }}
           transition={{ duration: 1.4, delay: 0.2 }}
         >
-          Edinburgh · Est. 2026 · Premium Grooming
+          Edinburgh · Est. 2026 · Premium Curly Hair Salon
         </motion.p>
 
-        {/* ── HEADLINE — stacked, massive ── */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 md:px-12 -mt-6 md:-mt-10">
+        {/* ── HEADLINE — matches the logo: "texture" big + script, LOUNGE small + tracked ── */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 md:px-12 -mt-4 md:-mt-6">
 
-          {/* Prelude line */}
-          <motion.div
-            className="overflow-hidden mb-1 md:mb-2"
-            variants={revealVariants}
-            initial="hidden"
-            animate={started ? 'show' : 'hidden'}
-            transition={{ duration: 1.1, delay: 0.55, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <p className="font-heading italic font-light text-cream/60 text-[clamp(1rem,3.2vw,2rem)] tracking-[0.04em] text-center">
-              where craft meets
-            </p>
-          </motion.div>
-
-          {/* LOUNGE */}
+          {/* texture */}
           <motion.div
             className="overflow-hidden leading-none"
             variants={revealVariants}
             initial="hidden"
             animate={started ? 'show' : 'hidden'}
-            transition={{ duration: 1.1, delay: 0.74, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 1.1, delay: 0.6, ease: [0.76, 0, 0.24, 1] }}
           >
             <h1
-              className="font-heading font-light text-cream uppercase tracking-[-0.01em] text-center"
+              className="font-heading italic font-light text-sage tracking-[-0.01em] text-center"
               style={{ fontSize: 'clamp(5.5rem, 20vw, 14.5rem)', lineHeight: 0.9 }}
             >
-              lounge
+              texture
             </h1>
           </motion.div>
 
-          {/* CULTURE */}
+          {/* · LOUNGE · */}
           <motion.div
-            className="overflow-hidden leading-none"
+            className="overflow-hidden leading-none mt-3 md:mt-5"
             variants={revealVariants}
             initial="hidden"
             animate={started ? 'show' : 'hidden'}
-            transition={{ duration: 1.1, delay: 0.92, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 1.1, delay: 0.85, ease: [0.76, 0, 0.24, 1] }}
           >
             <p
-              className="font-heading italic font-light text-sage tracking-[-0.01em] text-center"
-              style={{ fontSize: 'clamp(4.8rem, 18vw, 12.5rem)', lineHeight: 0.9 }}
+              className="font-heading font-light text-sage uppercase tracking-[0.5em] text-center"
+              style={{ fontSize: 'clamp(1.1rem, 3vw, 1.9rem)' }}
             >
-              culture
+              · Lounge ·
             </p>
           </motion.div>
         </div>

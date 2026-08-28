@@ -75,7 +75,7 @@ export default function About() {
             The Philosophy
           </motion.p>
 
-          {/* Quote — word-mask */}
+          {/* Heading */}
           <div className="overflow-hidden">
             <motion.h2
               className="font-heading text-charcoal text-3xl md:text-4xl lg:text-[2.6rem] font-light italic leading-[1.15]"
@@ -83,8 +83,7 @@ export default function About() {
               animate={textIn ? { y: 0 } : {}}
               transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
             >
-              "Great styling understands that you're not just changing hair —
-              <span className="text-terracotta"> you're refining presence."</span>
+              Our Story
             </motion.h2>
           </div>
 
@@ -95,10 +94,7 @@ export default function About() {
             animate={textIn ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35, ease: [0.19, 1, 0.22, 1] }}
           >
-            We built Texture Lounge around that conviction. Every detail — the terracotta
-            on the walls, the weight of the chairs, the unhurried pace of your appointment
-            — is an expression of how seriously we take the craft. Book ahead or simply
-            drop in — either way, this is a considered experience, never a rushed one.
+            Your Hair. Your Texture. Your Space.
           </motion.p>
 
           {/* Animated stats */}
@@ -108,14 +104,25 @@ export default function About() {
             animate={textIn ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            {STATS.map(s => (
-              <div key={s.label} className="border-l border-terracotta/30 pl-4">
-                <p className="font-heading text-3xl md:text-4xl text-charcoal font-light italic tabular-nums">
-                  <Counter n={s.n} suffix={s.suffix} />
-                </p>
-                <p className="font-geist text-charcoal/45 text-[0.65rem] tracking-[0.18em] uppercase mt-1">{s.label}</p>
-              </div>
-            ))}
+            {STATS.map(s => {
+              const content = (
+                <>
+                  <p className="font-heading text-3xl md:text-4xl text-charcoal font-light italic tabular-nums">
+                    <Counter n={s.n} suffix={s.suffix} />
+                  </p>
+                  <p className="font-geist text-charcoal/45 text-[0.65rem] tracking-[0.18em] uppercase mt-1">{s.label}</p>
+                </>
+              )
+              return s.href ? (
+                <Link key={s.label} to={s.href} className="border-l border-terracotta/30 pl-4 hover:border-terracotta transition-colors duration-300 group">
+                  <span className="group-hover:opacity-70 transition-opacity duration-300 block">{content}</span>
+                </Link>
+              ) : (
+                <div key={s.label} className="border-l border-terracotta/30 pl-4">
+                  {content}
+                </div>
+              )
+            })}
           </motion.div>
 
           {/* CTA link */}
