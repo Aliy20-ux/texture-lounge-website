@@ -23,7 +23,7 @@ export default function Privacy() {
 
           <section>
             <h2 className="font-heading text-charcoal text-xl italic font-normal mb-3">What we collect</h2>
-            <p className="mb-3"><strong className="text-charcoal">Booking requests.</strong> "Book Now" opens our booking partner, Treatwell, where you choose a service and time. Treatwell collects the details needed to make the booking (name, email, appointment details) directly — we don't receive or store that information ourselves. See <a href="https://www.treatwell.co.uk/info/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-terracotta hover:underline">Treatwell's privacy policy</a> for how they handle it.</p>
+            <p className="mb-3"><strong className="text-charcoal">Booking requests.</strong> The booking widget on this site is provided by our booking partner, Treatwell, where you choose a service and time. Treatwell collects the details needed to make the booking (name, email, appointment details) directly — we don't receive or store that information ourselves. See <a href="https://www.treatwell.co.uk/info/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-terracotta hover:underline">Treatwell's privacy policy</a> for how they handle it.</p>
             <p><strong className="text-charcoal">Chat assistant.</strong> Messages you type into our chat widget are sent to Cloudflare's Workers AI service to generate a reply. We don't ask for personal details there, and you shouldn't share any — please don't include anything sensitive in a chat message.</p>
           </section>
 

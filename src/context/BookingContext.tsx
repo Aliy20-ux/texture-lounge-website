@@ -1,21 +1,28 @@
-import { createContext, useContext, useState, type ReactNode } from 'react'
+import { createContext, useContext, type ReactNode } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 interface BookingContextValue {
-  isOpen: boolean
   openBooking: () => void
-  closeBooking: () => void
 }
 
 const BookingContext = createContext<BookingContextValue | null>(null)
 
+const BOOKING_SECTION_ID = 'booking'
+
 export function BookingProvider({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const openBooking = () => {
+    if (location.pathname === '/') {
+      document.getElementById(BOOKING_SECTION_ID)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      navigate('/', { state: { scrollTo: BOOKING_SECTION_ID } })
+    }
+  }
+
   return (
-    <BookingContext.Provider value={{
-      isOpen,
-      openBooking:  () => setIsOpen(true),
-      closeBooking: () => setIsOpen(false),
-    }}>
+    <BookingContext.Provider value={{ openBooking }}>
       {children}
     </BookingContext.Provider>
   )
