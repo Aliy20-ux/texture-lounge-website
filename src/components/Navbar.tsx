@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ArrowRight, Scissors, Menu } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
 
@@ -46,6 +46,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { openBooking } = useBooking()
+  const { pathname } = useLocation()
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60)
@@ -74,21 +75,24 @@ export default function Navbar() {
 
         {/* Desktop links with animated underline */}
         <ul className="hidden md:flex items-center gap-8 list-none">
-          {LINKS.map(l => (
-            <li key={l.href} className="relative group">
-              <NavLink
-                to={l.href}
-                className={({ isActive }) =>
-                  `font-geist font-light text-sm tracking-wide transition-colors duration-300 ${
-                    isActive ? 'text-charcoal' : 'text-charcoal/60 hover:text-charcoal'
-                  }`
-                }
-              >
-                {l.label}
-              </NavLink>
-              <span className="absolute bottom-[-3px] left-0 h-px w-0 bg-terracotta group-hover:w-full transition-[width] duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]" />
-            </li>
-          ))}
+          {LINKS.map(l => {
+            const isActive = pathname === l.href
+            return (
+              <li key={l.href} className="relative group">
+                <NavLink
+                  to={l.href}
+                  className={`font-geist text-sm tracking-wide transition-colors duration-300 ${
+                    isActive ? 'text-charcoal font-normal' : 'text-charcoal font-light hover:text-terracotta'
+                  }`}
+                >
+                  {l.label}
+                </NavLink>
+                <span className={`absolute bottom-[-3px] left-0 h-px bg-terracotta transition-[width] duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] ${
+                  isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                }`} />
+              </li>
+            )
+          })}
         </ul>
 
         <MagneticCTA />
@@ -142,7 +146,7 @@ export default function Navbar() {
                 <Link
                   to={l.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-heading text-[2.2rem] font-light italic text-charcoal/90 tracking-wide hover:text-terracotta transition-colors duration-300 block text-center"
+                  className="font-heading text-[2.2rem] font-light italic text-charcoal tracking-wide hover:text-terracotta transition-colors duration-300 block text-center"
                 >
                   {l.label}
                 </Link>
