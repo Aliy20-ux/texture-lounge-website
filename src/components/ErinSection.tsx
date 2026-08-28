@@ -71,19 +71,10 @@ export default function ErinSection() {
             transition={{ duration: 0.8, delay: 0.7 }}
           />
 
-          <motion.blockquote
-            className="font-heading text-charcoal/85 text-xl md:text-2xl italic font-normal leading-[1.5] mb-8"
-            initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
-          >
-            "I didn't want to open another barbershop. I wanted to create a space where
-            the experience was as considered as the craft."
-          </motion.blockquote>
-
           <motion.p
             className="font-geist text-charcoal/55 text-sm leading-[1.9] font-light mb-10 max-w-xs"
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.9, delay: 0.8 }}
+            transition={{ duration: 0.9, delay: 0.6 }}
           >
             Featured on BBC Scotland. Named Scottish Barber of the Year.
             53 five-star reviews. Erin brings 7 years of craft to every single appointment.
