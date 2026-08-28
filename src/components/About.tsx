@@ -87,15 +87,47 @@ export default function About() {
             </motion.h2>
           </div>
 
-          {/* Body */}
-          <motion.p
-            className="font-geist text-charcoal/60 text-[0.85rem] leading-[1.9] font-light"
+          {/* Founder quote */}
+          <motion.blockquote
+            className="font-heading text-charcoal text-lg md:text-xl italic font-light leading-[1.6] border-l-2 border-terracotta/40 pl-5"
             initial={{ opacity: 0, y: 16 }}
             animate={textIn ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.9, delay: 0.35, ease: [0.19, 1, 0.22, 1] }}
           >
-            Your Hair. Your Texture. Your Space.
-          </motion.p>
+            "I didn't want to open just another hair salon or barbershop. I wanted to create a
+            space where everyone feels catered to, understood and welcome."
+          </motion.blockquote>
+
+          {/* Body */}
+          <motion.div
+            className="flex flex-col gap-5 font-geist text-charcoal/60 text-[0.85rem] leading-[1.9] font-light"
+            initial={{ opacity: 0, y: 16 }}
+            animate={textIn ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, delay: 0.45, ease: [0.19, 1, 0.22, 1] }}
+          >
+            <p>
+              Texture Lounge was born from the belief that great hair services should never be
+              one-size-fits-all. Whether you have curls, coils, waves, straight hair, or anything
+              in between, your hair deserves to be understood and treated with the right
+              knowledge and care.
+            </p>
+            <p>
+              After years of working behind the chair, travelling, training and meeting people
+              with completely different hair needs, I realised there was something missing — a
+              space missing in Edinburgh that brings specialist curly hair stylist, barbering and
+              genuine community together under one roof.
+            </p>
+            <p>So I created Texture Lounge.</p>
+            <p>
+              A place where you can come for a haircut, a curl transformation, a colour, braids, a
+              wash and style — but also somewhere you can relax, connect and feel completely at
+              home.
+            </p>
+            <p>
+              Because Texture Lounge isn't just about hair. It's about people, identity,
+              confidence and creating a space where everyone has a seat.
+            </p>
+          </motion.div>
 
           {/* Animated stats */}
           <motion.div

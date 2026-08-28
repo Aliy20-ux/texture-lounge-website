@@ -9,6 +9,7 @@ const Team     = lazy(() => import('./pages/Team'))
 const Space    = lazy(() => import('./pages/Space'))
 const Reviews  = lazy(() => import('./pages/Reviews'))
 const FindUs   = lazy(() => import('./pages/FindUs'))
+const FAQPage  = lazy(() => import('./pages/FAQPage'))
 const Privacy  = lazy(() => import('./pages/Privacy'))
 const Terms    = lazy(() => import('./pages/Terms'))
 
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/space"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Space /></Suspense>} />
         <Route path="/reviews"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Reviews /></Suspense>} />
         <Route path="/find-us"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><FindUs /></Suspense>} />
+        <Route path="/faq"       element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><FAQPage /></Suspense>} />
         <Route path="/privacy"   element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Privacy /></Suspense>} />
         <Route path="/terms"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Terms /></Suspense>} />
         <Route path="*"          element={<Navigate to="/" replace />} />

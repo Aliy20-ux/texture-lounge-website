@@ -7,6 +7,7 @@ const NAV_LINKS: [string, string][] = [
   ['Our Story', '/story'],
   ['Our Team',  '/team'],
   ['Find Us',   '/find-us'],
+  ['FAQ',       '/faq'],
 ]
 
 export default function Footer() {
