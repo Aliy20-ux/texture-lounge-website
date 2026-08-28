@@ -1,5 +1,5 @@
 // ── Single source of truth for Texture Lounge business data ──
-// Used across components (Location, Booking, BookingModal, Navbar, Footer)
+// Used across components (Location, Booking, Navbar, Footer)
 // and serialized into the AI chatbot's system prompt (functions/api/chat.ts).
 
 export const BRAND = {
@@ -19,6 +19,8 @@ export const PHONE = {
   display: '0131 248 7575',
   tel: '+441312487575',
 }
+
+export const TREATWELL_URL = 'https://widget.treatwell.co.uk/place/539710/menu/'
 
 export const ADDRESS = {
   line: '12 Melville Place',

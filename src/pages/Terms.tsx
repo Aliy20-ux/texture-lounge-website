@@ -22,7 +22,7 @@ export default function Terms() {
 
           <section>
             <h2 className="font-heading text-charcoal text-xl italic font-normal mb-3">Bookings</h2>
-            <p>Submitting the booking form is a request, not a confirmed appointment — we'll confirm by email or phone. Walk-ins are welcome whenever a chair is free, but only a confirmed booking guarantees your preferred time and barber.</p>
+            <p>Booking online is a request, not a confirmed appointment — we'll confirm by email or phone. Walk-ins are welcome whenever a chair is free, but only a confirmed booking guarantees your preferred time and barber.</p>
           </section>
 
           <section>
@@ -37,7 +37,7 @@ export default function Terms() {
 
           <section>
             <h2 className="font-heading text-charcoal text-xl italic font-normal mb-3">The chat assistant</h2>
-            <p>Our chat widget is an automated assistant that answers from our published hours, prices and services. It's a convenience, not a substitute for a confirmed booking or professional advice — if anything it tells you seems off, please call or use the booking form directly.</p>
+            <p>Our chat widget is an automated assistant that answers from our published hours, prices and services. It's a convenience, not a substitute for a confirmed booking or professional advice — if anything it tells you seems off, please call or book online directly.</p>
           </section>
 
           <section>

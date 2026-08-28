@@ -23,7 +23,7 @@ export default function Privacy() {
 
           <section>
             <h2 className="font-heading text-charcoal text-xl italic font-normal mb-3">What we collect</h2>
-            <p className="mb-3"><strong className="text-charcoal">Booking requests.</strong> When you submit the booking form, we collect your name, email address, preferred service, stylist, date and any notes you add — used only to arrange and manage your appointment.</p>
+            <p className="mb-3"><strong className="text-charcoal">Booking requests.</strong> "Book Now" opens our booking partner, Treatwell, where you choose a service and time. Treatwell collects the details needed to make the booking (name, email, appointment details) directly — we don't receive or store that information ourselves. See <a href="https://www.treatwell.co.uk/info/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-terracotta hover:underline">Treatwell's privacy policy</a> for how they handle it.</p>
             <p><strong className="text-charcoal">Chat assistant.</strong> Messages you type into our chat widget are sent to Cloudflare's Workers AI service to generate a reply. We don't ask for personal details there, and you shouldn't share any — please don't include anything sensitive in a chat message.</p>
           </section>
 
@@ -34,12 +34,12 @@ export default function Privacy() {
 
           <section>
             <h2 className="font-heading text-charcoal text-xl italic font-normal mb-3">Who we share it with</h2>
-            <p>We don't sell your data. This site is hosted on Cloudflare, and our chat assistant runs on Cloudflare Workers AI — both process data on our behalf as part of running the site. We don't share your booking details with anyone else except as needed to deliver your appointment.</p>
+            <p>We don't sell your data. This site is hosted on Cloudflare, and our chat assistant runs on Cloudflare Workers AI — both process data on our behalf as part of running the site. Booking details go directly to Treatwell, our booking partner, when you book an appointment — we never see or hold that data ourselves.</p>
           </section>
 
           <section>
             <h2 className="font-heading text-charcoal text-xl italic font-normal mb-3">How long we keep it</h2>
-            <p>We keep booking request details for as long as needed to manage your appointment and our records, then delete them. You can ask us to delete your information at any time (see below).</p>
+            <p>We don't hold booking data ourselves — Treatwell retains it under their own policy. For anything we do hold (such as a chat message), we keep it only as long as needed to run the site. You can ask us to delete your information at any time (see below).</p>
           </section>
 
           <section>

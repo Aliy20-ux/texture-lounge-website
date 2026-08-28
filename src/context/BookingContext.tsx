@@ -1,21 +1,15 @@
-import { createContext, useContext, useState, type ReactNode } from 'react'
+import { createContext, useContext, type ReactNode } from 'react'
+import { openTreatwellBooking } from '../lib/treatwell'
 
 interface BookingContextValue {
-  isOpen: boolean
   openBooking: () => void
-  closeBooking: () => void
 }
 
 const BookingContext = createContext<BookingContextValue | null>(null)
 
 export function BookingProvider({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(false)
   return (
-    <BookingContext.Provider value={{
-      isOpen,
-      openBooking:  () => setIsOpen(true),
-      closeBooking: () => setIsOpen(false),
-    }}>
+    <BookingContext.Provider value={{ openBooking: openTreatwellBooking }}>
       {children}
     </BookingContext.Provider>
   )
