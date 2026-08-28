@@ -45,16 +45,8 @@ function MagneticCTA() {
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
   const { openBooking } = useBooking()
   const { pathname } = useLocation()
-
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', fn, { passive: true })
-    fn()
-    return () => window.removeEventListener('scroll', fn)
-  }, [])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -63,9 +55,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 md:py-5 flex items-center justify-between bg-cream/85 backdrop-blur-xl transition-[box-shadow] duration-500 ${
-        scrolled ? 'shadow-[0_1px_0_rgba(26,20,19,0.08)]' : ''
-      }`}>
+      <nav className="fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 md:py-5 flex items-center justify-between bg-charcoal border-b border-cream/10">
         <Link to="/" onClick={() => setMenuOpen(false)} className="relative z-50 flex-shrink-0 leading-none" aria-label="Texture Lounge — home">
           <img
             src="/assets/logo-wordmark.png"
@@ -83,7 +73,7 @@ export default function Navbar() {
                 <NavLink
                   to={l.href}
                   className={`font-geist text-sm tracking-wide transition-colors duration-300 ${
-                    isActive ? 'text-charcoal font-normal' : 'text-charcoal font-light hover:text-terracotta'
+                    isActive ? 'text-cream font-normal' : 'text-cream font-light hover:text-terracotta'
                   }`}
                 >
                   {l.label}
@@ -105,14 +95,14 @@ export default function Navbar() {
           onClick={() => setMenuOpen(o => !o)}
         >
           <Menu
-            className="absolute w-5 h-5 text-charcoal transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
+            className="absolute w-5 h-5 text-cream transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
             style={{
               opacity: menuOpen ? 0 : 1,
               transform: menuOpen ? 'rotate(-45deg) scale(0.6)' : 'rotate(0deg) scale(1)',
             }}
           />
           <Scissors
-            className="absolute w-5 h-5 text-charcoal transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
+            className="absolute w-5 h-5 text-cream transition-[opacity,transform] duration-400 ease-[cubic-bezier(0.77,0,0.18,1)]"
             style={{
               opacity: menuOpen ? 1 : 0,
               transform: menuOpen ? 'rotate(0deg) scale(1)' : 'rotate(45deg) scale(0.6)',
