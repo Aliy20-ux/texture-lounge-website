@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ArrowRight, Scissors, Menu } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
+import AnnouncementBar from './AnnouncementBar'
 
 const LINKS = [
   { label: 'Story',     href: '/story'    },
@@ -55,7 +56,9 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 px-5 md:px-12 py-4 md:py-5 flex items-center justify-between bg-charcoal border-b border-cream/10">
+      <div className="fixed top-0 left-0 right-0 z-50">
+        <AnnouncementBar />
+        <nav className="relative px-5 md:px-12 py-4 md:py-5 flex items-center justify-between bg-charcoal border-b border-cream/10">
         <Link to="/" onClick={() => setMenuOpen(false)} className="relative z-50 flex-shrink-0 leading-none" aria-label="Texture Lounge — home">
           <img
             src="/assets/logo-wordmark.png"
@@ -109,7 +112,8 @@ export default function Navbar() {
             }}
           />
         </button>
-      </nav>
+        </nav>
+      </div>
 
       {/* Mobile overlay */}
       <div className={`fixed inset-0 z-40 md:hidden transition-opacity duration-600 ease-[cubic-bezier(0.77,0,0.18,1)] ${

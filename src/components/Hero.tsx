@@ -65,7 +65,7 @@ export default function Hero() {
 
         {/* ── TOP LABEL ── */}
         <motion.p
-          className="absolute top-24 md:top-28 left-0 right-0 z-20 text-center font-geist text-[0.42rem] md:text-[0.48rem] tracking-[0.55em] uppercase text-cream/30"
+          className="absolute top-32 md:top-36 left-0 right-0 z-20 text-center font-geist text-[0.42rem] md:text-[0.48rem] tracking-[0.55em] uppercase text-cream/30"
           initial={{ opacity: 0 }}
           animate={{ opacity: started ? 1 : 0 }}
           transition={{ duration: 1.4, delay: 0.2 }}
