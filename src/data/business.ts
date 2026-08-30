@@ -102,16 +102,15 @@ export const SERVICE_CATEGORIES = [
 // role/specialty detail for anyone but Erin, so those fields stay generic rather than
 // invented. No photo on file for these four — img is left unset, not filled with a stand-in.
 export const TEAM = [
-  { name: 'Erin Strange', role: 'Founder & Master Barber', note: 'Scottish Barber of the Year · BBC Scotland', img: '/assets/erin-strange.jpg' },
+  { name: 'Erin Strange', role: 'Founder & Master Barber · Curly Hair Specialist', note: 'Scottish Barber of the Year · BBC Scotland', img: '/assets/erin-strange.jpg' },
   { name: 'Ryan',   role: 'Master Barber', note: '', img: null },
   { name: 'Mo',     role: 'Master Barber', note: '', img: null },
-  { name: 'Meria',  role: 'Master Barber', note: '', img: null },
   { name: 'Robert', role: 'Master Barber', note: '', img: null },
 ]
 
 export const STATS: { n: number; suffix: string; label: string; href?: string }[] = [
-  { n: 7,  suffix: '', label: 'Years experience' },
-  { n: 5,  suffix: '', label: 'Master barbers', href: '/team' },
+  { n: 17, suffix: '+', label: 'Years experience' },
+  { n: 4,  suffix: '', label: 'Master barbers', href: '/team' },
   { n: 12, suffix: '', label: 'Services offered' },
   { n: 53, suffix: '', label: '5★ reviews' },
 ]
