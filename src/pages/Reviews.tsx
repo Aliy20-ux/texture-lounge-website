@@ -29,9 +29,10 @@ export default function Reviews() {
   const headIn  = useInView(headRef, { once: true, margin: '-15% 0px' })
 
   return (
-    <div className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
-      <h1 className="sr-only">Reviews — Texture Lounge Edinburgh</h1>
-      <div className="max-w-6xl mx-auto">
+    <div>
+      <section className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+        <h1 className="sr-only">Reviews — Texture Lounge Edinburgh</h1>
+        <div className="max-w-6xl mx-auto">
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20">
           <div>
             <motion.p
@@ -91,7 +92,8 @@ export default function Reviews() {
             </motion.div>
           ))}
         </div>
-      </div>
+        </div>
+      </section>
       <Booking />
     </div>
   )
