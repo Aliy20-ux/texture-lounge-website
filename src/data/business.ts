@@ -131,12 +131,12 @@ export const TRANSPORT = [
 ]
 
 export const REVIEWS = [
+  { name: 'Yohan E.',      score: 5, text: "Dr. Strange is a versatile and talented barber. Ive been a regular customer for over a year now and always goes above and beyond for the various hairstyles I've requested.", service: 'Google Review' },
+  { name: 'Asim N.',       score: 5, text: "Highly recommend, insane barber knows how to cut all types of hair especially curly hair 🙏u will leave the shop lookin fresh", service: 'Google Review' },
   { name: 'Marcus T.',     score: 5, text: "I've been to salons across Edinburgh and nothing comes close. Erin has an instinct for what actually suits your face — she didn't just cut my hair, she changed the way I carry myself.", service: "Men's Haircut" },
   { name: 'Callum R.',     score: 5, text: "The hot towel finish is a full ritual. I came in stressed and left feeling completely reset. The space itself does something to you — it's genuinely unlike anywhere else.", service: 'Hot Towel' },
   { name: 'David S.',      score: 5, text: "I was sceptical about spending this much on a haircut. After the first visit I understood immediately. This is not a haircut. It's an hour of being looked after properly.", service: 'The Texture Experience' },
   { name: 'Rory M.',       score: 5, text: "Erin has been cutting my hair for six months now. She remembers exactly what I want, suggests subtle changes that always turn out to be exactly right. Outstanding.", service: 'The Texture Cut and Wash' },
-  { name: 'Yohan E.',      score: 5, text: "Dr. Strange is a versatile and talented barber. Ive been a regular customer for over a year now and always goes above and beyond for the various hairstyles I've requested.", service: 'Google Review' },
-  { name: 'Asim N.',       score: 5, text: "Highly recommend, insane barber knows how to cut all types of hair especially curly hair 🙏u will leave the shop lookin fresh", service: 'Google Review' },
 ]
 
 export const FAQS = [
