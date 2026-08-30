@@ -3,10 +3,12 @@ import { motion, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const PHOTOS = [
-  { src: '/assets/interior-lounge.jpg', label: 'The Lounge',   ratio: 'aspect-[3/4]', delay: 0    },
-  { src: '/assets/erin-strange.jpg',    label: 'The Artist',   ratio: 'aspect-[4/5]', delay: 0.12 },
-  { src: '/assets/interior-barber.jpg', label: 'The Craft',    ratio: 'aspect-[3/4]', delay: 0.24 },
-  { src: '/assets/client-shoot.jpg',    label: 'The Clientele', ratio: 'aspect-[4/5]', delay: 0.34 },
+  { src: '/assets/space-entrance.jpg', label: 'The Entrance', delay: 0    },
+  { src: '/assets/space-lounge.jpg',   label: 'The Lounge',   delay: 0.12 },
+  { src: '/assets/space-craft.jpg',    label: 'The Craft',    delay: 0.24 },
+  { src: '/assets/space-talent.jpg',   label: 'The Talent',   delay: 0.34 },
+  { src: '/assets/space-studio.jpg',   label: 'The Studio',   delay: 0.46 },
+  { src: '/assets/space-team.jpg',     label: 'The Team',     delay: 0.58 },
 ]
 
 export default function Gallery() {
@@ -41,11 +43,11 @@ export default function Gallery() {
         </div>
 
         {/* Asymmetric editorial grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 items-end">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 items-end">
           {PHOTOS.map((p, i) => (
             <motion.div
               key={i}
-              className={`relative overflow-hidden group ${p.ratio} ${i === 1 || i === 3 ? 'md:mt-12' : ''}`}
+              className={`relative overflow-hidden group aspect-[3/2] ${i % 3 === 1 ? 'md:translate-y-12' : ''}`}
               initial={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
               whileInView={{ clipPath: 'inset(0% 0 0 0)', opacity: 1 }}
               viewport={{ once: true, margin: '-10% 0px' }}
