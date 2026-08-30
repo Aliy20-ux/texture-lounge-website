@@ -135,8 +135,8 @@ export const REVIEWS = [
   { name: 'Callum R.',     score: 5, text: "The hot towel finish is a full ritual. I came in stressed and left feeling completely reset. The space itself does something to you — it's genuinely unlike anywhere else.", service: 'Hot Towel' },
   { name: 'David S.',      score: 5, text: "I was sceptical about spending this much on a haircut. After the first visit I understood immediately. This is not a haircut. It's an hour of being looked after properly.", service: 'The Texture Experience' },
   { name: 'Rory M.',       score: 5, text: "Erin has been cutting my hair for six months now. She remembers exactly what I want, suggests subtle changes that always turn out to be exactly right. Outstanding.", service: 'The Texture Cut and Wash' },
-  { name: 'James A.',      score: 5, text: "Came in for a beard shape up and left with the best version of myself I've looked in years. The environment alone makes it worth it — dark, warm, completely calm.", service: 'Beard Trim' },
-  { name: 'Finlay H.',     score: 5, text: "Booked for a birthday treat and it became my monthly routine. The level of attention to detail in everything — the consultation, the cut, the finish — is something I hadn't experienced before.", service: 'Curly Texture Cut, Wash & Style' },
+  { name: 'Yohan E.',      score: 5, text: "Dr. Strange is a versatile and talented barber. Ive been a regular customer for over a year now and always goes above and beyond for the various hairstyles I've requested.", service: 'Google Review' },
+  { name: 'Asim N.',       score: 5, text: "Highly recommend, insane barber knows how to cut all types of hair especially curly hair 🙏u will leave the shop lookin fresh", service: 'Google Review' },
 ]
 
 export const FAQS = [
