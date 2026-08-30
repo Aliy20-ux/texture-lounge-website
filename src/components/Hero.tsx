@@ -73,10 +73,8 @@ export default function Hero() {
           Edinburgh · Est. 2026 · Premium Curly Hair Salon
         </motion.p>
 
-        {/* ── HEADLINE — matches the logo: "texture" big + script, LOUNGE small + tracked ── */}
+        {/* ── HEADLINE — the actual logo wordmark ── */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 md:px-12 -mt-4 md:-mt-6">
-
-          {/* texture */}
           <motion.div
             className="overflow-hidden leading-none"
             variants={revealVariants}
@@ -84,28 +82,12 @@ export default function Hero() {
             animate={started ? 'show' : 'hidden'}
             transition={{ duration: 1.1, delay: 0.6, ease: [0.76, 0, 0.24, 1] }}
           >
-            <h1
-              className="font-heading italic font-light text-sage tracking-[-0.01em] text-center"
-              style={{ fontSize: 'clamp(5.5rem, 20vw, 14.5rem)', lineHeight: 0.9 }}
-            >
-              texture
-            </h1>
-          </motion.div>
-
-          {/* · LOUNGE · */}
-          <motion.div
-            className="overflow-hidden leading-none mt-3 md:mt-5"
-            variants={revealVariants}
-            initial="hidden"
-            animate={started ? 'show' : 'hidden'}
-            transition={{ duration: 1.1, delay: 0.85, ease: [0.76, 0, 0.24, 1] }}
-          >
-            <p
-              className="font-heading font-light text-sage uppercase tracking-[0.5em] text-center"
-              style={{ fontSize: 'clamp(1.1rem, 3vw, 1.9rem)' }}
-            >
-              · Lounge ·
-            </p>
+            <img
+              src="/assets/logo-wordmark.png"
+              alt="Texture Lounge"
+              className="h-auto"
+              style={{ width: 'clamp(280px, 62vw, 760px)' }}
+            />
           </motion.div>
         </div>
 

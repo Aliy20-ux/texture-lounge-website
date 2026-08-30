@@ -76,7 +76,7 @@ export default function Gallery() {
 
         {/* Social CTAs */}
         <motion.div
-          className="mt-12 flex items-center justify-center gap-6"
+          className="mt-12 md:mt-24 flex items-center justify-center gap-6"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
