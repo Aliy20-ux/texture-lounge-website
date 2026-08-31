@@ -104,7 +104,7 @@ export const SERVICE_CATEGORIES = [
 export const TEAM = [
   { name: 'Erin Strange', role: 'Founder & Master Barber · Curly Hair Specialist', note: 'Scottish Barber of the Year · BBC Scotland', img: '/assets/erin-strange.jpg' },
   { name: 'Ryan',   role: 'Master Barber', note: '', img: null },
-  { name: 'Mo',     role: 'Master Barber', note: '', img: null },
+  { name: 'Mo',     role: 'Master Barber', note: '', img: '/assets/mo.jpg' },
   { name: 'Robert', role: 'Master Barber', note: '', img: null },
 ]
 
