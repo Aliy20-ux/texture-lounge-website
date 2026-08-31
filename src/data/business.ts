@@ -22,6 +22,12 @@ export const PHONE = {
 
 export const TREATWELL_URL = 'https://widget.treatwell.co.uk/place/539710/menu/'
 
+// TODO: swap for the official g.page/r/.../review short link once Erin generates one
+// from her Google Business Profile dashboard (Profile → Ask for reviews) — that opens
+// the star-rating box directly. This CID link is the stable fallback: no login needed,
+// opens her verified Maps profile (customer taps Reviews → Write a review from there).
+export const GOOGLE_REVIEW_URL = 'https://www.google.com/maps?cid=8121825702666935239'
+
 export const ADDRESS = {
   line: '12 Melville Place',
   city: 'Edinburgh',

@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { REVIEWS, BRAND } from '../data/business'
+import { REVIEWS, BRAND, GOOGLE_REVIEW_URL } from '../data/business'
 import Booking from '../components/Booking'
 import { useSEO } from '../lib/seo'
 
@@ -92,6 +92,33 @@ export default function Reviews() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="mt-16 md:mt-20 bg-charcoal px-8 md:px-14 py-14 md:py-16 flex flex-col md:flex-row md:items-center justify-between gap-8"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-5% 0px' }}
+          transition={{ duration: 0.9, ease }}
+        >
+          <div>
+            <p className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4">Been in to see Erin?</p>
+            <h3 className="font-heading text-cream text-3xl md:text-4xl font-light italic leading-tight mb-3">
+              Tell us how it went
+            </h3>
+            <p className="font-geist text-cream/50 text-sm leading-relaxed max-w-sm">
+              A minute of yours helps the next person find their way to the chair — and it means a lot to Erin directly.
+            </p>
+          </div>
+          <a
+            href={GOOGLE_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-3 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-cream border border-cream/25 hover:border-cream/60 hover:bg-cream/5 transition-colors duration-300 px-7 py-4 w-fit shrink-0"
+          >
+            Leave a Google review
+            <span className="block w-6 h-px bg-current" />
+          </a>
+        </motion.div>
         </div>
       </section>
       <Booking />

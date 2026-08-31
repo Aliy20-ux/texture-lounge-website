@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useBooking } from '../context/BookingContext'
+import { GOOGLE_REVIEW_URL } from '../data/business'
 
 const NAV_LINKS: [string, string][] = [
   ['Services',  '/services'],
@@ -57,6 +58,9 @@ export default function Footer() {
             ))}
             <li>
               <button onClick={openBooking} className="font-geist text-cream/55 text-sm sm:text-xs tracking-[0.14em] uppercase hover:text-cream transition-colors duration-200 py-1 block text-left">Book Now</button>
+            </li>
+            <li>
+              <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener noreferrer" className="font-geist text-cream/55 text-sm sm:text-xs tracking-[0.14em] uppercase hover:text-cream transition-colors duration-200 py-1 block">Leave a Review</a>
             </li>
           </ul>
 
