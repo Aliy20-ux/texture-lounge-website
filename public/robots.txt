@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://texture-lounge-website.pages.dev/sitemap.xml
+Sitemap: https://texturelounge.co.uk/sitemap.xml
