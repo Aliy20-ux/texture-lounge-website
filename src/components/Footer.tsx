@@ -88,14 +88,9 @@ export default function Footer() {
         </div>
 
         {/* Legal links */}
-        <div className="mt-8 pt-6 border-t border-cream/10 flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            <Link to="/privacy" className="font-geist text-cream/35 text-[0.6rem] tracking-[0.14em] uppercase hover:text-cream/70 transition-colors duration-200">Privacy Policy</Link>
-            <Link to="/terms" className="font-geist text-cream/35 text-[0.6rem] tracking-[0.14em] uppercase hover:text-cream/70 transition-colors duration-200">Terms of Service</Link>
-          </div>
-          <a href="https://motion-visual.com/" target="_blank" rel="noopener noreferrer" className="font-geist text-cream/35 text-[0.6rem] tracking-[0.14em] uppercase hover:text-cream/70 transition-colors duration-200">
-            Site by Motion Visual
-          </a>
+        <div className="mt-8 pt-6 border-t border-cream/10 flex flex-wrap items-center gap-x-6 gap-y-2">
+          <Link to="/privacy" className="font-geist text-cream/35 text-[0.6rem] tracking-[0.14em] uppercase hover:text-cream/70 transition-colors duration-200">Privacy Policy</Link>
+          <Link to="/terms" className="font-geist text-cream/35 text-[0.6rem] tracking-[0.14em] uppercase hover:text-cream/70 transition-colors duration-200">Terms of Service</Link>
         </div>
 
         {/* Mobile copyright bar */}
@@ -103,8 +98,10 @@ export default function Footer() {
           <p className="font-geist text-cream/35 text-[0.55rem] tracking-[0.15em] uppercase">© 2026 Texture Lounge</p>
           <p className="font-geist text-cream/35 text-[0.55rem] tracking-[0.15em] uppercase">Edinburgh</p>
         </div>
-        <div className="mt-4 flex justify-center md:hidden">
-          <a href="https://motion-visual.com/" target="_blank" rel="noopener noreferrer" className="font-geist text-cream/35 text-[0.55rem] tracking-[0.15em] uppercase hover:text-cream/70 transition-colors duration-200">
+
+        {/* Credit — set apart on its own centered line so it doesn't blend into the rest */}
+        <div className="mt-8 pt-6 border-t border-cream/10 flex justify-center">
+          <a href="https://motion-visual.com/" target="_blank" rel="noopener noreferrer" className="font-geist text-cream/50 text-[0.65rem] tracking-[0.3em] uppercase hover:text-cream transition-colors duration-300">
             Site by Motion Visual
           </a>
         </div>
