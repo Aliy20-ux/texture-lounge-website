@@ -3,8 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useBooking } from '../context/BookingContext'
 import { isOpenNow } from '../data/business'
 
-const VIDEO_WEBM = '/assets/videos/dola-removal.webm'
-const VIDEO_MP4  = '/assets/videos/dola-removal.mp4'
+const VIDEO_MP4 = '/assets/videos/my-project-page-1.mp4'
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
 const revealVariants = {
@@ -40,8 +39,7 @@ export default function Hero() {
             filter: 'saturate(1.18) sepia(0.06) brightness(0.88)',
           }}
         >
-          <source src={VIDEO_WEBM} type="video/webm" />
-          <source src={VIDEO_MP4}  type="video/mp4"  />
+          <source src={VIDEO_MP4} type="video/mp4" />
         </motion.video>
 
         {/* Directional gradient */}
