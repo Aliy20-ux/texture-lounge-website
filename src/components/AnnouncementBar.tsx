@@ -32,8 +32,7 @@ export default function AnnouncementBar() {
               onClick={openBooking}
               className="group flex items-center gap-2 font-geist text-[0.58rem] md:text-[0.65rem] tracking-[0.1em] md:tracking-[0.14em] uppercase text-cream text-center"
             >
-              <span className="hidden sm:inline">Off-Peak Offer —</span>
-              Save up to 30% on selected services
+              Opening Special — Save up to 30% on all services
               <ArrowRight className="w-3 h-3 flex-shrink-0 transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
             <button

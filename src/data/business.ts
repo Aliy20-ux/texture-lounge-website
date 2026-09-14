@@ -108,9 +108,9 @@ export const SERVICE_CATEGORIES = [
 // invented. No photo on file for these four — img is left unset, not filled with a stand-in.
 export const TEAM = [
   { name: 'Erin Strange', role: 'Founder & Master Barber · Curly Hair Specialist', note: 'Scottish Barber of the Year · BBC Scotland', img: '/assets/erin-strange.jpg' },
-  { name: 'Ryan',   role: 'Master Barber', note: '', img: null },
-  { name: 'Mo',     role: 'Master Barber', note: '', img: '/assets/mo.jpg' },
-  { name: 'Robert', role: 'Master Barber', note: '', img: null },
+  { name: 'Ryan',   role: 'Intermediate Barber', note: '', img: '/assets/ryan.jpg' },
+  { name: 'Mo Dukureh', role: 'Intermediate Barber', note: '', img: '/assets/mo-dukureh.jpg' },
+  { name: 'Robert', role: 'Junior Barber', note: '', img: '/assets/robert.jpg' },
 ]
 
 export const STATS: { n: number; suffix: string; label: string; href?: string }[] = [

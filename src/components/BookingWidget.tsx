@@ -48,23 +48,32 @@ export default function BookingWidget() {
         </motion.p>
 
         <motion.div
-          className="relative border border-charcoal/10 rounded-md overflow-hidden shadow-sm bg-ivory"
+          className="relative rounded-[2px] border border-charcoal/12 overflow-hidden shadow-[0_24px_60px_-20px_rgba(26,20,19,0.22)] bg-ivory"
           initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, delay: 0.35, ease }}
         >
           {!loaded && (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center z-20">
               <div className="w-6 h-6 border-2 border-terracotta/25 border-t-terracotta rounded-full animate-spin" />
             </div>
           )}
           <iframe
             src={EMBED_URL}
             title="Book an appointment with Texture Lounge"
-            className="w-full h-[640px] md:h-[760px] border-0"
+            className="relative w-full h-[640px] md:h-[760px] border-0"
             allow="payment"
             loading="lazy"
             onLoad={() => setLoaded(true)}
           />
+
+          {/* warm wash so the widget sits in the palette instead of reading as a bare embed */}
+          <div className="absolute inset-0 pointer-events-none mix-blend-multiply bg-terracotta/[0.045] z-10" />
+
+          {/* live-status chip, matching the map chip on Find Us — top-left so it doesn't collide with Treatwell's own logo */}
+          <div className="absolute top-4 left-4 z-10 flex items-center gap-2 bg-cream/90 backdrop-blur-md border border-charcoal/10 px-4 py-2 pointer-events-none">
+            <span className="w-1.5 h-1.5 rounded-full bg-sage animate-pulse" />
+            <span className="font-geist text-charcoal/80 text-[0.55rem] tracking-[0.3em] uppercase">Live Availability</span>
+          </div>
         </motion.div>
       </div>
     </section>
