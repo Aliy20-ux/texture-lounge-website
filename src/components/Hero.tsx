@@ -4,10 +4,6 @@ import { useBooking } from '../context/BookingContext'
 import { isOpenNow } from '../data/business'
 
 const VIDEO_MP4 = '/assets/videos/my-project-page-1.mp4'
-// Portrait re-composite (full frame width + blurred ambient fill top/bottom)
-// so mobile shows the whole shot instead of object-cover's narrow center
-// crop of a landscape clip in a tall viewport.
-const VIDEO_MP4_MOBILE = '/assets/videos/my-project-page-1-mobile.mp4'
 const MOBILE_QUERY = '(max-width: 767px)'
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
@@ -36,10 +32,8 @@ export default function Hero() {
   const videoARef = useRef<HTMLVideoElement | null>(null)
   const videoBRef = useRef<HTMLVideoElement | null>(null)
 
-  // The mobile export already closely matches a phone's aspect ratio (its
-  // sharp content fills the frame edge-to-edge), so it has no spare overscan
-  // to move around — skip the vertical parallax there rather than risk
-  // revealing an edge.
+  // object-cover exactly fills the container height on mobile (no vertical
+  // slack), so any parallax shift would reveal an edge — skip it there.
   const [isMobile, setIsMobile] = useState(false)
   useEffect(() => {
     const mq = window.matchMedia(MOBILE_QUERY)
@@ -97,26 +91,24 @@ export default function Hero() {
         <motion.video
           ref={videoARef}
           autoPlay muted loop playsInline preload="auto"
-          className="absolute inset-0 w-full h-full object-cover scale-[1.03] md:scale-[1.18]"
+          className="absolute inset-0 w-full h-full object-cover object-[42%_50%] md:object-center scale-[1.03] md:scale-[1.18]"
           style={{
             y: videoY,
             filter: 'saturate(1.18) sepia(0.06) brightness(0.88)',
           }}
         >
-          <source src={VIDEO_MP4_MOBILE} media={MOBILE_QUERY} type="video/mp4" />
           <source src={VIDEO_MP4} type="video/mp4" />
         </motion.video>
         <motion.video
           ref={videoBRef}
           muted loop playsInline preload="auto"
-          className="absolute inset-0 w-full h-full object-cover scale-[1.03] md:scale-[1.18]"
+          className="absolute inset-0 w-full h-full object-cover object-[42%_50%] md:object-center scale-[1.03] md:scale-[1.18]"
           style={{
             y: videoY,
             filter: 'saturate(1.18) sepia(0.06) brightness(0.88)',
             opacity: 0,
           }}
         >
-          <source src={VIDEO_MP4_MOBILE} media={MOBILE_QUERY} type="video/mp4" />
           <source src={VIDEO_MP4} type="video/mp4" />
         </motion.video>
 
