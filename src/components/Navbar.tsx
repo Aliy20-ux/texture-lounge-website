@@ -125,9 +125,12 @@ export default function Navbar() {
           menuOpen ? 'opacity-100' : 'opacity-0'
         }`} />
         {/* Scrollable so content is never clipped/unreachable on short viewports — the six
-            links plus CTA and footer block can be taller than the screen on smaller phones. */}
+            links plus CTA and footer block can be taller than the screen on smaller phones.
+            Anchored to the top (not vertically centered) with padding-top clearing the fixed
+            announcement bar + nav row: centering pushed the location line up underneath that
+            fixed bar on shorter phones (iPhone SE etc.), hiding it entirely. */}
         <div className="relative h-full overflow-y-auto">
-          <div className="min-h-full flex flex-col items-center justify-center px-6 py-24">
+          <div className="min-h-full flex flex-col items-center px-6 pt-32 pb-16">
             {/* Location pill */}
             <div style={{
               transition: `opacity 0.5s ease ${menuOpen ? 60 : 0}ms`,
