@@ -11,10 +11,14 @@ const revealVariants = {
   show:   { clipPath: 'inset(0 0 0%   0)', opacity: 1 },
 }
 
+// Fade window (seconds) at each end of the clip, masking the loop's jump-cut
+const LOOP_FADE = 0.5
+
 export default function Hero() {
   const [started, setStarted] = useState(false)
   const { openBooking } = useBooking()
   const status = isOpenNow()
+  const videoElRef = useRef<HTMLVideoElement | null>(null)
 
   // Parallax: video moves slower than scroll
   const heroRef = useRef<HTMLDivElement>(null)
@@ -26,12 +30,33 @@ export default function Hero() {
     return () => clearTimeout(t)
   }, [])
 
+  // Crossfade the video through its own dim overlay at the loop seam, so the
+  // cut from last frame back to first frame reads as a soft dissolve instead
+  // of an abrupt jump. True reverse playback isn't reliably supported (Safari
+  // can't play <video> backwards), so this is the robust cross-browser fix.
+  useEffect(() => {
+    let raf: number
+    const tick = () => {
+      const v = videoElRef.current
+      if (v && v.duration) {
+        const remaining = v.duration - v.currentTime
+        const fadeIn = v.currentTime < LOOP_FADE ? v.currentTime / LOOP_FADE : 1
+        const fadeOut = remaining < LOOP_FADE ? remaining / LOOP_FADE : 1
+        v.style.opacity = String(Math.min(fadeIn, fadeOut))
+      }
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
   return (
     <div ref={heroRef} className="relative" style={{ height: '100dvh' }}>
-      <div className="w-full h-full overflow-hidden relative">
+      <div className="w-full h-full overflow-hidden relative" style={{ backgroundColor: '#120A06' }}>
 
         {/* ── VIDEO — parallax ── */}
         <motion.video
+          ref={videoElRef}
           autoPlay muted loop playsInline preload="auto"
           className="absolute inset-0 w-full h-full object-cover scale-[1.18]"
           style={{
