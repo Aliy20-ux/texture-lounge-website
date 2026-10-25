@@ -48,7 +48,7 @@ export default function Team() {
           </m.p>
         </div>
 
-        <div className="group/grid grid md:grid-cols-3 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-y-24 items-start">
+        <div className="grid md:grid-cols-3 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-y-24 items-start">
           {TEAM.map((member, i) => <TeamCard key={member.name} member={member} index={i} reduce={!!reduce} />)}
         </div>
       </div>
@@ -70,12 +70,7 @@ function TeamCard({ member, index, reduce }: { member: typeof TEAM[0]; index: nu
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay: index * 0.06, ease: [0.19, 1, 0.22, 1] }}
     >
-      {/* Inner wrapper owns the sibling-dim on hover so it never fights Framer's inline opacity. */}
-      <div
-        className={`transition-opacity duration-300 ease-out lg:group-hover/grid:opacity-45 lg:hover:!opacity-100 ${
-          featured ? 'lg:grid lg:grid-cols-12 lg:gap-14 lg:items-end' : ''
-        }`}
-      >
+      <div className={featured ? 'lg:grid lg:grid-cols-12 lg:gap-14 lg:items-end' : ''}>
         <div className={featured ? 'lg:col-span-7' : ''}>
           <div className="hidden lg:flex items-center gap-4 mb-4 font-geist text-[0.6rem] tracking-[0.3em] text-charcoal/45 tabular-nums">
             <span>{String(index + 1).padStart(2, '0')}</span>
