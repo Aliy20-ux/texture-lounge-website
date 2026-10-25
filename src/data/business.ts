@@ -111,7 +111,7 @@ export const TEAM = [
   { name: 'Gabbriell', role: 'Intermediate Barber', note: '', img: '/assets/gabbriell-c.jpg' },
   { name: 'Ryan',   role: 'Intermediate Barber', note: '', img: '/assets/ryan.jpg' },
   { name: 'Mo Dukureh', role: 'Intermediate Barber', note: '', img: '/assets/mo-dukureh.jpg' },
-  { name: 'Robert', role: 'Junior Barber', note: '', img: '/assets/robert.jpg' },
+  { name: 'Robert', role: 'Junior Barber', note: '', img: '/assets/robert-lounge.jpg' },
 ]
 
 export const STATS: { n: number; suffix: string; label: string; href?: string }[] = [
