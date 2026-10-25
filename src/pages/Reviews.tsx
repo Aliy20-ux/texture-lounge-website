@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { REVIEWS, BRAND, GOOGLE_REVIEW_URL } from '../data/business'
 import Booking from '../components/Booking'
 import { useSEO } from '../lib/seo'
@@ -30,35 +30,35 @@ export default function Reviews() {
 
   return (
     <div>
-      <section className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+      <section className="bg-cream pt-page pb-28 md:pb-36 px-5 md:px-12 overflow-hidden">
         <h1 className="sr-only">Reviews — Texture Lounge Edinburgh</h1>
         <div className="max-w-6xl mx-auto">
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20">
           <div>
-            <motion.p
+            <m.p
               className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4"
               initial={{ opacity: 0, y: 12 }}
               animate={headIn ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.5 }}
             >
               What They Say
-            </motion.p>
+            </m.p>
             <div className="overflow-hidden">
-              <motion.h2
+              <m.h2
                 className="font-heading text-charcoal text-5xl md:text-7xl font-light italic leading-none"
                 initial={{ y: '100%' }}
                 animate={headIn ? { y: 0 } : {}}
-                transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+                transition={{ duration: 0.66, delay: 0.05, ease: [0.76, 0, 0.24, 1] }}
               >
                 Reviews
-              </motion.h2>
+              </m.h2>
             </div>
           </div>
-          <motion.div
+          <m.div
             className="flex items-center gap-2"
             initial={{ opacity: 0 }}
             animate={headIn ? { opacity: 1 } : {}}
-            transition={{ duration: 0.9, delay: 0.4 }}
+            transition={{ duration: 0.54, delay: 0.2 }}
           >
             <div className="flex gap-0.5">
               {[...Array(5)].map((_, i) => (
@@ -68,18 +68,18 @@ export default function Reviews() {
               ))}
             </div>
             <span className="font-geist text-charcoal/45 text-sm tracking-wider">5.0</span>
-          </motion.div>
+          </m.div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-5">
           {REVIEWS.map((r, i) => (
-            <motion.div
+            <m.div
               key={r.name}
               className="bg-ivory border border-charcoal/8 p-6 md:p-7 flex flex-col gap-4"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-5% 0px' }}
-              transition={{ duration: 0.8, delay: (i % 3) * 0.1, ease }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.1, ease }}
             >
               <Stars />
               <p className="font-heading text-charcoal/85 text-base italic font-normal leading-relaxed flex-1">
@@ -89,16 +89,16 @@ export default function Reviews() {
                 <span className="font-geist text-charcoal/55 text-xs tracking-wider">{r.name}</span>
                 <span className="font-geist text-terracotta/70 text-[0.58rem] tracking-[0.16em] uppercase">{r.service}</span>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        <motion.div
+        <m.div
           className="mt-16 md:mt-20 bg-charcoal px-8 md:px-14 py-14 md:py-16 flex flex-col md:flex-row md:items-center justify-between gap-8"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-5% 0px' }}
-          transition={{ duration: 0.9, ease }}
+          transition={{ duration: 0.54, ease }}
         >
           <div>
             <p className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4">Been in to see Erin?</p>
@@ -118,7 +118,7 @@ export default function Reviews() {
             Leave a Google review
             <span className="block w-6 h-px bg-current" />
           </a>
-        </motion.div>
+        </m.div>
         </div>
       </section>
       <Booking />

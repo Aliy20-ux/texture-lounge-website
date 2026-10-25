@@ -1,23 +1,27 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
 import { PHONE } from '../data/business'
+import { useVideoInView } from '../lib/useVideoInView'
 
 export default function Booking() {
   const ref    = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
   const { openBooking } = useBooking()
+  const videoRef = useRef<HTMLVideoElement>(null)
+  useVideoInView(videoRef)
 
   return (
     <section id="booking" className="relative py-32 md:py-44 px-5 md:px-12 overflow-hidden">
 
-      {/* Video background */}
+      {/* Video background — desaturated/darkened grade is baked into the file */}
       <video
-        autoPlay muted loop playsInline preload="auto"
-        src="/assets/videos/hero-loop.mp4"
+        ref={videoRef}
+        muted loop playsInline preload="none"
+        poster="/assets/booking-bg-poster.jpg"
+        src="/assets/videos/booking-bg.mp4"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ filter: 'saturate(0.4) brightness(0.25)' }}
       />
 
       {/* Overlay — deep ink tint so text stays readable */}
@@ -33,39 +37,39 @@ export default function Booking() {
 
       <div ref={ref} className="relative max-w-2xl mx-auto text-center z-[3]">
 
-        <motion.p
+        <m.p
           className="font-geist text-sage text-[0.6rem] tracking-[0.4em] uppercase mb-8"
-          initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.8, delay: 0.1 }}
+          initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.5, delay: 0.05 }}
         >
           Reserve Your Chair
-        </motion.p>
+        </m.p>
 
         <div className="overflow-hidden mb-10">
-          <motion.h2
+          <m.h2
             className="font-heading text-cream text-5xl md:text-7xl lg:text-8xl font-light italic leading-[0.95]"
             initial={{ y: '100%' }}
             animate={inView ? { y: 0 } : {}}
-            transition={{ duration: 1.2, delay: 0.15, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.72, delay: 0.07, ease: [0.76, 0, 0.24, 1] }}
           >
             Your<br />
             appointment<br />
             <em className="text-terracotta not-italic">awaits.</em>
-          </motion.h2>
+          </m.h2>
         </div>
 
-        <motion.p
+        <m.p
           className="font-geist text-cream/50 text-sm leading-relaxed mb-14 max-w-sm mx-auto font-light"
           initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, delay: 0.45, ease: [0.19, 1, 0.22, 1] }}
+          transition={{ duration: 0.54, delay: 0.23, ease: [0.19, 1, 0.22, 1] }}
         >
           Walk-ins are welcome — though only a booked appointment guarantees your time
           with the barber of your choice. Reserve directly with one of our master barbers.
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           className="flex flex-col gap-3 justify-center px-0"
           initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, delay: 0.6, ease: [0.19, 1, 0.22, 1] }}
+          transition={{ duration: 0.54, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
         >
           <button
             onClick={openBooking}
@@ -80,14 +84,14 @@ export default function Booking() {
           >
             {PHONE.display}
           </a>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           className="font-geist text-cream/25 text-[0.6rem] tracking-[0.15em] mt-12 leading-[2]"
-          initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.8, delay: 0.85 }}
+          initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}} transition={{ duration: 0.5, delay: 0.42 }}
         >
           Open every day · 10:00 – 18:00
-        </motion.p>
+        </m.p>
       </div>
     </section>
   )

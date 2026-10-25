@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        heading: ['"Fraunces"', 'Georgia', 'serif'],
-        geist:   ['Inter', 'system-ui', 'sans-serif'],
+        heading: ['"Fraunces Variable"', 'Georgia', 'serif'],
+        geist:   ['"Inter Variable"', 'system-ui', 'sans-serif'],
       },
       colors: {
         terracotta: '#B6543C',

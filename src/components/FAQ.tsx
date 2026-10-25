@@ -1,17 +1,17 @@
 import { useState, useRef } from 'react'
-import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { m, useInView, AnimatePresence } from 'framer-motion'
 import { FAQS } from '../data/business'
 
 function Item({ faq, index }: { faq: typeof FAQS[0]; index: number }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <motion.div
+    <m.div
       className="border-t border-charcoal/10 last:border-b last:border-charcoal/10"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-5% 0px' }}
-      transition={{ duration: 0.7, delay: index * 0.06, ease: [0.19, 1, 0.22, 1] }}
+      transition={{ duration: 0.5, delay: index * 0.03, ease: [0.19, 1, 0.22, 1] }}
     >
       <button
         onClick={() => setOpen(o => !o)}
@@ -32,7 +32,7 @@ function Item({ faq, index }: { faq: typeof FAQS[0]; index: number }) {
 
       <AnimatePresence initial={false}>
         {open && (
-          <motion.div
+          <m.div
             key="answer"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
@@ -43,10 +43,10 @@ function Item({ faq, index }: { faq: typeof FAQS[0]; index: number }) {
             <p className="font-geist text-charcoal/60 text-sm leading-[1.9] font-light pb-7 max-w-2xl">
               {faq.a}
             </p>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -55,24 +55,24 @@ export default function FAQ() {
   const headIn  = useInView(headRef, { once: true, margin: '-15% 0px' })
 
   return (
-    <section className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+    <section className="bg-cream pt-page pb-28 md:pb-36 px-5 md:px-12 overflow-hidden">
       <div className="max-w-4xl mx-auto">
 
         <div ref={headRef} className="mb-14">
-          <motion.p
+          <m.p
             className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4"
-            initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.7 }}
+            initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.5 }}
           >
             Before You Book
-          </motion.p>
+          </m.p>
           <div className="overflow-hidden">
-            <motion.h2
+            <m.h2
               className="font-heading text-charcoal text-5xl md:text-7xl font-normal italic leading-none"
               initial={{ y: '100%' }} animate={headIn ? { y: 0 } : {}}
-              transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.66, delay: 0.05, ease: [0.76, 0, 0.24, 1] }}
             >
               Questions
-            </motion.h2>
+            </m.h2>
           </div>
         </div>
 

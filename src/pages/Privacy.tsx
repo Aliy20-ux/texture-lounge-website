@@ -10,7 +10,7 @@ export default function Privacy() {
   )
 
   return (
-    <div className="bg-cream py-28 md:py-36 px-5 md:px-12">
+    <div className="bg-cream pt-page pb-28 md:pb-36 px-5 md:px-12">
       <div className="max-w-2xl mx-auto">
         <p className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4">Legal</p>
         <h1 className="font-heading text-charcoal text-4xl md:text-5xl font-light italic leading-tight mb-3">Privacy Policy</h1>

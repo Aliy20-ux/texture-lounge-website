@@ -1,24 +1,48 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout    from './Layout'
 import Home      from './pages/Home'
 
-const Story    = lazy(() => import('./pages/Story'))
-const Services = lazy(() => import('./pages/Services'))
-const Team     = lazy(() => import('./pages/Team'))
-const Space    = lazy(() => import('./pages/Space'))
-const Reviews  = lazy(() => import('./pages/Reviews'))
-const FindUs   = lazy(() => import('./pages/FindUs'))
-const FAQPage  = lazy(() => import('./pages/FAQPage'))
-const Privacy  = lazy(() => import('./pages/Privacy'))
-const Terms    = lazy(() => import('./pages/Terms'))
+const loaders = {
+  Story:    () => import('./pages/Story'),
+  Services: () => import('./pages/Services'),
+  Team:     () => import('./pages/Team'),
+  Space:    () => import('./pages/Space'),
+  Reviews:  () => import('./pages/Reviews'),
+  FindUs:   () => import('./pages/FindUs'),
+  FAQPage:  () => import('./pages/FAQPage'),
+  Privacy:  () => import('./pages/Privacy'),
+  Terms:    () => import('./pages/Terms'),
+}
+
+const Story    = lazy(loaders.Story)
+const Services = lazy(loaders.Services)
+const Team     = lazy(loaders.Team)
+const Space    = lazy(loaders.Space)
+const Reviews  = lazy(loaders.Reviews)
+const FindUs   = lazy(loaders.FindUs)
+const FAQPage  = lazy(loaders.FAQPage)
+const Privacy  = lazy(loaders.Privacy)
+const Terms    = lazy(loaders.Terms)
 
 export default function App() {
+  // Page chunks are tiny — fetch them all once the browser is idle so navigating
+  // between pages never waits on the network.
+  useEffect(() => {
+    const prefetch = () => Object.values(loaders).forEach(load => { load().catch(() => {}) })
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(prefetch, { timeout: 4000 })
+      return () => window.cancelIdleCallback(id)
+    }
+    const t = setTimeout(prefetch, 2000)
+    return () => clearTimeout(t)
+  }, [])
+
   return (
     <Routes>
       <Route element={<Layout />}>
         {/* Home ships in the main bundle — it's the most common entry point.
-            Every other page is a separate chunk, loaded on demand. */}
+            Every other page is a separate chunk, prefetched on idle. */}
         <Route path="/" element={<Home />} />
         <Route path="/story"     element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Story /></Suspense>} />
         <Route path="/services"  element={<Suspense fallback={<div className="bg-cream min-h-svh" />}><Services /></Suspense>} />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
 
@@ -16,7 +16,7 @@ export default function FloatingCTA() {
   return (
     <AnimatePresence>
       {visible && (
-        <motion.div
+        <m.div
           className="fixed left-1/2 -translate-x-1/2 z-[9970] md:hidden"
           style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
           initial={{ y: 80, opacity: 0 }}
@@ -31,7 +31,7 @@ export default function FloatingCTA() {
             Book Now
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Bus, TramFront, TrainFront } from 'lucide-react'
 import { ADDRESS, HOURS_GROUPED, TRANSPORT, MAPS_EMBED_SRC, MAPS_LINK, PHONE } from '../data/business'
 
@@ -12,66 +12,66 @@ export default function Location() {
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
 
   return (
-    <section id="location" className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+    <section id="location" className="bg-cream pt-page pb-28 md:pb-36 px-5 md:px-12 overflow-hidden">
       <div ref={ref} className="max-w-6xl mx-auto">
       <div className="grid lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] gap-14 lg:gap-20 items-stretch">
 
         {/* ── LEFT — address + hours ── */}
         <div className="flex flex-col">
 
-          <motion.p
+          <m.p
             className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase"
             initial={{ opacity: 0, y: 10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease }}
+            transition={{ duration: 0.5, ease }}
           >
             Find Us
-          </motion.p>
+          </m.p>
 
           <div className="overflow-hidden mt-5">
-            <motion.h2
+            <m.h2
               className="font-heading text-charcoal text-4xl md:text-5xl lg:text-[3.4rem] font-light leading-[1.02] tracking-[-0.02em]"
               initial={{ y: '110%' }}
               animate={inView ? { y: 0 } : {}}
-              transition={{ duration: 1.1, delay: 0.08, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.66, delay: 0.04, ease: [0.76, 0, 0.24, 1] }}
             >
               {ADDRESS.line}
               <span className="block italic text-sage">{ADDRESS.city}</span>
-            </motion.h2>
+            </m.h2>
           </div>
 
-          <motion.p
+          <m.p
             className="font-geist text-charcoal/55 text-sm tracking-[0.18em] uppercase mt-5"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3, ease }}
+            transition={{ duration: 0.5, delay: 0.15, ease }}
           >
             {ADDRESS.postcode}
-          </motion.p>
+          </m.p>
 
-          <motion.a
+          <m.a
             href={`tel:${PHONE.tel}`}
             className="font-geist text-charcoal/70 hover:text-charcoal text-sm tracking-[0.1em] mt-3 w-fit transition-colors duration-300"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.32, ease }}
+            transition={{ duration: 0.5, delay: 0.16, ease }}
           >
             {PHONE.display}
-          </motion.a>
+          </m.a>
 
           {/* divider */}
-          <motion.div
+          <m.div
             className="h-px bg-charcoal/12 my-9 origin-left"
             initial={{ scaleX: 0 }}
             animate={inView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.9, delay: 0.35, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.54, delay: 0.17, ease: [0.76, 0, 0.24, 1] }}
           />
 
           {/* hours */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4, ease }}
+            transition={{ duration: 0.5, delay: 0.2, ease }}
           >
             <p className="font-geist text-terracotta text-[0.6rem] tracking-[0.35em] uppercase mb-5">Hours</p>
             <ul className="flex flex-col gap-3 list-none">
@@ -82,42 +82,42 @@ export default function Location() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </m.div>
 
           {/* walk-ins note */}
-          <motion.div
+          <m.div
             className="flex items-start gap-3 mt-7 max-w-sm"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.55, ease }}
+            transition={{ duration: 0.5, delay: 0.28, ease }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-sage mt-[0.42rem] shrink-0" />
             <p className="font-geist text-charcoal/55 text-[0.82rem] leading-[1.7] font-light">
               <span className="text-charcoal/85">Walk-ins are welcome.</span> To guarantee your time with the barber of your choice, we recommend booking ahead.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* open in maps */}
-          <motion.a
+          <m.a
             href={MAPS_LINK}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-4 font-geist text-[0.65rem] tracking-[0.3em] uppercase text-charcoal/55 hover:text-charcoal transition-colors duration-300 w-fit mt-auto pt-10"
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.65, ease }}
+            transition={{ duration: 0.5, delay: 0.33, ease }}
           >
             Open in Google Maps
             <span className="block w-8 h-px bg-current transition-[width] duration-500 group-hover:w-16" />
-          </motion.a>
+          </m.a>
         </div>
 
         {/* ── RIGHT — map ── */}
-        <motion.div
+        <m.div
           className="relative rounded-[2px] overflow-hidden border border-charcoal/12 min-h-[360px] lg:min-h-[520px] bg-ivory"
           initial={{ opacity: 0, clipPath: 'inset(0 0 12% 0)' }}
           animate={inView ? { opacity: 1, clipPath: 'inset(0 0 0% 0)' } : {}}
-          transition={{ duration: 1.2, delay: 0.15, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.72, delay: 0.07, ease: [0.76, 0, 0.24, 1] }}
         >
           <iframe
             title="Map to Texture Lounge, 12 Melville Place, Edinburgh"
@@ -129,20 +129,20 @@ export default function Location() {
           />
 
           {/* warm wash so the map sits in the palette */}
-          <div className="absolute inset-0 pointer-events-none mix-blend-multiply bg-terracotta/[0.06]" />
+          <div className="absolute inset-0 pointer-events-none bg-terracotta/[0.06]" />
 
           {/* brand chip */}
-          <div className="absolute top-4 right-4 z-10 flex items-center gap-2 bg-cream/90 backdrop-blur-md border border-charcoal/10 px-4 py-2 pointer-events-none">
+          <div className="absolute top-4 right-4 z-10 flex items-center gap-2 bg-cream/90 border border-charcoal/10 px-4 py-2 pointer-events-none">
             <span className="w-1.5 h-1.5 rounded-full bg-terracotta" />
             <span className="font-geist text-charcoal/80 text-[0.55rem] tracking-[0.3em] uppercase">Texture Lounge</span>
           </div>
 
           {/* address caption chip */}
-          <div className="absolute bottom-4 left-4 z-10 bg-cream/90 backdrop-blur-md border border-charcoal/10 px-4 py-3 pointer-events-none">
+          <div className="absolute bottom-4 left-4 z-10 bg-cream/90 border border-charcoal/10 px-4 py-3 pointer-events-none">
             <p className="font-geist text-charcoal/90 text-xs tracking-wide">{ADDRESS.line}</p>
             <p className="font-geist text-charcoal/55 text-[0.62rem] tracking-wide mt-0.5">{ADDRESS.city} · {ADDRESS.postcode}</p>
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* ── GETTING HERE — transport ── */}
@@ -150,19 +150,19 @@ export default function Location() {
         {TRANSPORT.map((t, i) => {
           const Icon = TRANSPORT_ICONS[t.label as keyof typeof TRANSPORT_ICONS]
           return (
-            <motion.div
+            <m.div
               key={t.label}
               className="border border-charcoal/10 bg-ivory p-5 md:p-6"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.5 + i * 0.1, ease }}
+              transition={{ duration: 0.5, delay: 0.25 + i * 0.1, ease }}
             >
               <div className="flex items-center gap-3 mb-3">
                 <Icon className="w-4 h-4 text-terracotta" strokeWidth={1.5} />
                 <span className="font-geist text-charcoal/75 text-[0.58rem] tracking-[0.28em] uppercase">{t.label}</span>
               </div>
               <p className="font-geist text-charcoal/55 text-[0.8rem] leading-[1.7] font-light">{t.body}</p>
-            </motion.div>
+            </m.div>
           )
         })}
       </div>

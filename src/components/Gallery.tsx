@@ -1,14 +1,14 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const PHOTOS = [
   { src: '/assets/space-entrance.jpg', label: 'The Entrance', delay: 0    },
-  { src: '/assets/space-lounge.jpg',   label: 'The Lounge',   delay: 0.12 },
-  { src: '/assets/space-craft.jpg',    label: 'The Craft',    delay: 0.24 },
-  { src: '/assets/space-talent.jpg',   label: 'The Talent',   delay: 0.34 },
-  { src: '/assets/space-studio.jpg',   label: 'The Studio',   delay: 0.46 },
-  { src: '/assets/space-team.jpg',     label: 'The Team',     delay: 0.58 },
+  { src: '/assets/space-lounge.jpg',   label: 'The Lounge',   delay: 0.06 },
+  { src: '/assets/space-craft.jpg',    label: 'The Craft',    delay: 0.12 },
+  { src: '/assets/space-talent.jpg',   label: 'The Talent',   delay: 0.17 },
+  { src: '/assets/space-studio.jpg',   label: 'The Studio',   delay: 0.23 },
+  { src: '/assets/space-team.jpg',     label: 'The Team',     delay: 0.29 },
 ]
 
 export default function Gallery() {
@@ -16,42 +16,42 @@ export default function Gallery() {
   const headIn  = useInView(headRef, { once: true, margin: '-15% 0px' })
 
   return (
-    <section className="bg-cream py-28 md:py-36 overflow-hidden">
+    <section className="bg-cream pt-page pb-28 md:pb-36 overflow-hidden">
       <div className="max-w-6xl mx-auto px-5 md:px-12">
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div>
-            <motion.p className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4"
-              initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.7 }}>
+            <m.p className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4"
+              initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.5 }}>
               Inside Texture Lounge
-            </motion.p>
+            </m.p>
             <div className="overflow-hidden">
-              <motion.h2 className="font-heading text-charcoal text-5xl md:text-7xl font-normal italic leading-none"
+              <m.h2 className="font-heading text-charcoal text-5xl md:text-7xl font-normal italic leading-none"
                 initial={{ y: '100%' }} animate={headIn ? { y: 0 } : {}}
-                transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}>
+                transition={{ duration: 0.66, delay: 0.05, ease: [0.76, 0, 0.24, 1] }}>
                 The Space
-              </motion.h2>
+              </m.h2>
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.8, delay: 0.4 }}>
+          <m.div
+            initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.5, delay: 0.2 }}>
             <Link to="/team"
               className="font-geist text-[0.6rem] tracking-[0.3em] uppercase text-charcoal/50 hover:text-charcoal transition-colors duration-300 flex items-center gap-3 group w-fit">
               Meet the team
               <span className="w-8 h-px bg-current group-hover:w-14 transition-[width] duration-500" />
             </Link>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Asymmetric editorial grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 items-end">
           {PHOTOS.map((p, i) => (
-            <motion.div
+            <m.div
               key={i}
               className={`relative overflow-hidden group aspect-[3/2] ${i % 3 === 1 ? 'md:translate-y-12' : ''}`}
               initial={{ clipPath: 'inset(100% 0 0 0)', opacity: 0 }}
               whileInView={{ clipPath: 'inset(0% 0 0 0)', opacity: 1 }}
               viewport={{ once: true, margin: '-10% 0px' }}
-              transition={{ duration: 1.2, delay: p.delay, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.72, delay: p.delay, ease: [0.76, 0, 0.24, 1] }}
             >
               <img
                 src={p.src}
@@ -63,24 +63,24 @@ export default function Gallery() {
               />
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/30 transition-colors duration-500 flex items-end p-4">
-                <motion.span
+                <m.span
                   className="font-heading italic text-cream text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-400 translate-y-2 group-hover:translate-y-0"
                   style={{ transition: 'opacity 0.4s ease, transform 0.4s ease' }}
                 >
                   {p.label}
-                </motion.span>
+                </m.span>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
         {/* Social CTAs */}
-        <motion.div
+        <m.div
           className="mt-12 md:mt-24 flex items-center justify-center gap-6"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
         >
           <div className="h-px flex-1 bg-charcoal/10" />
           <div className="flex items-center gap-6">
@@ -111,7 +111,7 @@ export default function Gallery() {
             </a>
           </div>
           <div className="h-px flex-1 bg-charcoal/10" />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { STATS } from '../data/business'
 
@@ -30,16 +30,16 @@ export default function About() {
   const textIn  = useInView(textRef, { once: true, margin: '-10% 0px' })
 
   return (
-    <section id="philosophy" className="bg-ivory py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+    <section id="philosophy" className="bg-ivory pt-page pb-28 md:pb-36 px-5 md:px-12 overflow-hidden">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 md:gap-24 items-center">
 
         {/* Image — clip-path reveal */}
         <div ref={imgRef} className="relative aspect-[3/2] md:aspect-[4/5] overflow-hidden">
-          <motion.div
+          <m.div
             className="absolute inset-0"
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
             animate={imgIn ? { clipPath: 'inset(0 0% 0 0)' } : {}}
-            transition={{ duration: 1.3, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.78, ease: [0.76, 0, 0.24, 1] }}
           >
             <img
               src="/assets/interior-lounge.jpg"
@@ -48,62 +48,62 @@ export default function About() {
               style={{ filter: 'saturate(1.1)' }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
-          </motion.div>
+          </m.div>
 
           {/* Floating badge */}
-          <motion.div
-            className="absolute bottom-6 right-6 bg-cream/92 backdrop-blur-md border border-charcoal/10 px-5 py-4 z-10"
+          <m.div
+            className="absolute bottom-6 right-6 bg-cream/92 border border-charcoal/10 px-5 py-4 z-10"
             initial={{ opacity: 0, y: 20 }}
             animate={imgIn ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             <p className="font-heading text-2xl text-charcoal italic font-light">Est.</p>
             <p className="font-heading text-4xl text-terracotta font-light leading-none">2026</p>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Text */}
         <div ref={textRef} className="flex flex-col gap-10">
 
           {/* Tag */}
-          <motion.p
+          <m.p
             className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase"
             initial={{ opacity: 0, y: 10 }}
             animate={textIn ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
           >
             The Philosophy
-          </motion.p>
+          </m.p>
 
           {/* Heading */}
           <div className="overflow-hidden">
-            <motion.h2
+            <m.h2
               className="font-heading text-charcoal text-3xl md:text-4xl lg:text-[2.6rem] font-light italic leading-[1.15]"
               initial={{ y: '100%' }}
               animate={textIn ? { y: 0 } : {}}
-              transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.66, delay: 0.05, ease: [0.76, 0, 0.24, 1] }}
             >
               Our Story
-            </motion.h2>
+            </m.h2>
           </div>
 
           {/* Founder quote */}
-          <motion.blockquote
+          <m.blockquote
             className="font-heading text-charcoal text-lg md:text-xl italic font-light leading-[1.6] border-l-2 border-terracotta/40 pl-5"
             initial={{ opacity: 0, y: 16 }}
             animate={textIn ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.35, ease: [0.19, 1, 0.22, 1] }}
+            transition={{ duration: 0.54, delay: 0.17, ease: [0.19, 1, 0.22, 1] }}
           >
             "I didn't want to open just another hair salon or barbershop. I wanted to create a
             space where everyone feels catered to, understood and welcome."
-          </motion.blockquote>
+          </m.blockquote>
 
           {/* Body */}
-          <motion.div
+          <m.div
             className="flex flex-col gap-5 font-geist text-charcoal/60 text-[0.85rem] leading-[1.9] font-light"
             initial={{ opacity: 0, y: 16 }}
             animate={textIn ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.9, delay: 0.45, ease: [0.19, 1, 0.22, 1] }}
+            transition={{ duration: 0.54, delay: 0.23, ease: [0.19, 1, 0.22, 1] }}
           >
             <p>
               Texture Lounge was born from the belief that great hair services should never be
@@ -127,14 +127,14 @@ export default function About() {
               Because Texture Lounge isn't just about hair. It's about people, identity,
               confidence and creating a space where everyone has a seat.
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Animated stats */}
-          <motion.div
+          <m.div
             className="grid grid-cols-2 gap-6 pt-2"
             initial={{ opacity: 0 }}
             animate={textIn ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
           >
             {STATS.map(s => {
               const content = (
@@ -155,13 +155,13 @@ export default function About() {
                 </div>
               )
             })}
-          </motion.div>
+          </m.div>
 
           {/* CTA link */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={textIn ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
           >
             <Link
               to="/team"
@@ -170,7 +170,7 @@ export default function About() {
               Meet the team
               <span className="block w-8 h-px bg-current transition-[width] duration-500 group-hover:w-16" />
             </Link>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

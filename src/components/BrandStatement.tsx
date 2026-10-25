@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { STATS } from '../data/business'
 
@@ -33,22 +33,22 @@ export default function BrandStatement() {
     <section className="bg-cream py-24 md:py-32 px-5 md:px-12 overflow-hidden">
       <div ref={ref} className="max-w-4xl mx-auto text-center">
         <div className="overflow-hidden">
-          <motion.h2
+          <m.h2
             className="font-heading text-charcoal text-3xl md:text-5xl font-light italic leading-[1.25]"
             initial={{ y: '100%' }}
             animate={inView ? { y: 0 } : {}}
-            transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.66, ease: [0.76, 0, 0.24, 1] }}
           >
             Your Hair. Your Texture. Your Space.
             <span className="text-terracotta"> Welcome to Texture Lounge.</span>
-          </motion.h2>
+          </m.h2>
         </div>
 
-        <motion.div
+        <m.div
           className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 mt-14 md:mt-16"
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.9, delay: 0.35, ease }}
+          transition={{ duration: 0.54, delay: 0.17, ease }}
         >
           {STATS.map(s => {
             const content = (
@@ -69,7 +69,7 @@ export default function BrandStatement() {
               </div>
             )
           })}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )

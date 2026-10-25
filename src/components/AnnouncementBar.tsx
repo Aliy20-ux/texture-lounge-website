@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { ArrowRight, X } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
 
@@ -19,7 +19,7 @@ export default function AnnouncementBar() {
   return (
     <AnimatePresence initial={false}>
       {!dismissed && (
-        <motion.div
+        <m.div
           key="announcement"
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: 'auto', opacity: 1 }}
@@ -43,7 +43,7 @@ export default function AnnouncementBar() {
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   )

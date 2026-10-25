@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { REVIEWS } from '../data/business'
@@ -48,12 +48,12 @@ export default function TestimonialStrip() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {picks.map((r, i) => (
-              <motion.div
+              <m.div
                 key={r.name}
                 className="bg-cream border border-charcoal/8 p-6 md:p-7 flex flex-col gap-4 group-hover:border-terracotta/30 transition-colors duration-500"
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: i * 0.1, ease }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease }}
               >
                 <Stars />
                 <p className="font-heading text-charcoal/85 text-base italic font-normal leading-relaxed flex-1">
@@ -63,7 +63,7 @@ export default function TestimonialStrip() {
                   <span className="font-geist text-charcoal/55 text-xs tracking-wider">{r.name}</span>
                   <span className="font-geist text-terracotta/70 text-[0.58rem] tracking-[0.16em] uppercase">{r.service}</span>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </Link>

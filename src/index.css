@@ -8,38 +8,29 @@
   box-sizing: border-box;
 }
 
-@media (pointer: fine) {
-  * { cursor: none !important; }
-}
-
 html, body {
   overscroll-behavior: none;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter Variable', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
   background: #F4EDE4;
 }
 
-.font-heading { font-family: 'Fraunces', Georgia, serif; }
-.font-geist   { font-family: 'Inter', system-ui, sans-serif; }
+.font-heading { font-family: 'Fraunces Variable', Georgia, serif; }
+.font-geist   { font-family: 'Inter Variable', system-ui, sans-serif; }
 
 /* Selection color */
 ::selection { background: #B6543C; color: #F4EDE4; }
 
-/* Grain overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  opacity: 0.25;
-  mix-blend-mode: multiply;
+/* First section of every inner page: clear the fixed announcement bar + nav.
+   --header-h is measured live by the Navbar (it changes when the bar is dismissed). */
+.pt-page { padding-top: calc(var(--header-h, 117px) + 2.5rem); }
+@media (min-width: 768px) {
+  .pt-page { padding-top: calc(var(--header-h, 122px) + 3.5rem); }
 }
 
 /* Custom scrollbar */
@@ -59,6 +50,13 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 /* Safe area insets for notched phones */
 .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* Route-change wipe: snaps closed, then retracts upward */
+@keyframes curtainOut {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(0); }
+}
+.page-curtain { animation: curtainOut 0.45s cubic-bezier(0.77, 0, 0.175, 1) both; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

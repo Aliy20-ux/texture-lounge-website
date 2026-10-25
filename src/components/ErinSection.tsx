@@ -1,10 +1,13 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useVideoInView } from '../lib/useVideoInView'
 
 export default function ErinSection() {
   const ref   = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
+  const videoRef = useRef<HTMLVideoElement>(null)
+  useVideoInView(videoRef)
 
   return (
     <section ref={ref} className="bg-cream overflow-hidden">
@@ -14,76 +17,75 @@ export default function ErinSection() {
             exact ratio (full width on mobile, fixed height on desktop) so object-cover never has
             to crop anything — the entire frame is visible on every breakpoint. */}
         <div className="relative overflow-hidden aspect-[9/16] w-full md:w-auto md:h-[80vh] md:flex-shrink-0">
-          <motion.div
+          <m.div
             className="absolute inset-0"
             initial={{ clipPath: 'inset(0 100% 0 0)' }}
             animate={inView ? { clipPath: 'inset(0 0% 0 0)' } : {}}
-            transition={{ duration: 1.4, ease: [0.76, 0, 0.24, 1] }}
+            transition={{ duration: 0.84, ease: [0.76, 0, 0.24, 1] }}
           >
             <video
-              autoPlay muted loop playsInline preload="auto"
-              poster="/assets/erin-street-cut-poster.jpg"
+              ref={videoRef}
+              muted loop playsInline preload="none"
+              poster="/assets/erin-street-cut-poster-720.jpg"
               aria-label="Erin Strange cutting a client's hair on location in Edinburgh"
               className="w-full h-full object-cover"
-            >
-              <source src="/assets/videos/erin-street-cut.webm" type="video/webm" />
-              <source src="/assets/videos/erin-street-cut.mp4"  type="video/mp4"  />
-            </video>
-          </motion.div>
+              src="/assets/videos/erin-street-cut-720.mp4"
+            />
+          </m.div>
 
           {/* Award badge floating on the photo */}
-          <motion.div
-            className="absolute top-8 left-8 border border-cream/20 bg-charcoal/60 backdrop-blur-md px-4 py-3"
+          <m.div
+            className="absolute top-8 left-8 border border-cream/20 bg-charcoal/75 px-4 py-3"
             initial={{ opacity: 0, y: -16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 1.1 }}
+            transition={{ duration: 0.5, delay: 0.55 }}
           >
             <p className="font-geist text-[0.55rem] tracking-[0.3em] uppercase text-cream/60">Scottish Hair Awards</p>
             <p className="font-heading italic text-cream text-sm mt-0.5">Barber of the Year</p>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Text panel */}
         <div className="relative flex flex-col justify-center px-8 md:px-14 py-16 md:py-24 bg-cream flex-1 md:max-w-xl">
 
-          <motion.p
+          <m.p
             className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-6"
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
           >
             The Founder
-          </motion.p>
+          </m.p>
 
           <div className="overflow-hidden mb-6">
-            <motion.h2
+            <m.h2
               className="font-heading text-charcoal text-4xl md:text-5xl font-normal italic leading-[1.1]"
               initial={{ y: '110%' }}
               animate={inView ? { y: 0 } : {}}
-              transition={{ duration: 1.1, delay: 0.4, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.66, delay: 0.2, ease: [0.76, 0, 0.24, 1] }}
             >
               Erin Strange
-            </motion.h2>
+            </m.h2>
           </div>
 
-          <motion.div
+          <m.div
             className="h-px w-10 bg-terracotta/50 mb-8"
             initial={{ width: 0 }} animate={inView ? { width: 40 } : {}}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
           />
 
-          <motion.p
+          <m.p
             className="font-geist text-charcoal/55 text-sm leading-[1.9] font-light mb-10 max-w-xs"
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.9, delay: 0.6 }}
+            transition={{ duration: 0.54, delay: 0.3 }}
           >
             Featured on BBC Scotland. Named Scottish Barber of the Year.
             53 five-star reviews. Erin brings 17+ years of craft to every single appointment.
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             className="flex flex-col gap-3"
             initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
             <Link
               to="/team"
@@ -109,7 +111,7 @@ export default function ErinSection() {
                 TikTok
               </a>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

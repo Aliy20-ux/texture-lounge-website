@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { m, AnimatePresence } from 'framer-motion'
 import { MessageCircle, X, Send } from 'lucide-react'
 
 interface Message { role: 'user' | 'assistant'; content: string }
@@ -46,7 +46,7 @@ export default function ChatWidget() {
   return (
     <div>
       {/* Bubble trigger */}
-      <motion.button
+      <m.button
         onClick={() => setOpen(o => !o)}
         aria-label={open ? 'Close chat' : 'Ask a question'}
         className="fixed z-[9960] right-5 md:right-8 bottom-[7.5rem] md:bottom-24 w-13 h-13 md:w-14 md:h-14 rounded-full bg-charcoal text-cream flex items-center justify-center shadow-[0_8px_28px_rgba(26,20,19,0.3)] hover:bg-charcoal/85 transition-colors duration-300"
@@ -56,11 +56,11 @@ export default function ChatWidget() {
         transition={{ duration: 0.3, ease: [0.19, 1, 0.22, 1] }}
       >
         {open ? <X className="w-5 h-5" /> : <MessageCircle className="w-5 h-5" />}
-      </motion.button>
+      </m.button>
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             className="fixed z-[9959] left-4 right-4 md:left-auto md:right-8 md:w-96 bottom-[11.5rem] md:bottom-[10.5rem] h-[28rem] max-h-[70vh] bg-cream border border-charcoal/12 rounded-lg shadow-[0_20px_60px_rgba(26,20,19,0.25)] flex flex-col overflow-hidden"
             initial={{ opacity: 0, y: 16, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -121,7 +121,7 @@ export default function ChatWidget() {
                 <Send className="w-3.5 h-3.5" />
               </button>
             </form>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 

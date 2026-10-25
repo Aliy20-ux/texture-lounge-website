@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 
 export const AWARDS = [
   {
@@ -31,22 +31,22 @@ export default function Press() {
       <div className="max-w-6xl mx-auto">
 
         {/* Label */}
-        <motion.p
+        <m.p
           className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-12 text-center"
           initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.5 }}
         >
           Recognition
-        </motion.p>
+        </m.p>
 
         <div ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-10">
           {AWARDS.map((a, i) => (
-            <motion.div
+            <m.div
               key={a.source}
               className="flex flex-col gap-5 group"
               initial={{ opacity: 0, y: 32 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.9, delay: i * 0.12, ease: [0.19, 1, 0.22, 1] }}
+              transition={{ duration: 0.54, delay: i * 0.06, ease: [0.19, 1, 0.22, 1] }}
             >
               {/* Logo / badge */}
               <div className="flex items-center gap-4">
@@ -64,7 +64,7 @@ export default function Press() {
               </p>
               {/* Line */}
               <div className="h-px w-8 bg-terracotta/30 group-hover:w-16 transition-[width] duration-700 ease-[cubic-bezier(0.76,0,0.24,1)]" />
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

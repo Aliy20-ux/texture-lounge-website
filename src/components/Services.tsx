@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { SERVICE_CATEGORIES } from '../data/business'
 
 function ServiceRow({ svc, num, index }: { svc: { name: string; price: string; dur: string }; num: number; index: number }) {
@@ -7,11 +7,11 @@ function ServiceRow({ svc, num, index }: { svc: { name: string; price: string; d
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       initial={{ opacity: 0, y: 32 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay: (index % 6) * 0.06, ease: [0.19, 1, 0.22, 1] }}
+      transition={{ duration: 0.5, delay: (index % 6) * 0.06, ease: [0.19, 1, 0.22, 1] }}
       className="group border-t border-charcoal/10 py-6 flex items-start justify-between gap-6"
     >
       <div className="flex items-baseline gap-4">
@@ -24,7 +24,7 @@ function ServiceRow({ svc, num, index }: { svc: { name: string; price: string; d
         <span className="font-heading text-base md:text-lg text-charcoal">{svc.price}</span>
         <p className="font-geist text-charcoal/45 text-[0.58rem] tracking-[0.16em] uppercase mt-0.5">{svc.dur}</p>
       </div>
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -34,40 +34,40 @@ export default function Services() {
   let runningIndex = 0
 
   return (
-    <section id="services" className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+    <section id="services" className="bg-cream pt-page pb-28 md:pb-36 px-5 md:px-12 overflow-hidden">
       <div className="max-w-4xl mx-auto">
 
         {/* Heading */}
         <div ref={headRef} className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-20">
           <div>
-            <motion.p
+            <m.p
               className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4"
               initial={{ opacity: 0, y: 12 }}
               animate={headIn ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.5 }}
             >
               The Craft
-            </motion.p>
+            </m.p>
             <div className="overflow-hidden">
-              <motion.h2
+              <m.h2
                 className="font-heading text-charcoal text-5xl md:text-7xl font-light italic leading-none"
                 initial={{ y: '100%' }}
                 animate={headIn ? { y: 0 } : {}}
-                transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+                transition={{ duration: 0.66, delay: 0.05, ease: [0.76, 0, 0.24, 1] }}
               >
                 Our Services
-              </motion.h2>
+              </m.h2>
             </div>
           </div>
-          <motion.p
+          <m.p
             className="font-geist text-charcoal/50 text-sm leading-relaxed max-w-xs font-light"
             initial={{ opacity: 0 }}
             animate={headIn ? { opacity: 1 } : {}}
-            transition={{ duration: 0.9, delay: 0.4 }}
+            transition={{ duration: 0.54, delay: 0.2 }}
           >
             Real prices, live availability —<br className="hidden md:block" />
             book any of these below.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Categories */}

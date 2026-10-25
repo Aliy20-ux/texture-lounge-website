@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 import { TEAM } from '../data/business'
 
 export default function Team() {
@@ -7,24 +7,24 @@ export default function Team() {
   const headIn  = useInView(headRef, { once: true, margin: '-15% 0px' })
 
   return (
-    <section id="team" className="bg-cream py-28 md:py-36 px-5 md:px-12 overflow-hidden">
+    <section id="team" className="bg-cream pt-page pb-28 md:pb-36 px-5 md:px-12 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div ref={headRef} className="mb-18 md:mb-24">
-          <motion.p
+          <m.p
             className="font-geist text-sage text-[0.6rem] tracking-[0.35em] uppercase mb-4"
-            initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.7 }}
+            initial={{ opacity: 0 }} animate={headIn ? { opacity: 1 } : {}} transition={{ duration: 0.5 }}
           >
             The People
-          </motion.p>
+          </m.p>
           <div className="overflow-hidden">
-            <motion.h2
+            <m.h2
               className="font-heading text-charcoal text-5xl md:text-7xl font-light italic leading-none"
               initial={{ y: '100%' }}
               animate={headIn ? { y: 0 } : {}}
-              transition={{ duration: 1.1, delay: 0.1, ease: [0.76, 0, 0.24, 1] }}
+              transition={{ duration: 0.66, delay: 0.05, ease: [0.76, 0, 0.24, 1] }}
             >
               Our Team
-            </motion.h2>
+            </m.h2>
           </div>
         </div>
 
@@ -41,21 +41,21 @@ function TeamCard({ member, index }: { member: typeof TEAM[0]; index: number }) 
   const inView = useInView(ref, { once: true, margin: '-10% 0px' })
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       className="group"
       initial={{ opacity: 0, y: 48 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1.0, delay: index * 0.12, ease: [0.19, 1, 0.22, 1] }}
+      transition={{ duration: 0.6, delay: index * 0.06, ease: [0.19, 1, 0.22, 1] }}
     >
       {/* Image with clip-path reveal — falls back to an initial when no photo is on file yet,
           rather than standing in an unrelated stock photo for a real person. */}
       <div className="overflow-hidden aspect-[3/4] mb-6 relative">
-        <motion.div
+        <m.div
           className="absolute inset-0"
           initial={{ clipPath: 'inset(100% 0 0 0)' }}
           animate={inView ? { clipPath: 'inset(0% 0 0 0)' } : {}}
-          transition={{ duration: 1.1, delay: index * 0.12 + 0.15, ease: [0.76, 0, 0.24, 1] }}
+          transition={{ duration: 0.66, delay: index * 0.06 + 0.07, ease: [0.76, 0, 0.24, 1] }}
         >
           {member.img ? (
             <>
@@ -76,13 +76,13 @@ function TeamCard({ member, index }: { member: typeof TEAM[0]; index: number }) 
               </span>
             </div>
           )}
-        </motion.div>
+        </m.div>
       </div>
       <p className="font-heading text-xl text-charcoal italic font-light">{member.name}</p>
       <p className="font-geist text-terracotta text-[0.6rem] tracking-[0.22em] uppercase mt-1.5">{member.role}</p>
       {member.note && (
         <p className="font-geist text-charcoal/50 text-xs mt-2 leading-relaxed font-light">{member.note}</p>
       )}
-    </motion.div>
+    </m.div>
   )
 }

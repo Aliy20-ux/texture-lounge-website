@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { m, useInView } from 'framer-motion'
 
 const STEPS = [
   {
@@ -52,12 +52,12 @@ export default function Experience() {
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
           {STEPS.map((step, i) => (
-            <motion.div
+            <m.div
               key={step.num}
               className="flex items-center gap-3 md:gap-4"
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.19, 1, 0.22, 1] }}
+              transition={{ duration: 0.5, delay: i * 0.04, ease: [0.19, 1, 0.22, 1] }}
             >
               <div className="flex-shrink-0 w-10 h-10 rounded-full border border-terracotta/30 flex items-center justify-center text-terracotta">
                 {step.icon}
@@ -66,7 +66,7 @@ export default function Experience() {
                 <span className="font-geist text-charcoal/30 text-[0.6rem] tabular-nums mr-2">{step.num}</span>
                 <span className="font-heading text-charcoal text-base italic font-normal">{step.label}</span>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
