@@ -2,7 +2,6 @@ import { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ArrowRight, Scissors, Menu } from 'lucide-react'
 import { useBooking } from '../context/BookingContext'
-import AnnouncementBar from './AnnouncementBar'
 
 const LINKS = [
   { label: 'Story',     href: '/story'    },
@@ -51,7 +50,7 @@ export default function Navbar() {
   const headerRef = useRef<HTMLDivElement>(null)
 
   // Publish the fixed header's height so inner pages can clear it (.pt-page) —
-  // it differs by breakpoint, text wrapping, and whether the announcement is dismissed.
+  // it differs by breakpoint and text wrapping.
   useLayoutEffect(() => {
     const el = headerRef.current
     if (!el) return
@@ -70,7 +69,6 @@ export default function Navbar() {
   return (
     <>
       <div ref={headerRef} className="fixed top-0 left-0 right-0 z-50">
-        <AnnouncementBar />
         <nav className="relative px-5 md:px-12 py-4 md:py-5 flex items-center justify-between bg-charcoal border-b border-cream/10">
         <Link to="/" onClick={() => setMenuOpen(false)} className="relative z-50 flex-shrink-0 leading-none" aria-label="Texture Lounge — home">
           <img

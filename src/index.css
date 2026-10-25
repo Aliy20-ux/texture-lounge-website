@@ -26,8 +26,8 @@ body {
 /* Selection color */
 ::selection { background: #B6543C; color: #F4EDE4; }
 
-/* First section of every inner page: clear the fixed announcement bar + nav.
-   --header-h is measured live by the Navbar (it changes when the bar is dismissed). */
+/* First section of every inner page: clear the fixed nav.
+   --header-h is measured live by the Navbar. */
 .pt-page { padding-top: calc(var(--header-h, 117px) + 2.5rem); }
 @media (min-width: 768px) {
   .pt-page { padding-top: calc(var(--header-h, 122px) + 3.5rem); }
